@@ -33,7 +33,7 @@ const ICONS = {
 };
 
 /**
- * Returns a Notice element.
+ * Returns an Icon element.
  *
  * @type {import('preact').FunctionComponent}
  *

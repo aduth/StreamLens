@@ -20,7 +20,7 @@ import ProviderTokenError from './provider-token-error.js';
  */
 
 /**
- * Returns a No Streams Live element.
+ * Returns a Provider Authorization element.
  *
  * @type {import('preact').FunctionComponent}
  *

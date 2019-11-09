@@ -17,7 +17,7 @@ import Stream from './stream.js';
 import NoStreamsLive from './no-streams-live.js';
 
 /**
- * Returns a Stream element.
+ * Returns a Stream List element.
  *
  * @type {import('preact').FunctionComponent}
  *
