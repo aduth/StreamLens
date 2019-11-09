@@ -1,0 +1,70 @@
+{
+  "name": "stream-lens",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browser extension for displaying live stream status for Twitch, Mixer",
+  "scripts": {
+    "prepare": "npm run prepare:modules && npm run prepare:vendor",
+    "prepare:modules": "pika install",
+    "prepare:vendor": "mkdir -p vendor && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js vendor/browser-polyfill.min.js",
+    "test": "npm run test:lint && npm run test:types",
+    "test:lint": "eslint .",
+    "test:types": "tsc",
+    "prebundle": "npm run prepare",
+    "bundle": "npm-pack-zip"
+  },
+  "author": {
+    "name": "Andrew Duthie",
+    "email": "andrew@andrewduthie.com",
+    "url": "https://andrewduthie.com"
+  },
+  "license": "GPL-2.0-or-later",
+  "files": [
+    "_locales",
+    "background",
+    "common",
+    "fonts",
+    "images",
+    "options",
+    "popup",
+    "vendor",
+    "web_modules",
+    "auth.js",
+    "background.html",
+    "common.css",
+    "config.js",
+    "manifest.json",
+    "options.css",
+    "options.html",
+    "popup.css",
+    "popup.html",
+    "!.DS_Store"
+  ],
+  "dependencies": {
+    "@pika/web": "^0.6.1",
+    "@preact-hooks/unistore": "^1.1.1",
+    "htm": "^2.2.1",
+    "lodash-es": "^4.17.15",
+    "preact": "^10.0.1",
+    "unistore": "^3.5.0",
+    "webextension-polyfill": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.3",
+    "@wordpress/eslint-plugin": "^3.1.0",
+    "eslint": "^6.6.0",
+    "npm-pack-zip": "^1.2.7",
+    "typescript": "^3.7.2",
+    "web-ext-types": "^3.2.1"
+  },
+  "@pika/web": {
+    "webDependencies": [
+      "@preact-hooks/unistore",
+      "htm/preact",
+      "lodash-es",
+      "preact",
+      "preact/hooks",
+      "unistore"
+    ]
+  }
+}

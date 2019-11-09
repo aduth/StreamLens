@@ -1,0 +1,82 @@
+{
+	"extDescription": {
+		"message": "Live status updates for your followed streams on Twitch and Mixer",
+		"description": "Extension description"
+	},
+	"commonLoadingIndicatorLabel": {
+		"message": "Loading",
+		"description": "Status label for loading indicator"
+	},
+	"optionsAuthorizationsTitle": {
+		"message": "Authorizations",
+		"description": "Title for Options page Authorizations section"
+	},
+	"optionsAuthorizationsDescription": {
+		"message": "Connect one or more accounts to import your followed streams. Your followed streams will display when they are live and are updated automatically when you follow a new stream.",
+		"description": "Description for Options page Authorizations section"
+	},
+	"optionsAuthorizationLogin": {
+		"message": "Currently connected as:",
+		"description": "Active authorization login label"
+	},
+	"optionsAuthorizationConnect": {
+		"message": "Connect Account",
+		"description": "Button label for provider authorization action"
+	},
+	"optionsAuthorizationDisconnect": {
+		"message": "Disconnect",
+		"description": "Button label for provider deauthorization action"
+	},
+	"popupGettingStartedWelcome": {
+		"message": "Welcome to StreamLens!",
+		"description": "Welcome message title for new users"
+	},
+	"popupGettingStartedSettings": {
+		"message": "Open Settings",
+		"description": "Welcome message button text for open settings action"
+	},
+	"popupGettingStartedDescription": {
+		"message": "To get started, connect one or more accounts to import your followed streams.",
+		"description": "Welcome message description text for next steps"
+	},
+	"popupNoStreamsLiveTitle": {
+		"message": "No Streams Live",
+		"description": "Empty streams panel title"
+	},
+	"popupNoStreamsLiveDescription": {
+		"message": "Can't get enough? Consider following more streams to see more content here.",
+		"description": "Empty streams panel description"
+	},
+	"popupStreamLinkAccessibleLabel": {
+		"message": "$streamer$ is streaming $activity$ for $viewers$ viewers",
+		"description": "Label used to describe stream status to assistive technologies",
+		"placeholders": {
+			"streamer": {
+				"content": "$1",
+				"example": "Shroud"
+			},
+			"activity": {
+				"content": "$2",
+				"example": "Call of Duty: Modern Warfare"
+			},
+			"viewers": {
+				"content": "$3",
+				"example": "18408"
+			}
+		}
+	},
+	"providerTokenError": {
+		"message": "There's an issue connecting to $providerLabel$",
+		"description": "Label used to indicate an error with a provider authorization",
+		"placeholders": {
+			"providerLabel": {
+				"content": "$1",
+				"example": "Mixer"
+			}
+		}
+	},
+	"providerTokenErrorFix": {
+		"message": "Fix",
+		"description": "Button label for provider authorization error fix action"
+	}
+}

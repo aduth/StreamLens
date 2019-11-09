@@ -1,0 +1,17 @@
+{
+	"extends": "plugin:@wordpress/eslint-plugin/recommended",
+	"parserOptions": {
+		"ecmaVersion": 2019,
+		"sourceType": "module"
+	},
+	"globals": {
+		"browser": true
+	},
+	"rules": {
+		"indent": [
+			"error",
+			"tab",
+			{ "ignoredNodes": [ "TemplateLiteral *" ] }
+		]
+	}
+}

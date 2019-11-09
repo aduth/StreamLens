@@ -1,0 +1,45 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"/web_modules/*.js": [
+				"node_modules/@types/*",
+				"node_modules/*",
+				"web_modules/*.js"
+			],
+			"/*": [
+				"*"
+			]
+		},
+		"module": "es2015",
+		"moduleResolution": "node",
+		"target": "es2019",
+		"allowJs": true,
+		"checkJs": true,
+		"lib": [
+			"dom",
+			"esnext"
+		],
+		"skipLibCheck": true,
+		"typeRoots": [
+			"node_modules/@types",
+			"node_modules/web-ext-types"
+		],
+		"noEmit": true,
+		"strictNullChecks": true
+	},
+	"include": [
+		"background",
+		"common",
+		"options",
+		"popup"
+	],
+	"exclude": [
+		"node_modules",
+		"web_modules",
+		"vendor"
+	],
+	"files": [
+		"global.d.ts"
+	]
+}

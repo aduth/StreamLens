@@ -1,0 +1,197 @@
+/*
+ * Fonts
+ */
+
+@font-face {
+	font-family: Roboto;
+	src: url( 'fonts/roboto.woff' ) format( 'woff' );
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Roboto;
+	src: url( 'fonts/roboto-bold.woff' ) format( 'woff' );
+	font-weight: bold;
+	font-style: normal;
+}
+
+/*
+ * Custom Properties
+ */
+
+:root {
+	--sl-background-color: #fff;
+	--sl-button-background-color: #fcfcfc;
+	--sl-button-background-color-focus: #f7f7f7;
+	--sl-button-background-color-active: #f0f0f0;
+	--sl-input-border-color: #999;
+	--sl-border-color: #ccc;
+	--sl-font-color: #212529;
+	--sl-font-color-faded: #495057;
+	--sl-provider-twitch-background: #9145ff;
+	--sl-provider-twitch-foreground: #fff;
+	--sl-provider-mixer-background: #002050;
+	--sl-provider-mixer-foreground: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--sl-background-color: #323234;
+		--sl-button-background-color: #424242;
+		--sl-button-background-color-focus: #4a4a4f;
+		--sl-button-background-color-active: #666;
+		--sl-input-border-color: #ccc;
+		--sl-border-color: #292a2d;
+		--sl-font-color: #e8eaed;
+		--sl-font-color-faded: #d2d2d2;
+	}
+}
+
+/*
+ * Elements
+ */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
+	font-family: Roboto, sans-serif;
+	font-size: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	padding: 8px 12px;
+	background-color: var(--sl-button-background-color);
+	border: 1px solid var(--sl-input-border-color);
+	border-radius: 6px;
+	color: currentColor;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+button:focus,
+button:hover {
+	background-color: var(--sl-button-background-color-focus);
+}
+
+button.is-compact {
+	padding: 4px 8px;
+}
+
+/*
+ * Card
+ */
+
+.card {
+	display: flex;
+	padding: 20px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.card__title {
+	margin: 1rem 0 0;
+	font-size: 1.3rem;
+	line-height: 1;
+}
+
+.card__description {
+	margin: 1.2rem 0 0;
+	font-size: 0.9rem;
+}
+
+.card__button {
+	margin-top: 1.2rem;
+}
+
+/*
+ * Notice
+ */
+
+.notice {
+	display: flex;
+	align-items: center;
+	margin: 8px 0;
+	padding: 4px 6px;
+    background-color: #fead9a;
+	border: 1px solid #721c24;
+	font-size: 0.9rem;
+	color: #721c24;
+}
+
+.notice__icon {
+	margin-left: 2px;
+	margin-right: 6px;
+}
+
+.notice__text {
+	flex-basis: 100%;
+}
+
+.notice__button {
+    background-color: #bb4f36;
+	border-color: #721c24;
+	color: #fff;
+}
+
+.notice__button:focus,
+.notice__button:hover {
+	background-color: #d0583c;
+}
+
+/*
+ * Loading Indicator
+ */
+
+@keyframes loading-indicator__dot__pulse {
+	from {
+		opacity: 0.4;
+	}
+
+	to {
+		opacity: 0.8;
+	}
+}
+
+.loading-indicator {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+.loading-indicator__dot {
+	width: 12px;
+	height: 12px;
+	margin: 0 2px;
+	border-radius: 50%;
+	background: #6c6c6c;
+	animation-name: loading-indicator__dot__pulse;
+	animation-duration: 0.3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.loading-indicator__dot:nth-child(2) {
+	animation-delay: 0.1s;
+}
+
+.loading-indicator__dot:nth-child(3) {
+	animation-delay: 0.2s;
+}

@@ -1,0 +1,30 @@
+{
+	"name": "StreamLens",
+	"version": "1.0.0",
+	"description": "__MSG_extDescription__",
+	"background": {
+		"page": "background.html"
+	},
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"icons": {
+		"16": "images/icon16.png",
+		"32": "images/icon32.png",
+		"48": "images/icon48.png",
+		"128": "images/icon128.png"
+	},
+	"options_ui": {
+		"page": "options.html",
+		"open_in_tab": false
+	},
+	"content_scripts": [
+		{
+			"matches": [ "https://streamlens.app/auth/" ],
+			"js": [ "vendor/browser-polyfill.min.js", "auth.js" ],
+			"all_frames": true
+		}
+	],
+	"default_locale": "en",
+	"manifest_version": 2
+}

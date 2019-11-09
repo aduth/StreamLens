@@ -1,0 +1,83 @@
+/*
+ * Elements
+ */
+
+body {
+	padding: 12px;
+}
+
+@-moz-document url-prefix() {
+	@media (prefers-color-scheme: dark) {
+		body {
+			background-color: #202023;
+		}
+	}
+}
+
+/*
+ * Section
+ */
+
+.section {
+	margin-bottom: 1rem;
+}
+
+.section__heading {
+	margin: 0.4rem 0;
+	font-size: 1.3rem;
+}
+
+.section__description {
+	margin-top: 0;
+	color: var(--sl-font-color-faded);
+	font-size: 0.9rem;
+}
+
+/*
+ * Provider Authorizations
+ */
+
+.provider-authorizations {
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.provider-authorization__heading {
+	font-size: 1.1rem;
+	margin: 1rem 0 0.6rem;
+}
+
+.provider-authorization__user {
+	font-size: 0.9rem;
+	margin-bottom: 0.6rem;
+}
+
+.provider-authorization__button:not(.is-authorized) {
+	display: flex;
+	align-items: center;
+	line-height: 20px;
+}
+
+.provider-authorization__button:not(.is-authorized).is-provider-twitch:hover,
+.provider-authorization__button:not(.is-authorized).is-provider-twitch:focus,
+.provider-authorization__button:not(.is-authorized).is-provider-mixer:hover,
+.provider-authorization__button:not(.is-authorized).is-provider-mixer:focus {
+	filter: brightness( 110% );
+}
+
+.provider-authorization__button:not(.is-authorized).is-provider-twitch {
+	border-color: var(--sl-provider-twitch-foreground);
+	background-color: var(--sl-provider-twitch-background);
+	color: var(--sl-provider-twitch-foreground);
+}
+
+.provider-authorization__button:not(.is-authorized).is-provider-mixer {
+	border-color: var(--sl-provider-mixer-foreground);
+	background-color: var(--sl-provider-mixer-background);
+	color: var(--sl-provider-mixer-foreground);
+}
+
+.provider-authorization__provider {
+	margin-right: 6px;
+}
