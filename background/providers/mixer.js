@@ -199,6 +199,37 @@ const API_BASE = 'https://mixer.com/api/v1';
 const name = 'mixer';
 
 /**
+ * Given a result of Headers.get for a response total count, returns the value
+ * in numeric form, or NaN if the total count cannot be parsed.
+ *
+ * @param {string|null} totalCountResponseHeader Response header total count
+ *                                               value.
+ *
+ * @return {number} Total count as number.
+ */
+export function getTotalCount( totalCountResponseHeader ) {
+	return parseInt( totalCountResponseHeader || '', 10 );
+}
+
+/**
+ * Returns true if there are no more pages, or false otherwise. Page is treated
+ * as a zero-based number.
+ *
+ * @param {number} totalCount Total number of entries.
+ * @param {number} page       Current page.
+ * @param {number} perPage    Entries per page.
+ *
+ * @return {boolean} Whether pages have been exhasuted.
+ */
+export function hasExhaustedPages( totalCount, page, perPage ) {
+	if ( isNaN( totalCount ) ) {
+		return true;
+	}
+
+	return page >= Math.ceil( totalCount / perPage ) - 1;
+}
+
+/**
  * Number of streams to request per page.
  *
  * @type {number}
@@ -285,13 +316,8 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 
 			results.push( ...streams );
 
-			const totalCount = parseInt( response.headers.get( 'x-total-count' ) || '', 10 );
-			if ( isNaN( totalCount ) ) {
-				break;
-			}
-
-			const hasExhaustedPages = page >= Math.ceil( totalCount / STREAMS_PER_PAGE ) - 1;
-			if ( hasExhaustedPages ) {
+			const totalCount = getTotalCount( response.headers.get( 'x-total-count' ) );
+			if ( hasExhaustedPages( page, totalCount, STREAMS_PER_PAGE ) ) {
 				break;
 			}
 		}
