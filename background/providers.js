@@ -55,16 +55,6 @@ import {
  */
 
 /**
- * Current provider implementations, keyed by provider name.
- *
- * @type {Object<string,SLProvider>}
- */
-const PROVIDERS = {
-	twitch,
-	mixer,
-};
-
-/**
  * Interval at which stream data should refresh when using default subscribe
  * implementation, in milliseconds.
  *
@@ -107,9 +97,12 @@ function getChangedAuth( prevState, state ) {
  * @param {SLStore} store
  */
 function registerProviders( store ) {
-	for ( const provider of Object.values( PROVIDERS ) ) {
-		store.action( registerProvider )( provider.name, provider );
-	}
+	const dispatch = store.action( registerProvider );
+
+	[
+		twitch,
+		mixer,
+	].forEach( ( provider ) => dispatch( provider.name, provider ) );
 }
 
 /**
