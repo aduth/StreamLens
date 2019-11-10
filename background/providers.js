@@ -141,7 +141,7 @@ function startSubscriptions( store ) {
 			// If, by some chance, an authorization exists for an unknown
 			// provider name, abort. This could occur given state persistence
 			// and future updates adding / removing providers.
-			const provider = PROVIDERS[ providerName ];
+			const provider = store.getState().providers[ providerName ];
 			if ( ! provider ) {
 				return;
 			}
