@@ -25,22 +25,8 @@
  */
 export async function get() {
 	/** @type {SLStorageValue} */
-	const { initialState } = await browser.storage.sync.get( 'initialState' );
-	if ( initialState !== undefined ) {
-		return initialState;
-	}
-
-	try {
-		// Fallback to localStorage for StreamLens v1.0 compatibility.
-		const lsInitialState = JSON.parse( window.localStorage.initialState );
-
-		// Upgrade to browser storage.
-		browser.storage.sync.set( { initialState: lsInitialState } );
-
-		return lsInitialState;
-	} catch ( error ) {
-		return {};
-	}
+	const { initialState = {} } = await browser.storage.sync.get( 'initialState' );
+	return initialState;
 }
 
 /**
