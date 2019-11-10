@@ -11,13 +11,33 @@
  */
 
 /**
+ * StreamLens storage value.
+ *
+ * @typedef SLStorageValue
+ *
+ * @property {SLPartialState=} [initialState] Initial state.
+ */
+
+/**
  * Returns initial state from storage, or an empty object if none exists.
  *
- * @return {SLPartialState} Initial state.
+ * @return {Promise<SLPartialState>} Initial state.
  */
-export function get() {
+export async function get() {
+	/** @type {SLStorageValue} */
+	const { initialState } = await browser.storage.sync.get( 'initialState' );
+	if ( initialState !== undefined ) {
+		return initialState;
+	}
+
 	try {
-		return JSON.parse( window.localStorage.initialState );
+		// Fallback to localStorage for StreamLens v1.0 compatibility.
+		const lsInitialState = JSON.parse( window.localStorage.initialState );
+
+		// Upgrade to browser storage.
+		browser.storage.sync.set( { initialState: lsInitialState } );
+
+		return lsInitialState;
 	} catch ( error ) {
 		return {};
 	}
@@ -29,7 +49,7 @@ export function get() {
  * @param {SLStore} store
  */
 export function initialize( store ) {
-	let lastValue = store.getState().auth;
+	let { auth: lastAuth } = store.getState();
 
 	/**
 	 * Handle state change to update storage with latest state.
@@ -37,14 +57,14 @@ export function initialize( store ) {
 	 * @param {SLState} state Next state.
 	 */
 	function persistChange( state ) {
-		const value = state.auth;
-		if ( value !== lastValue ) {
-			window.localStorage.initialState = JSON.stringify( {
-				auth: value,
-			} );
-		}
+		const { auth } = state;
+		if ( auth !== lastAuth ) {
+			lastAuth = auth;
 
-		lastValue = value;
+			// Fire and forget to ensure consecutive `set` is called in order of
+			// state change irrespective completion of previous persist.
+			browser.storage.sync.set( { initialState: { auth } } );
+		}
 	}
 
 	store.subscribe( persistChange );
