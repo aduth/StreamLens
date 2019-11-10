@@ -1,15 +1,17 @@
 {
   "name": "stream-lens",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "description": "Browser extension for displaying live stream status for Twitch, Mixer",
   "scripts": {
     "prepare": "npm run prepare:modules && npm run prepare:vendor",
     "prepare:modules": "pika install",
     "prepare:vendor": "mkdir -p vendor && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js vendor/browser-polyfill.min.js",
-    "test": "npm run test:lint && npm run test:types",
+    "test": "npm run test:lint && npm run test:types && npm run test:unit",
     "test:lint": "eslint .",
     "test:types": "tsc",
+    "test:unit": "node --experimental-modules --experimental-loader=./test/resolve.js test/load.js",
     "prebundle": "npm run prepare",
     "bundle": "npm-pack-zip"
   },
@@ -42,7 +44,8 @@
     "options.html",
     "popup.css",
     "popup.html",
-    "!.DS_Store"
+    "!.DS_Store",
+    "!test"
   ],
   "dependencies": {
     "@pika/web": "^0.6.1",
@@ -57,6 +60,7 @@
     "@types/lodash-es": "^4.17.3",
     "@wordpress/eslint-plugin": "^3.1.0",
     "eslint": "^6.6.0",
+    "glob": "^7.1.6",
     "npm-pack-zip": "^1.2.7",
     "typescript": "^3.7.2",
     "web-ext-types": "^3.2.1"
