@@ -12,7 +12,7 @@ StreamLens is a browser extension to help simplify how you follow your favorite 
 
 Install the extension for free from the Chrome or Firefox extension marketplace:
 
-[<img src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png">](https://chrome.google.com/webstore/detail/) [<img src="https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png">](https://addons.mozilla.org/en-US/firefox/addon/streamlens/)
+[<img width="199" height="60" src="https://user-images.githubusercontent.com/1779930/68537040-a67e6600-032b-11ea-993d-8496c5a5c8c2.png" alt="Coming Soon: Chrome download">](https://chrome.google.com/webstore/) [<img width="172" height="60" src="https://user-images.githubusercontent.com/1779930/68537041-a67e6600-032b-11ea-9140-f0a8a04c1f83.png" alt="Firefox download button">](https://addons.mozilla.org/en-US/firefox/addon/streamlens/)
 
 ## Usage
 
