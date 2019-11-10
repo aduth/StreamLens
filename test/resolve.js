@@ -11,7 +11,7 @@
  *
  * @return {string} Resolved file path.
  */
-export async function resolve( specifier, parentModule, defaultResolver ) {
+export function resolve( specifier, parentModule, defaultResolver ) {
 	// Resolve root path imports from current working directory.
 	specifier = specifier.replace( /^\//, process.cwd() + '/' );
 
