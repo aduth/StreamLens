@@ -3,9 +3,7 @@
  */
 import { html } from '/web_modules/htm/preact.js';
 
-/**
- * @typedef {import('preact').ComponentChildren} ComponentChildren
- */
+/** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
 /**
  * Returns a Root element.

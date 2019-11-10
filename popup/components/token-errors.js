@@ -20,19 +20,13 @@ import Notice from '/common/components/notice.js';
  * @return {?import('preact').ComponentChild} Rendered element.
  */
 function TokenErrors() {
-	/**
-	 * @type {import('/background/store').SLStore}
-	 */
+	/** @type {import('/background/store').SLStore} */
 	const store = useStore();
 
-	/**
-	 * @type {import('/background/store').SLAuthState}
-	 */
+	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelector( ( state ) => state.auth );
 
-	/**
-	 * @type {import('/background/store').SLProvidersState}
-	 */
+	/** @type {import('/background/store').SLProvidersState} */
 	const providers = useSelector( ( state ) => state.providers );
 	const invalidProviderName = findKey( auth, { token: null } );
 	const fixConnection = useCallback( () => {

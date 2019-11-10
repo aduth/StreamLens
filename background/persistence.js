@@ -1,14 +1,8 @@
-/**
- * @typedef {import('./store').SLStore} SLStore
- */
+/** @typedef {import('./store').SLStore} SLStore */
 
-/**
- * @typedef {import('./store').SLPartialState} SLPartialState
- */
+/** @typedef {import('./store').SLPartialState} SLPartialState */
 
-/**
- * @typedef {import('./store').SLState} SLState
- */
+/** @typedef {import('./store').SLState} SLState */
 
 /**
  * StreamLens storage value.

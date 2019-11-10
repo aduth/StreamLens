@@ -13,9 +13,7 @@ import { applications } from '/config.js';
  */
 import { InvalidTokenError } from '../providers.js';
 
-/**
- * @typedef {import('../store').SLStream} SLStream
- */
+/** @typedef {import('../store').SLStream} SLStream */
 
 /**
  * Twitch token details, from validation endpoint.
@@ -175,9 +173,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			throw new InvalidTokenError();
 		}
 
-		/**
-		 * @type {TwitchTokenDetails}
-		 */
+		/** @type {TwitchTokenDetails} */
 		const json = await response.json();
 
 		return {
@@ -229,18 +225,14 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 
 			const results = [];
 
-			/**
-			 * @type {TwitchAPIPaginationCursor}
-			 */
+			/** @type {TwitchAPIPaginationCursor} */
 			let cursor;
 			do {
 				if ( cursor ) {
 					url.searchParams.set( 'after', cursor );
 				}
 
-				/**
-				 * @type {TwitchAPIPaginatedResponse<TwitchFollow[]>}
-				 */
+				/** @type {TwitchAPIPaginatedResponse<TwitchFollow[]>} */
 				const json = await fetchJSONWithClientId( url.toString() );
 
 				results.push( ...json.data.map( ( follow ) => follow.to_id ) );
@@ -281,9 +273,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 					usersURL.searchParams.append( 'id', userId );
 				} );
 
-				/**
-				 * @type {TwitchAPIPaginatedResponse<TwitchStream[]>}
-				 */
+				/** @type {TwitchAPIPaginatedResponse<TwitchStream[]>} */
 				const streams = await fetchJSONWithClientId( streamsURL.toString() );
 				if ( ! streams.data.length ) {
 					return [];
@@ -295,9 +285,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 					gamesURL.searchParams.append( 'id', stream.game_id );
 				} );
 
-				/**
-				 * @type {[TwitchAPIResponse<TwitchGame[]>,TwitchAPIPaginatedResponse<TwitchUser[]>]}
-				 */
+				/** @type {[TwitchAPIResponse<TwitchGame[]>,TwitchAPIPaginatedResponse<TwitchUser[]>]} */
 				const [ games, users ] = await Promise.all( [
 					fetchJSONWithClientId( gamesURL.toString() ),
 					fetchJSONWithClientId( usersURL.toString() ),

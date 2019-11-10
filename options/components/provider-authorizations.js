@@ -18,9 +18,7 @@ import ProviderAuthorization from './provider-authorization.js';
  * @return {import('preact').ComponentChild} Rendered element.
  */
 function ProviderAuthorizations() {
-	/**
-	 * @type {import('/background/store').SLProvidersState}
-	 */
+	/** @type {import('/background/store').SLProvidersState} */
 	const providers = useSelector( ( state ) => state.providers );
 	const title = browser.i18n.getMessage( 'optionsAuthorizationsTitle' );
 	const description = browser.i18n.getMessage( 'optionsAuthorizationsDescription' );

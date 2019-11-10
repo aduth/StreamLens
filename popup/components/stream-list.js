@@ -24,14 +24,10 @@ import NoStreamsLive from './no-streams-live.js';
  * @return {?import('preact').ComponentChild} Rendered element.
  */
 function StreamList() {
-	/**
-	 * @type {import('/background/store').SLAuthState}
-	 */
+	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelector( ( state ) => state.auth );
 
-	/**
-	 * @type {import('/background/store').SLStreamState}
-	 */
+	/** @type {import('/background/store').SLStreamState} */
 	const streams = useSelector( ( state ) => state.streams );
 
 	const numberOfConnections = size( auth );

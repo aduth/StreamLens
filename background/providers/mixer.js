@@ -8,9 +8,7 @@ import { applications } from '/config.js';
  */
 import { InvalidTokenError } from '../providers.js';
 
-/**
- * @typedef {import('../store').SLStream} SLStream
- */
+/** @typedef {import('../store').SLStream} SLStream */
 
 /**
  * Introspection response, listing the token scopes and various other
@@ -260,9 +258,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			throw new InvalidTokenError();
 		}
 
-		/**
-		 * @type {MixerTokenDetails}
-		 */
+		/** @type {MixerTokenDetails} */
 		const json = await response.json();
 
 		return {
@@ -294,14 +290,10 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 				break;
 			}
 
-			/**
-			 * @type {MixerChannel[]}
-			 */
+			/** @type {MixerChannel[]} */
 			const json = await response.json();
 
-			/**
-			 * @type {SLStream[]}
-			 */
+			/** @type {SLStream[]} */
 			const streams = json
 				.filter( ( channel ) => channel.online )
 				.map( ( channel ) => ( {

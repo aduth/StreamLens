@@ -15,9 +15,7 @@ import { deauthenticate, authenticate } from '/background/store/actions.js';
  */
 import ProviderTokenError from './provider-token-error.js';
 
-/**
- * @typedef {import('/background/providers').SLProvider} SLProvider
- */
+/** @typedef {import('/background/providers').SLProvider} SLProvider */
 
 /**
  * Returns a Provider Authorization element.
@@ -30,14 +28,10 @@ import ProviderTokenError from './provider-token-error.js';
  * @return {import('preact').ComponentChild} Rendered element.
  */
 function ProviderAuthorization( { provider } ) {
-	/**
-	 * @type {import('/background/store').SLStore}
-	 */
+	/** @type {import('/background/store').SLStore} */
 	const store = useStore();
 
-	/**
-	 * @type {import('/background/store').SLAuthState}
-	 */
+	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelector( ( state ) => state.auth );
 	const providerAuth = auth[ provider.name ];
 	const onAuthenticate = useCallback( () => {

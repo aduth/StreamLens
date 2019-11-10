@@ -19,9 +19,7 @@ import Card from '/common/components/card.js';
  * @return {?import('preact').ComponentChild} Rendered element.
  */
 function GettingStarted() {
-	/**
-	 * @type {Object<string,import('/background/store').SLAuth>}
-	 */
+	/** @type {Object<string,import('/background/store').SLAuth>} */
 	const auth = useSelector( ( state ) => state.auth );
 
 	const onClick = useCallback( () => {

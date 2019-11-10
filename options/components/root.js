@@ -9,9 +9,7 @@ import { StoreProvider } from '/web_modules/@preact-hooks/unistore.js';
  */
 import ProviderAuthorizations from './provider-authorizations.js';
 
-/**
- * @typedef {import('/background/store').SLStore} SLStore
- */
+/** @typedef {import('/background/store').SLStore} SLStore */
 
 /**
  * Returns a Root element.

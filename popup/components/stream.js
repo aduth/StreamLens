@@ -4,9 +4,7 @@
 import { useCallback } from '/web_modules/preact/hooks.js';
 import { html } from '/web_modules/htm/preact.js';
 
-/**
- * @typedef {import('/background/store').SLStream} SLStream
- */
+/** @typedef {import('/background/store').SLStream} SLStream */
 
 /**
  * Returns a Stream element.

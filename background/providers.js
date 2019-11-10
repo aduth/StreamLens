@@ -9,33 +9,19 @@ import {
 	setTokenError,
 } from './store/actions.js';
 
-/**
- * @typedef {import('./store').SLProviderUser} SLProviderUser
- */
+/** @typedef {import('./store').SLProviderUser} SLProviderUser */
 
-/**
- * @typedef {import('./store').SLStream} SLStream
- */
+/** @typedef {import('./store').SLStream} SLStream */
 
-/**
- * @typedef {import('./store').SLStore} SLStore
- */
+/** @typedef {import('./store').SLStore} SLStore */
 
-/**
- * @typedef {import('./store').SLAuth} SLAuth
- */
+/** @typedef {import('./store').SLAuth} SLAuth */
 
-/**
- * @typedef {import('./store').SLState} SLState
- */
+/** @typedef {import('./store').SLState} SLState */
 
-/**
- * @typedef {(token: string) => SLProviderUser|Promise<SLProviderUser>} SLProviderGetUser
- */
+/** @typedef {(token: string) => SLProviderUser|Promise<SLProviderUser>} SLProviderGetUser */
 
-/**
- * @typedef {(auth: SLAuth) => Promise<SLStream[]>} SLProviderGetStreams
- */
+/** @typedef {(auth: SLAuth) => Promise<SLStream[]>} SLProviderGetStreams */
 
 /**
  * Provider implementation.

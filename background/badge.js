@@ -3,13 +3,9 @@
  */
 import { some, isEmpty, size } from '/web_modules/lodash-es.js';
 
-/**
- * @typedef {import('./store').SLStore} SLStore
- */
+/** @typedef {import('./store').SLStore} SLStore */
 
-/**
- * @typedef {import('./store').SLState} SLState
- */
+/** @typedef {import('./store').SLState} SLState */
 
 /**
  * Updates badge text on a state change.

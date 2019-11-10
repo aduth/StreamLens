@@ -11,9 +11,7 @@ import TokenErrors from './token-errors.js';
 import GettingStarted from './getting-started.js';
 import StreamList from './stream-list.js';
 
-/**
- * @typedef {import('/background/store').SLStore} SLStore
- */
+/** @typedef {import('/background/store').SLStore} SLStore */
 
 /**
  * Returns a Root element.

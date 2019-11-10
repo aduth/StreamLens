@@ -13,21 +13,13 @@ import { applications } from '/config.js';
  */
 import { launchOAuthFlow } from '../oauth.js';
 
-/**
- * @typedef {import('../store').SLState} SLState
- */
+/** @typedef {import('../store').SLState} SLState */
 
-/**
- * @typedef {import('../store').SLPartialState} SLPartialState
- */
+/** @typedef {import('../store').SLPartialState} SLPartialState */
 
-/**
- * @typedef {import('../store').SLStream} SLStream
- */
+/** @typedef {import('../store').SLStream} SLStream */
 
-/**
- * @typedef {import('../providers').SLProvider} SLProvider
- */
+/** @typedef {import('../providers').SLProvider} SLProvider */
 
 /**
  * Registers a new provider.

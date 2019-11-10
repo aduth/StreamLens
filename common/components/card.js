@@ -9,9 +9,7 @@ import { useCallback } from '/web_modules/preact/hooks.js';
  */
 import Icon from './icon.js';
 
-/**
- * @typedef {import('preact').ComponentChildren} ComponentChildren
- */
+/** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
 /**
  * Returns a Card element.

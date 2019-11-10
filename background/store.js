@@ -3,13 +3,9 @@
  */
 import { default as createUnistore } from '/web_modules/unistore.js';
 
-/**
- * @typedef {import('./providers').SLProvider} SLProvider
- */
+/** @typedef {import('./providers').SLProvider} SLProvider */
 
-/**
- * @typedef {import('unistore').Store} SLStore
- */
+/** @typedef {import('unistore').Store} SLStore */
 
 /**
  * Stream details object.
