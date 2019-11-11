@@ -6,7 +6,7 @@ import { html } from '/web_modules/htm/preact.js';
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
 /**
- * Returns a Root element.
+ * Returns a Section element.
  *
  * @type {import('preact').FunctionComponent}
  *
