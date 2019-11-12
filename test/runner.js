@@ -17,7 +17,21 @@ import glob from 'fast-glob';
 			import( '../' + suite )
 				.then( () => console.log( '✅ ', suite ) )
 				.catch( ( error ) => {
-					console.error( '🚨 \x1b[31m', error.message, '\n', error.stack, '\x1b[0m' );
+					console.error(
+						'🚨 \x1b[31mError on test:',
+						error.message,
+						'\x1b[0m\n',
+						'\nOperator:',
+						error.operator,
+						'\nExpected:',
+						error.expected,
+						'\nActual:',
+						error.actual,
+						'\n\n',
+						error.stack,
+						'\n\n',
+					);
+
 					process.exit( 1 );
 				} ),
 		);
