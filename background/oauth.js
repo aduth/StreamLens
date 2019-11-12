@@ -80,7 +80,7 @@ function getAuthURL( { authEndpoint, params, interactive } ) {
 	}
 
 	// Generate nonce for CSRF protection, verified upon a received token.
-	const nonce = getNonce();
+	const nonce = getRandomString();
 	url.searchParams.set( 'state', nonce );
 
 	// Non-interactive is effected via `prompt` parameter.
@@ -94,13 +94,15 @@ function getAuthURL( { authEndpoint, params, interactive } ) {
 }
 
 /**
- * Returns a 32 character string of cryptographically-strong random values.
+ * Returns a character string of cryptographically-strong random values.
+ *
+ * @param {number} [length=32] Length of string.
  *
  * @return {string} Nonce string.
  */
-function getNonce() {
+export function getRandomString( length = 32 ) {
 	return Array
-		.from( window.crypto.getRandomValues( new Uint32Array( 32 ) ) )
+		.from( window.crypto.getRandomValues( new Uint32Array( length ) ) )
 		.map( ( i ) => i.toString( 36 ).slice( -1 ) )
 		.join( '' );
 }
