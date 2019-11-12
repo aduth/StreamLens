@@ -13,6 +13,7 @@ import glob from 'glob';
 	await Promise.all( suites.map( async ( test ) => {
 		try {
 			await import( '../' + test );
+			console.log( '✅ ', test );
 		} catch ( error ) {
 			console.error( '🚨 \x1b[31m', error.message, '\n', error.stack, '\x1b[0m' );
 			process.exit( 1 );
