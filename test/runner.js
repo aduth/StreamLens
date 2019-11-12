@@ -5,6 +5,11 @@
  */
 import glob from 'fast-glob';
 
+/**
+ * Internal dependencies
+ */
+import './setup.js';
+
 ( async () => {
 	const suites = glob.stream( '+(background|common|options|popup)/**/test/*.js' );
 
