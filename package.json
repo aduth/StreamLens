@@ -11,7 +11,7 @@
     "test": "npm run test:lint && npm run test:types && npm run test:unit",
     "test:lint": "eslint .",
     "test:types": "tsc",
-    "test:unit": "node --experimental-modules --experimental-loader=./test/resolve.js test/load.js",
+    "test:unit": "node --experimental-modules --experimental-loader=./test/resolve.js test/runner.js",
     "prebundle": "npm run prepare",
     "bundle": "npm-pack-zip"
   },
