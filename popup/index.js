@@ -10,7 +10,7 @@ import { html } from '/web_modules/htm/preact.js';
 import Root from './components/root.js';
 
 ( async () => {
-	const { store } = await browser.runtime.getBackgroundPage();
+	const store = await ( await browser.runtime.getBackgroundPage() ).store;
 	const appRoot = document.getElementById( 'app' );
 	if ( ! appRoot ) {
 		return;

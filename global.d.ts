@@ -1,3 +1,3 @@
 interface Window {
-	store: import('/background/store').SLStore;
+	store: Promise<import('/background/store').SLStore>;
 }
