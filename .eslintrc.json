@@ -13,5 +13,10 @@
 			"tab",
 			{ "ignoredNodes": [ "TemplateLiteral *" ] }
 		]
+	},
+	"settings": {
+		"jsdoc": {
+			"mode": "typescript"
+		}
 	}
 }
