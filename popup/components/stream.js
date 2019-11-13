@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import { useCallback } from '/web_modules/preact/hooks.js';
 import { html } from '/web_modules/htm/preact.js';
 
 /** @typedef {import('/background/store').SLStream} SLStream */
@@ -22,22 +21,21 @@ function Stream( { url, title, providerName, login, avatar, activity, viewers } 
 		String( viewers ),
 	] );
 
-	const onClick = useCallback( ( event ) => {
-		// In Firefox, if the click handler is only responsible for closing the
-		// popup, the navigation will not occur as expected. Instead, emulate
-		// the navigation to ensure expected order of window close.
-		window.open( event.currentTarget.href, '_blank' );
-		window.close();
-		event.preventDefault();
-	}, [] );
-
 	return html`
 		<a
 			href=${ url }
 			title=${ title }
 			aria-label=${ label }
 			target="_blank"
-			onClick=${ onClick }
+			onClick=${ ( event ) => {
+				// In Firefox, if the click handler is only responsible for
+				// closing the popup, the navigation will not occur as expected.
+				// Instead, emulate the navigation to ensure expected order of
+				// window close.
+				window.open( event.currentTarget.href, '_blank' );
+				window.close();
+				event.preventDefault();
+			} }
 			class="stream"
 		>
 			<div class="stream__avatar-provider">

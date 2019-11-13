@@ -3,7 +3,6 @@
  */
 import { html } from '/web_modules/htm/preact.js';
 import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 
 /**
  * Project dependencies
@@ -33,10 +32,8 @@ function ProviderAuthorization( { provider } ) {
 
 	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelector( ( state ) => state.auth );
+
 	const providerAuth = auth[ provider.name ];
-	const onAuthenticate = useCallback( () => {
-		store.action( providerAuth ? deauthenticate : authenticate )( provider.name );
-	}, [ provider, providerAuth ] );
 
 	let classes = `provider-authorization__button is-provider-${ provider.name }`;
 	if ( providerAuth ) {
@@ -59,7 +56,13 @@ function ProviderAuthorization( { provider } ) {
 		` }
 		<button
 			type="button"
-			onClick=${ onAuthenticate }
+			onClick=${ () => {
+				store.action(
+					providerAuth ?
+						deauthenticate :
+						authenticate,
+				)( provider.name );
+			} }
 			class=${ classes }
 		>
 			${ providerAuth ?

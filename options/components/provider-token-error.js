@@ -3,7 +3,6 @@
  */
 import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { html } from '/web_modules/htm/preact.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 
 /**
  * Project dependencies
@@ -28,9 +27,7 @@ function ProviderTokenError( { providerName } ) {
 
 	/** @type {import('/background/store').SLProvidersState} */
 	const providers = useSelector( ( state ) => state.providers );
-	const fixConnection = useCallback( () => {
-		store.action( authenticate )( providerName );
-	}, [ providerName ] );
+
 	const { label } = providers[ providerName ];
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
@@ -40,7 +37,7 @@ function ProviderTokenError( { providerName } ) {
 			icon="alert"
 			text=${ text }
 			buttonText=${ buttonText }
-			buttonOnClick=${ fixConnection }
+			buttonOnClick=${ () => store.action( authenticate )( providerName ) }
 		/>
 	`;
 }

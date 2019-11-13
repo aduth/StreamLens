@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 
 /**
  * Internal dependencies
@@ -29,11 +28,6 @@ import Icon from './icon.js';
  * @return {import('preact').ComponentChild} Rendered element.
  */
 function Card( { icon, title, children, buttonText, buttonOnClick } ) {
-	const onClick = useCallback(
-		() => buttonOnClick ? buttonOnClick() : undefined,
-		[ buttonOnClick ],
-	);
-
 	return html`
 		<div class="card">
 			${ icon && html`
@@ -52,7 +46,7 @@ function Card( { icon, title, children, buttonText, buttonOnClick } ) {
 			${ buttonText && html`
 				<button
 					type="button"
-					onClick=${ onClick }
+					onClick=${ buttonOnClick }
 					class="card__button"
 				>
 					${ buttonText }

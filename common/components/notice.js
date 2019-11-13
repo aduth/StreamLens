@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 
 /**
  * Internal dependencies
@@ -29,11 +28,6 @@ import Icon from './icon.js';
  * @return {import('preact').ComponentChild} Rendered element.
  */
 function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
-	const onClick = useCallback(
-		() => buttonOnClick ? buttonOnClick() : undefined,
-		[ buttonOnClick ],
-	);
-
 	className = [ 'notice', className ].filter( Boolean ).join( ' ' );
 
 	return html`
@@ -51,7 +45,7 @@ function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
 			${ buttonText && html`
 				<button
 					type="button"
-					onClick=${ onClick }
+					onClick=${ buttonOnClick }
 					class="notice__button is-compact"
 				>
 					${ buttonText }

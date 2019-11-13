@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 import { useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { isEmpty } from '/web_modules/lodash-es.js';
 
@@ -22,11 +21,6 @@ function GettingStarted() {
 	/** @type {Object<string,import('/background/store').SLAuth>} */
 	const auth = useSelector( ( state ) => state.auth );
 
-	const onClick = useCallback( () => {
-		browser.runtime.openOptionsPage();
-		window.close();
-	}, [] );
-
 	const isNew = isEmpty( auth );
 	if ( ! isNew ) {
 		return null;
@@ -41,7 +35,10 @@ function GettingStarted() {
 			icon="video"
 			title=${ title }
 			buttonText=${ buttonText }
-			buttonOnClick=${ onClick }
+			buttonOnClick=${ () => {
+				browser.runtime.openOptionsPage();
+				window.close();
+			} }
 			children=${ description }
 		/>
 	`;

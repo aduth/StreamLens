@@ -3,7 +3,6 @@
  */
 import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { html } from '/web_modules/htm/preact.js';
-import { useCallback } from '/web_modules/preact/hooks.js';
 import { findKey } from '/web_modules/lodash-es.js';
 
 /**
@@ -28,11 +27,8 @@ function TokenErrors() {
 
 	/** @type {import('/background/store').SLProvidersState} */
 	const providers = useSelector( ( state ) => state.providers );
-	const invalidProviderName = findKey( auth, { token: null } );
-	const fixConnection = useCallback( () => {
-		store.action( authenticate )( invalidProviderName );
-	}, [ invalidProviderName ] );
 
+	const invalidProviderName = findKey( auth, { token: null } );
 	if ( ! invalidProviderName ) {
 		return null;
 	}
@@ -46,7 +42,9 @@ function TokenErrors() {
 			icon="alert"
 			text=${ text }
 			buttonText=${ buttonText }
-			buttonOnClick=${ fixConnection }
+			buttonOnClick=${ () => {
+				store.action( authenticate )( invalidProviderName );
+			} }
 			className="token-errors"
 		/>
 	`;
