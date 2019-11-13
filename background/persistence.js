@@ -18,9 +18,17 @@
  * @return {Promise<SLPartialState>} Initial state.
  */
 export async function get() {
-	/** @type {SLStorageValue} */
-	const { initialState = {} } = await browser.storage.sync.get( 'initialState' );
-	return initialState;
+	try {
+		/** @type {SLStorageValue} */
+		const { initialState = {} } = await browser.storage.sync.get( 'initialState' );
+		return initialState;
+	} catch ( error ) {
+		// An error can be thrown if the get operation fails. This can happen,
+		// for example, when loading as a temporary extension in Firefox.
+		//
+		// See: https://bugzil.la/1323228
+		return {};
+	}
 }
 
 /**
