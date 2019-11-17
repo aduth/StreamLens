@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import { useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { html } from '/web_modules/htm/preact.js';
 import { size, reject } from '/web_modules/lodash-es.js';
 
@@ -9,6 +8,7 @@ import { size, reject } from '/web_modules/lodash-es.js';
  * Project dependencies
  */
 import LoadingIndicator from '/common/components/loading-indicator.js';
+import useSelect from '/common/hooks/use-select.js';
 
 /**
  * Internal dependencies
@@ -25,10 +25,10 @@ import NoStreamsLive from './no-streams-live.js';
  */
 function StreamList() {
 	/** @type {import('/background/store').SLAuthState} */
-	const auth = useSelector( ( state ) => state.auth );
+	const auth = useSelect( ( state ) => state.auth );
 
 	/** @type {import('/background/store').SLStreamState} */
-	const streams = useSelector( ( state ) => state.streams );
+	const streams = useSelect( ( state ) => state.streams );
 
 	const numberOfConnections = size( auth );
 	if ( numberOfConnections === 0 ) {

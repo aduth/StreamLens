@@ -237,8 +237,6 @@ const STREAMS_PER_PAGE = 100;
 export default /** @type {import('../providers').SLProvider} */ ( {
 	name,
 
-	label: 'Mixer',
-
 	supportsOIDC: false,
 
 	authEndpoint: 'https://mixer.com/oauth/authorize',

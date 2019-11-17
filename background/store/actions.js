@@ -12,6 +12,7 @@ import { applications } from '/config.js';
  * Internal dependencies
  */
 import { launchOAuthFlow } from '../oauth.js';
+import { providers } from '../providers.js';
 
 /** @typedef {import('../store').SLState} SLState */
 
@@ -24,18 +25,14 @@ import { launchOAuthFlow } from '../oauth.js';
 /**
  * Registers a new provider.
  *
- * @param {SLState}    state    Current state.
- * @param {string}     name     Provider name.
- * @param {SLProvider} provider Provider details.
+ * @param {SLState} state Current state.
+ * @param {string}  name  Provider name.
  *
  * @return {SLPartialState} State patch object.
  */
-export function registerProvider( state, name, provider ) {
+export function registerProviderName( state, name ) {
 	return {
-		providers: {
-			...state.providers,
-			[ name ]: provider,
-		},
+		providerNames: [ ...new Set( [ ...state.providerNames, name ] ) ],
 	};
 }
 
@@ -74,12 +71,12 @@ export function updateStreams( state, providerName, streams, receivedAt = Date.n
  * @return {Promise<SLPartialState>} State patch object.
  */
 export async function authenticate( state, providerName ) {
-	if ( ! state.providers.hasOwnProperty( providerName ) ) {
+	if ( ! providers.hasOwnProperty( providerName ) ) {
 		return {};
 	}
 
 	const { clientId } = applications[ providerName ];
-	const { authEndpoint, getUser } = state.providers[ providerName ];
+	const { authEndpoint, getUser } = providers[ providerName ];
 
 	const token = await launchOAuthFlow( {
 		authEndpoint,
@@ -134,7 +131,7 @@ export function deauthenticate( state, providerName ) {
  */
 export async function setTokenError( state, providerName ) {
 	const { clientId } = applications[ providerName ];
-	const { authEndpoint, supportsOIDC } = state.providers[ providerName ];
+	const { authEndpoint, supportsOIDC } = providers[ providerName ];
 
 	let nextToken;
 	if ( supportsOIDC ) {

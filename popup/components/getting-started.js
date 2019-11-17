@@ -2,12 +2,12 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { isEmpty } from '/web_modules/lodash-es.js';
 
 /**
  * Project dependencies
  */
+import useSelect from '/common/hooks/use-select.js';
 import Card from '/common/components/card.js';
 
 /**
@@ -19,7 +19,7 @@ import Card from '/common/components/card.js';
  */
 function GettingStarted() {
 	/** @type {Object<string,import('/background/store').SLAuth>} */
-	const auth = useSelector( ( state ) => state.auth );
+	const auth = useSelect( ( state ) => state.auth );
 
 	const isNew = isEmpty( auth );
 	if ( ! isNew ) {

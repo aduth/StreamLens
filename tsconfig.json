@@ -38,8 +38,5 @@
 		"node_modules",
 		"web_modules",
 		"vendor"
-	],
-	"files": [
-		"global.d.ts"
 	]
 }

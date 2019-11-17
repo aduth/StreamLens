@@ -2,12 +2,13 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
 
 /**
  * Project dependencies
  */
-import { deauthenticate, authenticate } from '/background/store/actions.js';
+import ProviderLabel from '/common/components/provider-label.js';
+import useSelect from '/common/hooks/use-select.js';
+import useDispatch from '/common/hooks/use-dispatch.js';
 
 /**
  * Internal dependencies
@@ -21,31 +22,30 @@ import ProviderTokenError from './provider-token-error.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}     props          Component props.
- * @param {SLProvider} props.provider Provider details.
+ * @param {Object} props              Component props.
+ * @param {string} props.providerName Provider name.
  *
  * @return {import('preact').ComponentChild} Rendered element.
  */
-function ProviderAuthorization( { provider } ) {
-	/** @type {import('/background/store').SLStore} */
-	const store = useStore();
+function ProviderAuthorization( { providerName } ) {
+	const dispatch = useDispatch();
 
 	/** @type {import('/background/store').SLAuthState} */
-	const auth = useSelector( ( state ) => state.auth );
+	const auth = useSelect( ( state ) => state.auth );
 
-	const providerAuth = auth[ provider.name ];
+	const providerAuth = auth[ providerName ];
 
-	let classes = `provider-authorization__button is-provider-${ provider.name }`;
+	let classes = `provider-authorization__button is-provider-${ providerName }`;
 	if ( providerAuth ) {
 		classes += ' is-authorized';
 	}
 
 	return html`
 		<h3 class="provider-authorization__heading">
-			${ provider.label }
+			<${ ProviderLabel } providerName=${ providerName } />
 		</h3>
 		${ providerAuth && providerAuth.token === null && html`
-			<${ ProviderTokenError } providerName=${ provider.name } />
+			<${ ProviderTokenError } providerName=${ providerName } />
 		` }
 		${ providerAuth && html`
 			<div class="provider-authorization__user">
@@ -57,11 +57,12 @@ function ProviderAuthorization( { provider } ) {
 		<button
 			type="button"
 			onClick=${ () => {
-				store.action(
+				dispatch(
 					providerAuth ?
-						deauthenticate :
-						authenticate,
-				)( provider.name );
+						'deauthenticate' :
+						'authenticate',
+					providerName,
+				);
 			} }
 			class=${ classes }
 		>
@@ -69,7 +70,7 @@ function ProviderAuthorization( { provider } ) {
 				browser.i18n.getMessage( 'optionsAuthorizationDisconnect' ) :
 				html`
 					<img
-						src="/images/provider-icons/${ provider.name }.svg"
+						src="/images/provider-icons/${ providerName }.svg"
 						width="20"
 						height="20"
 						class="provider-authorization__provider"

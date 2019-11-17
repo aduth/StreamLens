@@ -2,7 +2,11 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { StoreProvider } from '/web_modules/@preact-hooks/unistore.js';
+
+/**
+ * Project dependencies
+ */
+import { StoreProvider } from '/common/components/store-context.js';
 
 /**
  * Internal dependencies

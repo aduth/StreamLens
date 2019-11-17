@@ -1,15 +1,16 @@
 /**
  * External dependencies
  */
-import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { html } from '/web_modules/htm/preact.js';
 import { findKey } from '/web_modules/lodash-es.js';
 
 /**
  * Project dependencies
  */
-import { authenticate } from '/background/store/actions.js';
 import Notice from '/common/components/notice.js';
+import { getProviderLabel } from '/common/components/provider-label.js';
+import useSelect from '/common/hooks/use-select.js';
+import useDispatch from '/common/hooks/use-dispatch.js';
 
 /**
  * Returns a Token Errors element.
@@ -19,21 +20,21 @@ import Notice from '/common/components/notice.js';
  * @return {?import('preact').ComponentChild} Rendered element.
  */
 function TokenErrors() {
-	/** @type {import('/background/store').SLStore} */
-	const store = useStore();
+	const dispatch = useDispatch();
 
 	/** @type {import('/background/store').SLAuthState} */
-	const auth = useSelector( ( state ) => state.auth );
-
-	/** @type {import('/background/store').SLProvidersState} */
-	const providers = useSelector( ( state ) => state.providers );
+	const auth = useSelect( ( state ) => state.auth );
 
 	const invalidProviderName = findKey( auth, { token: null } );
 	if ( ! invalidProviderName ) {
 		return null;
 	}
 
-	const { label } = providers[ invalidProviderName ];
+	const label = getProviderLabel( invalidProviderName );
+	if ( ! label ) {
+		return null;
+	}
+
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
@@ -43,7 +44,7 @@ function TokenErrors() {
 			text=${ text }
 			buttonText=${ buttonText }
 			buttonOnClick=${ () => {
-				store.action( authenticate )( invalidProviderName );
+				dispatch( 'authenticate', invalidProviderName );
 			} }
 			className="token-errors"
 		/>

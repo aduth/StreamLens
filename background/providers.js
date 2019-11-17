@@ -4,7 +4,7 @@
 import mixer from './providers/mixer.js';
 import twitch from './providers/twitch.js';
 import {
-	registerProvider,
+	registerProviderName,
 	updateStreams,
 	setTokenError,
 } from './store/actions.js';
@@ -29,7 +29,6 @@ import {
  * @typedef {Object} SLProvider
  *
  * @property {string}               name         Unique provider slug.
- * @property {string}               label        Human-readable provider label.
  * @property {string}               authEndpoint OAuth endpoint from which to
  *                                               retrieve bearer token.
  * @property {boolean}              supportsOIDC Whether the provider supports
@@ -47,6 +46,13 @@ import {
  * @type {number}
  */
 const REFRESH_INTERVAL = 30000;
+
+/**
+ * Provider implementations.
+ *
+ * @type {Object<string,SLProvider>}
+ */
+export const providers = {};
 
 /**
  * Given previous (if exists) and next states, returns an array of provider
@@ -83,12 +89,11 @@ function getChangedAuth( prevState, state ) {
  * @param {SLStore} store
  */
 function registerProviders( store ) {
-	const dispatch = store.action( registerProvider );
+	Object.assign( providers, { twitch, mixer } );
 
-	[
-		twitch,
-		mixer,
-	].forEach( ( provider ) => dispatch( provider.name, provider ) );
+	Object
+		.keys( providers )
+		.forEach( store.action( registerProviderName ) );
 }
 
 /**
@@ -120,7 +125,7 @@ function startSubscriptions( store ) {
 			// If, by some chance, an authorization exists for an unknown
 			// provider name, abort. This could occur given state persistence
 			// and future updates adding / removing providers.
-			const provider = store.getState().providers[ providerName ];
+			const provider = providers[ providerName ];
 			if ( ! provider ) {
 				return;
 			}

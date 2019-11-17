@@ -49,7 +49,6 @@
   ],
   "dependencies": {
     "@pika/web": "^0.6.1",
-    "@preact-hooks/unistore": "^1.1.1",
     "htm": "^2.2.1",
     "lodash-es": "^4.17.15",
     "preact": "^10.0.1",
@@ -68,7 +67,6 @@
   },
   "@pika/web": {
     "webDependencies": [
-      "@preact-hooks/unistore",
       "htm/preact",
       "lodash-es",
       "preact",

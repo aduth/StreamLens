@@ -1,30 +1,22 @@
 /**
  * External dependencies
  */
-import { render, Fragment } from '/web_modules/preact.js';
+import { render } from '/web_modules/preact.js';
 import { html } from '/web_modules/htm/preact.js';
+
+/**
+ * Project dependencies
+ */
+import { createReplicaStore } from '/common/sync.js';
 
 /**
  * Internal dependencies
  */
 import Root from './components/root.js';
 
-( async () => {
-	const store = await ( await browser.runtime.getBackgroundPage() ).store;
+createReplicaStore().then( ( store ) => {
 	const appRoot = document.getElementById( 'app' );
-	if ( ! appRoot ) {
-		return;
+	if ( appRoot ) {
+		render( html`<${ Root } store=${ store } />`, appRoot );
 	}
-
-	render( html`<${ Root } store=${ store } />`, appRoot );
-
-	// Clean up on unload to avoid lingering subscriptions to store. This
-	// forces unmount on all subscribing components.
-	window.addEventListener( 'unload', () => {
-		render(
-			html`<${ Fragment }/>`,
-			appRoot,
-			appRoot.firstElementChild || undefined,
-		);
-	} );
-} )();
+} );

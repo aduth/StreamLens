@@ -4,6 +4,10 @@
 
 - Settings are now stored using browser cloud sync (if configured), so connections are automatically synced across all instances of the browser you are logged in to.
 
+### Bug Fixes
+
+- Fixed errors which could occasionally occur in Firefox when adding or removing connections.
+
 ## v1.0.0 (2019-11-10)
 
 - Initial release

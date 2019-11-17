@@ -1,7 +1,7 @@
 /**
- * External dependencies
+ * Internal dependencies
  */
-import { default as createUnistore } from '/web_modules/unistore.js';
+import * as persistence from './persistence.js';
 
 /** @typedef {import('./providers').SLProvider} SLProvider */
 
@@ -57,9 +57,9 @@ import { default as createUnistore } from '/web_modules/unistore.js';
  */
 
 /**
- * Store providers state shape.
+ * Store provider names state shape.
  *
- * @typedef {Object<string,SLProvider>} SLProvidersState
+ * @typedef {string[]} SLProviderNamesState
  */
 
 /**
@@ -67,11 +67,10 @@ import { default as createUnistore } from '/web_modules/unistore.js';
  *
  * @typedef {Object} SLState
  *
- * @property {SLStreamState}    streams   Stream state.
- * @property {SLAuthState}      auth      Provider authorizations, keyed by
- *                                        platform name.
- * @property {SLProvidersState} providers Registered providers, keyed by
- *                                        platform name.
+ * @property {SLStreamState}        streams       Stream state.
+ * @property {SLAuthState}          auth          Provider authorizations, keyed
+ *                                                by platform name.
+ * @property {SLProviderNamesState} providerNames Registered providers names.
  */
 
 /**
@@ -79,11 +78,10 @@ import { default as createUnistore } from '/web_modules/unistore.js';
  *
  * @typedef {Object} SLPartialState
  *
- * @property {SLStreamState}             [streams]   Stream state.
- * @property {Object<string,SLAuth>}     [auth]      Provider authorizations,
+ * @property {SLStreamState}         [streams]       Stream state.
+ * @property {Object<string,SLAuth>} [auth]          Provider authorizations,
  *                                                   keyed by platform name.
- * @property {Object<string,SLProvider>} [providers] Registered providers, keyed
- *                                                   by platform name.
+ * @property {SLProviderNamesState}  [providerNames] Registered providers names.
  */
 
 /**
@@ -92,7 +90,7 @@ import { default as createUnistore } from '/web_modules/unistore.js';
  * @type {SLState}
  */
 const DEFAULT_STATE = {
-	providers: {},
+	providerNames: [],
 	streams: {
 		data: [],
 		lastReceived: {},
@@ -101,17 +99,14 @@ const DEFAULT_STATE = {
 };
 
 /**
- * Returns a new instance of application state store.
+ * Returns a promise resolving with initial store state.
  *
- * @param {SLPartialState} [initialState] Optional initial state, optionally
- *                                        partial.
- *
- * @return {SLStore} Store instance.
+ * @return {Promise<SLState>} Initial store state.
  */
-export function createStore( initialState ) {
+export async function getInitialState() {
 	// Merge provided initial state (e.g. from persistence) with default.
-	return createUnistore( {
+	return {
 		...DEFAULT_STATE,
-		...initialState,
-	} );
+		...( await persistence.get() ),
+	};
 }

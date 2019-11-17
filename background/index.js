@@ -1,19 +1,24 @@
 /**
+ * Project dependencies
+ */
+import { createPrimaryStore } from '/common/sync.js';
+
+/**
  * Internal dependencies
  */
-import { createStore } from './store.js';
+import { getInitialState } from './store.js';
 import * as badge from './badge.js';
 import * as providers from './providers.js';
 import * as persistence from './persistence.js';
 import * as migrations from './migrations.js';
+import * as actions from './store/actions.js';
 
-window.store = new Promise( async ( resolve ) => {
-	const store = createStore( await persistence.get() );
+( async () => {
+	const initialState = await getInitialState();
+	const store = createPrimaryStore( initialState, { ...actions } );
 
 	migrations.initialize();
 	badge.initialize( store );
 	providers.initialize( store );
 	persistence.initialize( store );
-
-	resolve( store );
-} );
+} )();

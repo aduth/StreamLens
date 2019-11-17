@@ -1,14 +1,14 @@
 /**
  * External dependencies
  */
-import { useStore, useSelector } from '/web_modules/@preact-hooks/unistore.js';
 import { html } from '/web_modules/htm/preact.js';
 
 /**
  * Project dependencies
  */
-import { authenticate } from '/background/store/actions.js';
+import useDispatch from '/common/hooks/use-dispatch.js';
 import Notice from '/common/components/notice.js';
+import { getProviderLabel } from '/common/components/provider-label.js';
 
 /**
  * Returns a Token Errors element.
@@ -22,13 +22,13 @@ import Notice from '/common/components/notice.js';
  * @return {import('preact').ComponentChild} Rendered element.
  */
 function ProviderTokenError( { providerName } ) {
-	/** @type {import('/background/store').SLStore} */
-	const store = useStore();
+	const dispatch = useDispatch();
 
-	/** @type {import('/background/store').SLProvidersState} */
-	const providers = useSelector( ( state ) => state.providers );
+	const label = getProviderLabel( providerName );
+	if ( ! label ) {
+		return null;
+	}
 
-	const { label } = providers[ providerName ];
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
@@ -37,7 +37,7 @@ function ProviderTokenError( { providerName } ) {
 			icon="alert"
 			text=${ text }
 			buttonText=${ buttonText }
-			buttonOnClick=${ () => store.action( authenticate )( providerName ) }
+			buttonOnClick=${ () => dispatch( 'authenticate', providerName ) }
 		/>
 	`;
 }
