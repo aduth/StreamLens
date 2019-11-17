@@ -8,19 +8,17 @@ import { useLayoutEffect, useState } from '/web_modules/preact/hooks.js';
  */
 import useStore from './use-store.js';
 
-/**
- * Selector function.
- *
- * @typedef {(state: Object)=>any} SLSelector
- */
+/** @typedef {import('/background/store.js').SLState} SLState */
 
 /**
  * Hook which returns a value derived using a given selector function, updated
  * when state changes.
  *
- * @param {SLSelector} selector
+ * @template SLSelected
  *
- * @return {*} Selector-derived value.
+ * @param {(state: SLState)=>SLSelected} selector
+ *
+ * @return {SLSelected} Selector-derived value.
  */
 function useSelect( selector ) {
 	const store = useStore();

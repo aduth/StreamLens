@@ -18,7 +18,6 @@ import Card from '/common/components/card.js';
  * @return {?import('preact').ComponentChild} Rendered element.
  */
 function GettingStarted() {
-	/** @type {Object<string,import('/background/store').SLAuth>} */
 	const auth = useSelect( ( state ) => state.auth );
 
 	const isNew = isEmpty( auth );

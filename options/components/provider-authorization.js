@@ -29,8 +29,6 @@ import ProviderTokenError from './provider-token-error.js';
  */
 function ProviderAuthorization( { providerName } ) {
 	const dispatch = useDispatch();
-
-	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelect( ( state ) => state.auth );
 
 	const providerAuth = auth[ providerName ];

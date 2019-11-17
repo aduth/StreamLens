@@ -21,8 +21,6 @@ import useDispatch from '/common/hooks/use-dispatch.js';
  */
 function TokenErrors() {
 	const dispatch = useDispatch();
-
-	/** @type {import('/background/store').SLAuthState} */
 	const auth = useSelect( ( state ) => state.auth );
 
 	const invalidProviderName = findKey( auth, { token: null } );
