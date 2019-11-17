@@ -3,7 +3,7 @@
  */
 
 body {
-	width: 340px;
+	max-width: 350px;
 }
 
 /*
@@ -74,7 +74,8 @@ body {
 .stream__login-activity {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
+	flex-shrink: 1;
+	width: 240px;
 }
 
 .stream__login {

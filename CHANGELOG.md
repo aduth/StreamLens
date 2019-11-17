@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - Fixed errors which could occasionally occur in Firefox when adding or removing connections.
+- Horizontal scrollbars should no longer be shown in Firefox when many streams are live.
 
 ## v1.0.0 (2019-11-10)
 
