@@ -2,7 +2,7 @@
   "name": "stream-lens",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Browser extension for displaying live stream status for Twitch, Mixer",
   "scripts": {
     "prepare": "npm run prepare:modules && npm run prepare:vendor",
