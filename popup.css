@@ -53,6 +53,7 @@ body {
 
 .stream__avatar-provider {
 	position: relative;
+	flex-shrink: 0;
 	width: 40px;
 	margin-right: 8px;
 	padding: 4px;
@@ -61,7 +62,6 @@ body {
 .stream__avatar {
 	display: block;
 	width: 100%;
-	flex-shrink: 0;
 	border-radius: 50%;
 }
 
