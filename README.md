@@ -12,7 +12,7 @@ StreamLens is a browser extension that helps you follow your favorite streamers 
 
 Install the extension for free from the Chrome or Firefox extension marketplace:
 
-[<img width="199" height="60" src="https://user-images.githubusercontent.com/1779930/68537040-a67e6600-032b-11ea-993d-8496c5a5c8c2.png" alt="Coming Soon: Chrome download">](https://chrome.google.com/webstore/) [<img width="172" height="60" src="https://user-images.githubusercontent.com/1779930/68537041-a67e6600-032b-11ea-9140-f0a8a04c1f83.png" alt="Firefox download button">](https://addons.mozilla.org/en-US/firefox/addon/streamlens/)
+[<img width="199" height="60" src="https://user-images.githubusercontent.com/1779930/68987939-6ae90d80-07fd-11ea-8287-af12ac52fb1c.png" alt="Download for Chrome">](https://chrome.google.com/webstore/detail/streamlens/fofbdnkkalkhbbkegbjgaokjlplooifg) [<img width="172" height="60" src="https://user-images.githubusercontent.com/1779930/68537041-a67e6600-032b-11ea-9140-f0a8a04c1f83.png" alt="Downlaod for Firefox">](https://addons.mozilla.org/en-US/firefox/addon/streamlens/)
 
 ## Usage
 
