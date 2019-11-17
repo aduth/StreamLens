@@ -24,6 +24,7 @@ function NoStreamsLive() {
 			icon="video-slash"
 			title=${ title }
 			children=${ description }
+			className="no-streams-live"
 		/>
 	`;
 }

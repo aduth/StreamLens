@@ -7,9 +7,10 @@ body {
 }
 
 /*
- * Getting Started
+ * Getting Started & No Streams Live
  */
 
+.no-streams-live,
 .getting-started {
 	width: 350px;
 }

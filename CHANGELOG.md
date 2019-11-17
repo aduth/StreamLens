@@ -1,3 +1,9 @@
+## v1.1.2 (TBD)
+
+### Bug Fixes
+
+- Resolve an issue where the "No Streams Live" popup would show shrunken in Chrome.
+
 ## v1.1.1 (2019-11-17)
 
 ### Bug Fixes
