@@ -19,7 +19,7 @@ import Icon from './icon.js';
  * @param {string|void}     props.icon          Icon slug, if icon to be shown.
  * @param {string}          props.title         Card title.
  * @param {string}          props.text          Notice contents.
- * @param {string|void}     props.className     Optional additional class name.
+ * @param {string|void}     props.className     Optional additional classname.
  * @param {string|void}     props.buttonText    Action button text, if button to
  *                                              be shown.
  * @param {(()=>void)|void} props.buttonOnClick Action button callback, if

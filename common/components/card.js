@@ -20,6 +20,7 @@ import Icon from './icon.js';
  *                                                shown.
  * @param {string}            props.title         Card title.
  * @param {ComponentChildren} props.children      Card contents.
+ * @param {string|void}       props.className     Optional additional classname.
  * @param {string|void}       props.buttonText    Action button text, if button
  *                                                to be shown.
  * @param {(()=>void)|void}   props.buttonOnClick Action button callback, if
@@ -27,9 +28,11 @@ import Icon from './icon.js';
  *
  * @return {import('preact').ComponentChild} Rendered element.
  */
-function Card( { icon, title, children, buttonText, buttonOnClick } ) {
+function Card( { icon, title, children, className, buttonText, buttonOnClick } ) {
+	className = [ 'card', className ].filter( Boolean ).join( ' ' );
+
 	return html`
-		<div class="card">
+		<div class=${ className }>
 			${ icon && html`
 				<${ Icon }
 					icon=${ icon }

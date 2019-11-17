@@ -1,3 +1,9 @@
+## v1.1.1 (TBD)
+
+### Bug Fixes
+
+- Resolve an issue where the "Getting Started" popup would show shrunken in Chrome.
+
 ## v1.1.0 (2019-11-17)
 
 ### New Features
