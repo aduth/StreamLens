@@ -11,7 +11,7 @@
     "test": "npm run test:lint && npm run test:types && npm run test:unit",
     "test:lint": "eslint .",
     "test:types": "tsc",
-    "test:unit": "node --experimental-modules --experimental-loader=./test/resolve.js test/runner.js",
+    "test:unit": "node --experimental-modules --experimental-loader=esm-root-loader test/runner.js",
     "prebundle": "npm run prepare",
     "bundle": "npm-pack-zip"
   },
@@ -59,6 +59,7 @@
     "@types/lodash-es": "^4.17.3",
     "@wordpress/eslint-plugin": "^3.2.0",
     "eslint": "^6.6.0",
+    "esm-root-loader": "^0.1.0",
     "fast-glob": "^3.1.0",
     "npm-pack-zip": "^1.2.7",
     "typescript": "^3.7.2",
