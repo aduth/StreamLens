@@ -98,6 +98,7 @@ body {
 
 .stream__viewers {
 	display: flex;
+	margin-left: 8px;
 	align-items: center;
 	flex-shrink: 0;
 	align-self: flex-start;
