@@ -1,9 +1,8 @@
 /*
- * Getting Started & No Streams Live
+ * Popup-specific cards
  */
 
-.no-streams-live,
-.getting-started {
+.card {
 	width: 350px;
 }
 
