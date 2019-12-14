@@ -74,7 +74,7 @@
 .stream__login-activity {
 	display: flex;
 	flex-direction: column;
-	flex-shrink: 1;
+	flex-grow: 1;
 	width: 240px;
 }
 
