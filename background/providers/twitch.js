@@ -289,15 +289,24 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 					fetchJSONWithClientId( usersURL.toString() ),
 				] );
 
-				return streams.data.map( ( stream ) => ( {
-					providerName: name,
-					login: stream.user_name,
-					url: 'https://twitch.tv/' + stream.user_name,
-					viewers: stream.viewer_count,
-					title: stream.title,
-					avatar: ( find( users.data, { id: stream.user_id } ) || {} ).profile_image_url,
-					activity: ( find( games.data, { id: stream.game_id } ) || {} ).name,
-				} ) );
+				return streams.data.reduce( ( result, stream ) => {
+					const user = find( users.data, { id: stream.user_id } );
+					const game = find( games.data, { id: stream.game_id } );
+
+					if ( user ) {
+						result.push( /** @type {SLStream} */ ( {
+							providerName: name,
+							login: stream.user_name,
+							url: 'https://twitch.tv/' + user.login,
+							viewers: stream.viewer_count,
+							title: stream.title,
+							avatar: user.profile_image_url,
+							activity: game ? game.name : undefined,
+						} ) );
+					}
+
+					return result;
+				}, /** @type {SLStream[]} */ ( [] ) );
 			} ) ) ).flat();
 		}
 

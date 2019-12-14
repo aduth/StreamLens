@@ -1,3 +1,9 @@
+## v1.1.3 (Unreleased)
+
+### Bug Fixes
+
+- Fix issue where Twitch stream links could navigate incorrectly when the streamer's name includes spaces.
+
 ## v1.1.2 (2019-11-17)
 
 ### Bug Fixes
