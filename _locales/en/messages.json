@@ -27,6 +27,26 @@
 		"message": "Disconnect",
 		"description": "Button label for provider deauthorization action"
 	},
+	"optionsColorSchemeTitle": {
+		"message": "Color Scheme",
+		"description": "Title for Options page Color Scheme section"
+	},
+	"optionsColorSchemeDescription": {
+		"message": "By default, the StreamLens popup is themed to match your configured system preference. Use this setting to always use light or dark theme instead.",
+		"description": "Description for Options page Color Scheme section"
+	},
+	"optionsColorSchemeInherit": {
+		"message": "Use system default",
+		"description": "Option label for color scheme inherit system setting"
+	},
+	"optionsColorSchemeLight": {
+		"message": "Light theme",
+		"description": "Option label for color scheme light theme"
+	},
+	"optionsColorSchemeDark": {
+		"message": "Dark theme",
+		"description": "Option label for color scheme dark theme"
+	},
 	"popupGettingStartedWelcome": {
 		"message": "Welcome to StreamLens!",
 		"description": "Welcome message title for new users"

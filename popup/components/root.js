@@ -7,6 +7,7 @@ import { html } from '/web_modules/htm/preact.js';
  * Project dependencies
  */
 import { StoreProvider } from '/common/components/store-context.js';
+import ColorScheme from '/common/components/color-scheme.js';
 
 /**
  * Internal dependencies
@@ -30,9 +31,11 @@ import StreamList from './stream-list.js';
 function Root( { store } ) {
 	return html`
 		<${ StoreProvider } value=${ store }>
-			<${ TokenErrors } />
-			<${ GettingStarted } />
-			<${ StreamList } />
+			<${ ColorScheme }>
+				<${ TokenErrors } />
+				<${ GettingStarted } />
+				<${ StreamList } />
+			<//>
 		<//>
 	`;
 }

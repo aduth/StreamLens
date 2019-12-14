@@ -12,6 +12,7 @@ import { StoreProvider } from '/common/components/store-context.js';
  * Internal dependencies
  */
 import ProviderAuthorizations from './provider-authorizations.js';
+import ColorSchemeSetting from './color-scheme-setting.js';
 
 /** @typedef {import('/background/store').SLStore} SLStore */
 
@@ -29,6 +30,7 @@ function Root( { store } ) {
 	return html`
 		<${ StoreProvider } value=${ store }>
 			<${ ProviderAuthorizations } />
+			<${ ColorSchemeSetting } />
 		<//>
 	`;
 }

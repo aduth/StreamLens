@@ -4,11 +4,14 @@
 
 body {
 	padding: 12px;
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
 }
 
 @-moz-document url-prefix() {
 	@media (prefers-color-scheme: dark) {
 		body {
+			/* Match Firefox's specific extension settings background color */
 			background-color: #202023;
 		}
 	}
@@ -79,5 +82,28 @@ body {
 }
 
 .provider-authorization__provider {
+	margin-right: 6px;
+}
+
+/*
+ * Color Scheme Setting
+ */
+
+.color-scheme-setting {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.color-scheme-setting label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-size: 0.9rem;
+}
+
+.color-scheme-setting input {
+	position: relative;
+	top: -1px;
+	margin: 0;
 	margin-right: 6px;
 }

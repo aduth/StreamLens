@@ -20,6 +20,8 @@ import { providers } from '../providers.js';
 
 /** @typedef {import('../store').SLStream} SLStream */
 
+/** @typedef {import('../store').SLPreferencesState} SLPreferencesState */
+
 /** @typedef {import('../providers').SLProvider} SLProvider */
 
 /**
@@ -151,6 +153,23 @@ export async function setTokenError( state, providerName ) {
 				...state.auth[ providerName ],
 				token: nextToken || null,
 			},
+		},
+	};
+}
+
+/**
+ * Marks token as invalid for provider.
+ *
+ * @param {SLState}                     state       Current state.
+ * @param {Partial<SLPreferencesState>} preferences Preferences to update.
+ *
+ * @return {SLPartialState} State patch object.
+ */
+export function setPreferences( state, preferences ) {
+	return {
+		preferences: {
+			...state.preferences,
+			...preferences,
 		},
 	};
 }

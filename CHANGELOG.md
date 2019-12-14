@@ -1,4 +1,8 @@
-## v1.1.3 (Unreleased)
+## v1.2.0 (Unreleased)
+
+### New Features
+
+- Add new Color Scheme setting to override use of light or dark theme.
 
 ### Bug Fixes
 

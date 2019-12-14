@@ -63,6 +63,14 @@ import * as persistence from './persistence.js';
  */
 
 /**
+ * Store preferences state shape.
+ *
+ * @typedef {Object} SLPreferencesState
+ *
+ * @property {'dark'|'light'|null} colorScheme Preferred color scheme.
+ */
+
+/**
  * Store state shape.
  *
  * @typedef {Object} SLState
@@ -71,6 +79,7 @@ import * as persistence from './persistence.js';
  * @property {SLAuthState}          auth          Provider authorizations, keyed
  *                                                by platform name.
  * @property {SLProviderNamesState} providerNames Registered providers names.
+ * @property {SLPreferencesState}   preferences   User preferences.
  */
 
 /**
@@ -82,6 +91,7 @@ import * as persistence from './persistence.js';
  * @property {Object<string,SLAuth>} [auth]          Provider authorizations,
  *                                                   keyed by platform name.
  * @property {SLProviderNamesState}  [providerNames] Registered providers names.
+ * @property {SLPreferencesState}    [preferences]   User preferences.
  */
 
 /**
@@ -96,6 +106,9 @@ const DEFAULT_STATE = {
 		lastReceived: {},
 	},
 	auth: {},
+	preferences: {
+		colorScheme: null,
+	},
 };
 
 /**

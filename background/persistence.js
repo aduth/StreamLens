@@ -37,7 +37,10 @@ export async function get() {
  * @param {SLStore} store
  */
 export function initialize( store ) {
-	let { auth: lastAuth } = store.getState();
+	let {
+		auth: lastAuth,
+		preferences: lastPreferences,
+	} = store.getState();
 
 	/**
 	 * Handle state change to update storage with latest state.
@@ -45,13 +48,19 @@ export function initialize( store ) {
 	 * @param {SLState} state Next state.
 	 */
 	function persistChange( state ) {
-		const { auth } = state;
-		if ( auth !== lastAuth ) {
+		const { auth, preferences } = state;
+		if ( auth !== lastAuth || preferences !== lastPreferences ) {
 			lastAuth = auth;
+			lastPreferences = preferences;
 
 			// Fire and forget to ensure consecutive `set` is called in order of
 			// state change irrespective completion of previous persist.
-			browser.storage.sync.set( { initialState: { auth } } );
+			browser.storage.sync.set( {
+				initialState: {
+					auth,
+					preferences,
+				},
+			} );
 		}
 	}
 

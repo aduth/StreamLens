@@ -21,14 +21,35 @@
  */
 
 :root {
-	--sl-background-color: #fff;
-	--sl-button-background-color: #fcfcfc;
-	--sl-button-background-color-focus: #f7f7f7;
-	--sl-button-background-color-active: #f0f0f0;
-	--sl-input-border-color: #999;
-	--sl-border-color: #ccc;
-	--sl-font-color: #212529;
-	--sl-font-color-faded: #495057;
+	/* Color scheme options */
+	--sl-scheme-light-background-color: #fff;
+	--sl-scheme-light-button-background-color: #fcfcfc;
+	--sl-scheme-light-button-background-color-focus: #f7f7f7;
+	--sl-scheme-light-button-background-color-active: #f0f0f0;
+	--sl-scheme-light-input-border-color: #999;
+	--sl-scheme-light-border-color: #ccc;
+	--sl-scheme-light-font-color: #212529;
+	--sl-scheme-light-font-color-faded: #495057;
+	--sl-scheme-dark-background-color: #323234;
+	--sl-scheme-dark-button-background-color: #424242;
+	--sl-scheme-dark-button-background-color-focus: #4a4a4f;
+	--sl-scheme-dark-button-background-color-active: #666;
+	--sl-scheme-dark-input-border-color: #ccc;
+	--sl-scheme-dark-border-color: #292a2d;
+	--sl-scheme-dark-font-color: #e8eaed;
+	--sl-scheme-dark-font-color-faded: #d2d2d2;
+
+	/* Color scheme defaults */
+	--sl-background-color: var(--sl-scheme-light-background-color);
+	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
+	--sl-border-color: var(--sl-scheme-light-border-color);
+	--sl-font-color: var(--sl-scheme-light-font-color);
+	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
+
+	/* Provider-specific */
 	--sl-provider-twitch-background: #9145ff;
 	--sl-provider-twitch-foreground: #fff;
 	--sl-provider-mixer-background: #002050;
@@ -37,14 +58,14 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--sl-background-color: #323234;
-		--sl-button-background-color: #424242;
-		--sl-button-background-color-focus: #4a4a4f;
-		--sl-button-background-color-active: #666;
-		--sl-input-border-color: #ccc;
-		--sl-border-color: #292a2d;
-		--sl-font-color: #e8eaed;
-		--sl-font-color-faded: #d2d2d2;
+		--sl-background-color: var(--sl-scheme-dark-background-color);
+		--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
+		--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
+		--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+		--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
+		--sl-border-color: var(--sl-scheme-dark-border-color);
+		--sl-font-color: var(--sl-scheme-dark-font-color);
+		--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
 	}
 }
 
@@ -63,9 +84,8 @@ html {
 }
 
 body {
+	padding: 0;
 	margin: 0;
-	background-color: var(--sl-background-color);
-	color: var(--sl-font-color);
 	font-family: Roboto, sans-serif;
 	font-size: 100%;
 }
@@ -91,6 +111,37 @@ button:hover {
 
 button.is-compact {
 	padding: 4px 8px;
+}
+
+/*
+ * Color Scheme
+ */
+
+.color-scheme.is-light {
+	--sl-background-color: var(--sl-scheme-light-background-color);
+	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
+	--sl-border-color: var(--sl-scheme-light-border-color);
+	--sl-font-color: var(--sl-scheme-light-font-color);
+	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
+}
+
+.color-scheme.is-dark {
+	--sl-background-color: var(--sl-scheme-dark-background-color);
+	--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+	--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
+	--sl-border-color: var(--sl-scheme-dark-border-color);
+	--sl-font-color: var(--sl-scheme-dark-font-color);
+	--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
+}
+
+.color-scheme {
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
 }
 
 /*
