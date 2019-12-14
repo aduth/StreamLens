@@ -27,10 +27,7 @@ function ProviderAuthorizations() {
 	const description = browser.i18n.getMessage( 'optionsAuthorizationsDescription' );
 
 	return html`
-		<${ Section }
-			title=${ title }
-			description=${ description }
-		>
+		<${ Section } title=${ title } description=${ description }>
 			<ul class="provider-authorizations">
 				${ providerNames.map( ( providerName ) => html`
 					<li key=${ providerName }>
