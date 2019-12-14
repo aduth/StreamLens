@@ -83,18 +83,6 @@ import * as persistence from './persistence.js';
  */
 
 /**
- * Store state shape, with optional missing keys.
- *
- * @typedef {Object} SLPartialState
- *
- * @property {SLStreamState}         [streams]       Stream state.
- * @property {Object<string,SLAuth>} [auth]          Provider authorizations,
- *                                                   keyed by platform name.
- * @property {SLProviderNamesState}  [providerNames] Registered providers names.
- * @property {SLPreferencesState}    [preferences]   User preferences.
- */
-
-/**
  * Default store state.
  *
  * @type {SLState}

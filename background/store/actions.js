@@ -16,8 +16,6 @@ import { providers } from '../providers.js';
 
 /** @typedef {import('../store').SLState} SLState */
 
-/** @typedef {import('../store').SLPartialState} SLPartialState */
-
 /** @typedef {import('../store').SLStream} SLStream */
 
 /** @typedef {import('../store').SLPreferencesState} SLPreferencesState */
@@ -30,7 +28,7 @@ import { providers } from '../providers.js';
  * @param {SLState} state Current state.
  * @param {string}  name  Provider name.
  *
- * @return {SLPartialState} State patch object.
+ * @return {Partial<SLState>} State patch object.
  */
 export function registerProviderName( state, name ) {
 	return {
@@ -47,7 +45,7 @@ export function registerProviderName( state, name ) {
  * @param {number}     receivedAt   Time at which receive should be recorded as
  *                                  having occurred (defaults to now).
  *
- * @return {SLPartialState} State patch object.
+ * @return {Partial<SLState>} State patch object.
  */
 export function updateStreams( state, providerName, streams, receivedAt = Date.now() ) {
 	return {
@@ -70,7 +68,7 @@ export function updateStreams( state, providerName, streams, receivedAt = Date.n
  * @param {SLState} state        Current state.
  * @param {string}  providerName Name of provider to authenticate.
  *
- * @return {Promise<SLPartialState>} State patch object.
+ * @return {Promise<Partial<SLState>>} State patch object.
  */
 export async function authenticate( state, providerName ) {
 	if ( ! providers.hasOwnProperty( providerName ) ) {
@@ -111,7 +109,7 @@ export async function authenticate( state, providerName ) {
  * @param {SLState} state        Current state.
  * @param {string}  providerName Name of provider to deauthenticate.
  *
- * @return {SLPartialState} State patch object.
+ * @return {Partial<SLState>} State patch object.
  */
 export function deauthenticate( state, providerName ) {
 	return {
@@ -129,7 +127,7 @@ export function deauthenticate( state, providerName ) {
  * @param {SLState} state        Current state.
  * @param {string}  providerName Name of provider on which token error occurred.
  *
- * @return {Promise<SLPartialState>} State patch object.
+ * @return {Promise<Partial<SLState>>} State patch object.
  */
 export async function setTokenError( state, providerName ) {
 	const { clientId } = applications[ providerName ];
@@ -163,7 +161,7 @@ export async function setTokenError( state, providerName ) {
  * @param {SLState}                     state       Current state.
  * @param {Partial<SLPreferencesState>} preferences Preferences to update.
  *
- * @return {SLPartialState} State patch object.
+ * @return {Partial<SLState>} State patch object.
  */
 export function setPreferences( state, preferences ) {
 	return {

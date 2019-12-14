@@ -1,7 +1,5 @@
 /** @typedef {import('./store').SLStore} SLStore */
 
-/** @typedef {import('./store').SLPartialState} SLPartialState */
-
 /** @typedef {import('./store').SLState} SLState */
 
 /**
@@ -9,13 +7,13 @@
  *
  * @typedef SLStorageValue
  *
- * @property {SLPartialState=} [initialState] Initial state.
+ * @property {Partial<SLState>} [initialState] Initial state.
  */
 
 /**
  * Returns initial state from storage, or an empty object if none exists.
  *
- * @return {Promise<SLPartialState>} Initial state.
+ * @return {Promise<Partial<SLState>>} Initial state.
  */
 export async function get() {
 	try {
