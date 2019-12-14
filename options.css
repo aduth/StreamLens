@@ -3,6 +3,8 @@
  */
 
 body {
+	width: 560px;
+	max-width: 100%;
 	padding: 12px;
 	background-color: var(--sl-background-color);
 	color: var(--sl-font-color);
