@@ -1,8 +1,9 @@
 /*
- * Popup-specific cards
+ * Explicit widths for popup contents
  */
 
-.card {
+.card,
+.stream-list {
 	width: 350px;
 }
 
@@ -75,7 +76,6 @@
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
-	width: 240px;
 }
 
 .stream__login {
