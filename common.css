@@ -26,6 +26,7 @@
 	--sl-scheme-light-button-background-color: #fcfcfc;
 	--sl-scheme-light-button-background-color-focus: #f7f7f7;
 	--sl-scheme-light-button-background-color-active: #f0f0f0;
+	--sl-scheme-light-input-background-color: #fcfcfc;
 	--sl-scheme-light-input-border-color: #999;
 	--sl-scheme-light-border-color: #ccc;
 	--sl-scheme-light-font-color: #212529;
@@ -34,6 +35,7 @@
 	--sl-scheme-dark-button-background-color: #424242;
 	--sl-scheme-dark-button-background-color-focus: #4a4a4f;
 	--sl-scheme-dark-button-background-color-active: #666;
+	--sl-scheme-dark-input-background-color: #2d2d2f;
 	--sl-scheme-dark-input-border-color: #ccc;
 	--sl-scheme-dark-border-color: #292a2d;
 	--sl-scheme-dark-font-color: #e8eaed;
@@ -44,6 +46,7 @@
 	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
 	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
 	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
 	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
 	--sl-border-color: var(--sl-scheme-light-border-color);
 	--sl-font-color: var(--sl-scheme-light-font-color);
@@ -62,6 +65,7 @@
 		--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
 		--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
 		--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+		--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
 		--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
 		--sl-border-color: var(--sl-scheme-dark-border-color);
 		--sl-font-color: var(--sl-scheme-dark-font-color);
@@ -117,6 +121,12 @@ button.is-compact {
 	padding: 4px 8px;
 }
 
+input {
+	background-color: var(--sl-input-background-color);
+	border: 1px solid var(--sl-input-border-color);
+	border-radius: 6px;
+}
+
 /*
  * Color Scheme
  */
@@ -126,6 +136,7 @@ button.is-compact {
 	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
 	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
 	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
 	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
 	--sl-border-color: var(--sl-scheme-light-border-color);
 	--sl-font-color: var(--sl-scheme-light-font-color);
@@ -137,6 +148,7 @@ button.is-compact {
 	--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
 	--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
 	--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
 	--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
 	--sl-border-color: var(--sl-scheme-dark-border-color);
 	--sl-font-color: var(--sl-scheme-dark-font-color);
@@ -249,4 +261,105 @@ button.is-compact {
 
 .loading-indicator__dot:nth-child(3) {
 	animation-delay: 0.2s;
+}
+
+/*
+ * Icon Button
+ */
+
+.icon-button,
+.icon-button:focus,
+.icon-button:hover {
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	font-size: 1rem;
+}
+
+.icon-button .icon {
+	display: block;
+}
+
+/*
+ * Visually Hidden
+ */
+
+.visually-hidden {
+	clip: rect( 1px, 1px, 1px, 1px );
+	clip-path: inset( 50% );
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+}
+
+/*
+ * Tooltip
+ */
+
+.tooltip {
+	position: relative;
+}
+
+.tooltip__arrow,
+.tooltip__text {
+	will-change: opacity;
+	opacity: 0;
+	transition: 0.2s opacity;
+	transition-delay: 0.2s;
+}
+
+.tooltip__text {
+	position: absolute;
+	left: 50%;
+	padding: 6px 8px;
+	transform: translateX( -50% );
+	background-color: rgba( 40, 40, 40, 0.9 );
+	border: 1px solid var(--sl-scheme-dark-border-color);
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 0.8rem;
+}
+
+.tooltip.is-left .tooltip__text {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+
+.tooltip__arrow {
+	position: absolute;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+}
+
+.tooltip:hover .tooltip__arrow,
+.tooltip:hover .tooltip__text {
+	opacity: 1;
+}
+
+.tooltip.is-top .tooltip__text,
+.tooltip.is-top .tooltip__arrow {
+	bottom: 100%;
+}
+
+.tooltip.is-top .tooltip__arrow {
+	margin-bottom: -10px;
+	border-color: rgba( 40, 40, 40, 0.9 ) transparent transparent transparent;
+}
+
+.tooltip.is-bottom .tooltip__text,
+.tooltip.is-bottom .tooltip__arrow {
+	top: 100%;
+}
+
+.tooltip.is-bottom .tooltip__arrow {
+	margin-top: -10px;
+	border-color: transparent transparent rgba( 40, 40, 40, 0.9 ) transparent;
 }

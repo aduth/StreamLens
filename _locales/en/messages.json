@@ -67,6 +67,14 @@
 		"message": "Can't get enough? Consider following more streams to see more content here.",
 		"description": "Empty streams panel description"
 	},
+	"popupNoSearchResultsTitle": {
+		"message": "No Results Found",
+		"description": "Streams empty search result panel title"
+	},
+	"popupNoSearchResultsDescription": {
+		"message": "Try a different search. Search by streamer name, activity, or stream title.",
+		"description": "Streams empty search result panel description"
+	},
 	"popupStreamLinkAccessibleLabel": {
 		"message": "$streamer$ is streaming $activity$ for $viewers$ viewers",
 		"description": "Label used to describe stream status to assistive technologies",
@@ -84,6 +92,10 @@
 				"example": "18408"
 			}
 		}
+	},
+	"popupToolbarSearchLabel": {
+		"message": "Search by stream or activity name",
+		"description": "Message describing popup stream search input"
 	},
 	"providerTokenError": {
 		"message": "There's an issue connecting to $providerLabel$",

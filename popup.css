@@ -8,6 +8,65 @@
 }
 
 /*
+ * Toolbar
+ */
+
+.toolbar {
+	display: flex;
+	border-bottom: 1px solid var( --sl-border-color );
+}
+
+.toolbar__search {
+	flex-basis: 100%;
+}
+
+.toolbar__controls {
+	position: relative;
+	background: var( --sl-button-background-color );
+	flex-shrink: 0;
+	border-left: 1px solid var( --sl-border-color );
+}
+
+.toolbar__controls .icon-button {
+	padding: 6px 4px;
+}
+
+.toolbar__controls .icon-button:active {
+	background-color: var(--sl-button-background-color-active);
+}
+
+.toolbar__controls .icon-button:focus {
+	background-color: var(--sl-button-background-color-focus);
+}
+
+.toolbar__controls .icon-button:first-child {
+	padding-left: 8px;
+}
+
+.toolbar__controls .icon-button:last-child {
+	padding-right: 8px;
+}
+
+.toolbar__search-input {
+	display: block;
+	width: 100%;
+	padding: 7px 9px;
+	border: none;
+	border-radius: 0;
+	font-size: 0.8rem;
+	color: var(--sl-font-color);
+}
+
+.toolbar__search-input::placeholder {
+	opacity: 0.7;
+	color: var(--sl-font-color-faded);
+}
+
+.toolbar__search-input:focus {
+	outline: none;
+}
+
+/*
  * Stream List
  */
 

@@ -15,6 +15,7 @@ import ColorScheme from '/common/components/color-scheme.js';
 import TokenErrors from './token-errors.js';
 import GettingStarted from './getting-started.js';
 import StreamList from './stream-list.js';
+import { SearchProvider } from './search-context.js';
 
 /** @typedef {import('/background/store').SLStore} SLStore */
 
@@ -31,10 +32,12 @@ import StreamList from './stream-list.js';
 function Root( { store } ) {
 	return html`
 		<${ StoreProvider } value=${ store }>
-			<${ ColorScheme }>
-				<${ TokenErrors } />
-				<${ GettingStarted } />
-				<${ StreamList } />
+			<${ SearchProvider }>
+				<${ ColorScheme }>
+					<${ TokenErrors } />
+					<${ GettingStarted } />
+					<${ StreamList } />
+				<//>
 			<//>
 		<//>
 	`;
