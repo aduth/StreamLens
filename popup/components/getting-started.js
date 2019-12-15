@@ -39,7 +39,6 @@ function GettingStarted() {
 				window.close();
 			} }
 			children=${ description }
-			className="getting-started"
 		/>
 	`;
 }
