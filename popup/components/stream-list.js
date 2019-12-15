@@ -41,7 +41,7 @@ function StreamList() {
 	return html`
 		<ul class="stream-list">
 			${ streams.data.map( ( stream ) => html`
-				<li>
+				<li key=${ stream.url }>
 					<${ Stream } ...${ stream } />
 				</li>
 			` ) }
