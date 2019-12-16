@@ -320,7 +320,7 @@ input {
 
 .tooltip.is-left .tooltip__text {
 	left: auto;
-	right: 0;
+	right: 1px;
 	transform: none;
 }
 
