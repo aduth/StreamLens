@@ -3,6 +3,8 @@
 ### New Features
 
 - Add new Color Scheme setting to override use of light or dark theme.
+- The stream list now includes a search field to filter by stream or activity name.
+- The stream popup includes a button to quickly navigate to the extension settings.
 
 ### Bug Fixes
 
