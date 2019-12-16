@@ -6,7 +6,7 @@ StreamLens</h1>
 
 StreamLens is a browser extension that helps you follow your favorite streamers across multiple supported streaming platforms. Easily connect your [Twitch](https://www.twitch.tv/) or [Mixer](https://mixer.com/) accounts to import your followed streams automatically. The StreamLens toolbar button provides you with an at-a-glance count of live broadcasts and, when clicked, expands to show a list of streamers from which you can choose to start watching.
 
-<p align="center"><img width="491" height="391" alt="StreamLens popup streams list" src="https://user-images.githubusercontent.com/1779930/68724127-a62ed680-0588-11ea-8ebd-c751ff8e02c9.png"></p>
+<p align="center"><img width="500" height="328" alt="StreamLens popup streams list" src="https://user-images.githubusercontent.com/1779930/70952894-ac0b5200-2035-11ea-9d3b-0af842a85111.png"></p>
 
 ## Installation
 
@@ -30,7 +30,7 @@ Install the extension for free from the Chrome or Firefox extension marketplace:
 
 4. After connecting one or more accounts, the toolbar button and corresponding popup will immediately update to show your followed streams currently live (if any). 
 
-<p align="center"><img width="409" alt="StreamLens popup streams list" src="https://user-images.githubusercontent.com/1779930/68522966-23ec9c80-0280-11ea-8082-8196e57de90a.png"></p>
+<p align="center"><img width="500" height="328" alt="StreamLens popup streams list" src="https://user-images.githubusercontent.com/1779930/70952894-ac0b5200-2035-11ea-9d3b-0af842a85111.png"></p>
 
 ## License
 
