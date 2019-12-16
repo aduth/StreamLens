@@ -12,6 +12,9 @@
  */
 
 .toolbar {
+	position: sticky;
+	top: 0;
+	z-index: 1;
 	display: flex;
 	border-bottom: 1px solid var( --sl-border-color );
 }
