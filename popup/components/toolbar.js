@@ -54,6 +54,7 @@ function Toolbar() {
 					placeholder=${ searchLabel }
 					spellcheck=${ false }
 					value=${ search }
+					autocomplete="false"
 					autofocus
 					onInput=${ ( event ) => setSearch( event.currentTarget.value ) }
 					class="toolbar__search-input"
