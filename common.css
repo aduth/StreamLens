@@ -92,6 +92,32 @@ body {
 	margin: 0;
 	font-family: Roboto, sans-serif;
 	font-size: 100%;
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
+}
+
+body[data-theme="light"] {
+	--sl-background-color: var(--sl-scheme-light-background-color);
+	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
+	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
+	--sl-border-color: var(--sl-scheme-light-border-color);
+	--sl-font-color: var(--sl-scheme-light-font-color);
+	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
+}
+
+body[data-theme="dark"] {
+	--sl-background-color: var(--sl-scheme-dark-background-color);
+	--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
+	--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
+	--sl-border-color: var(--sl-scheme-dark-border-color);
+	--sl-font-color: var(--sl-scheme-dark-font-color);
+	--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
 }
 
 a {
@@ -125,39 +151,6 @@ input {
 	background-color: var(--sl-input-background-color);
 	border: 1px solid var(--sl-input-border-color);
 	border-radius: 6px;
-}
-
-/*
- * Color Scheme
- */
-
-.color-scheme.is-light {
-	--sl-background-color: var(--sl-scheme-light-background-color);
-	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
-	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
-	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
-	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
-	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
-	--sl-border-color: var(--sl-scheme-light-border-color);
-	--sl-font-color: var(--sl-scheme-light-font-color);
-	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
-}
-
-.color-scheme.is-dark {
-	--sl-background-color: var(--sl-scheme-dark-background-color);
-	--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
-	--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
-	--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
-	--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
-	--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
-	--sl-border-color: var(--sl-scheme-dark-border-color);
-	--sl-font-color: var(--sl-scheme-dark-font-color);
-	--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
-}
-
-.color-scheme {
-	background-color: var(--sl-background-color);
-	color: var(--sl-font-color);
 }
 
 /*

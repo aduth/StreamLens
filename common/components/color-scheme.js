@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { useEffect } from '/web_modules/preact/hooks.js';
 
 /**
  * Internal dependencies
@@ -23,13 +23,13 @@ import useSelect from '../hooks/use-select.js';
  */
 function ColorScheme( { children } ) {
 	const colorScheme = useSelect( ( state ) => state.preferences.colorScheme );
-	const normalColorScheme = colorScheme === null ? 'inherit' : colorScheme;
 
-	return html`
-		<div class="color-scheme is-${ normalColorScheme }">
-			${ children }
-		</div>
-	`;
+	useEffect( () => {
+		const normalColorScheme = colorScheme === null ? 'inherit' : colorScheme;
+		document.body.dataset.theme = normalColorScheme;
+	}, [ colorScheme ] );
+
+	return children;
 }
 
 export default ColorScheme;
