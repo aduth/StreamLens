@@ -94,12 +94,12 @@ function StreamList() {
 	}
 
 	const filteredStreams = streams.data.filter( isSearchMatch.bind( null, search ) );
-	if ( hasFetched && filteredStreams.length === 0 ) {
-		return html`<${ NoSearchResults } />`;
-	}
 
 	return html`
 		<${ Toolbar } />
+		${ hasFetched && filteredStreams.length === 0 && html`
+			<${ NoSearchResults } />
+		` }
 		<ul class="stream-list">
 			${ filteredStreams.map( ( stream ) => html`
 				<li key=${ stream.url }>
