@@ -32,19 +32,6 @@ Install the extension for free from the Chrome or Firefox extension marketplace:
 
 <p align="center"><img width="409" alt="StreamLens popup streams list" src="https://user-images.githubusercontent.com/1779930/68522966-23ec9c80-0280-11ea-8082-8196e57de90a.png"></p>
 
-## Frequently Asked Questions
-
-**How can I add or remove connections after the initial set-up?**
-
-Connections are managed under the extension preferences. First, navigate to the extension options screen by right-clicking the toolbar icon and selecting "Manage Extension". Then, proceed to the extension preferences based on your browser: In Firefox, click the "Preferences" tab. In Chrome, click the "Extension options" link.
-
-**How do I switch between light and dark themes?**
-
-StreamLens uses your system's "Dark Mode" preference to display the appropriate light or dark theme. Refer to the following articles for information about how to change this setting:
-
-- [Instructions for Windows](https://blogs.windows.com/windowsexperience/2019/04/01/windows-10-tip-dark-theme-in-file-explorer/#cwbC8XY0Kr3Wyb2V.97)
-- [Instructions for macOS](https://support.apple.com/en-us/HT208976)
-
 ## License
 
 Copyright 2019 Andrew Duthie
