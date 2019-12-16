@@ -322,6 +322,7 @@ input {
 	left: auto;
 	right: 1px;
 	transform: none;
+	pointer-events: none;
 }
 
 .tooltip__arrow {
