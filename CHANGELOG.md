@@ -1,4 +1,4 @@
-## v1.2.0 (Unreleased)
+## v1.2.0 (2019-12-17)
 
 ### New Features
 
