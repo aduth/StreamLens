@@ -72,7 +72,7 @@
 		"description": "Streams empty search result panel title"
 	},
 	"popupNoSearchResultsDescription": {
-		"message": "Try a different search. Search by streamer name, activity, or stream title.",
+		"message": "Try a different search. Search by streamer name, game, or stream title.",
 		"description": "Streams empty search result panel description"
 	},
 	"popupStreamLinkAccessibleLabel": {
@@ -94,7 +94,7 @@
 		}
 	},
 	"popupToolbarSearchLabel": {
-		"message": "Search by stream or activity name",
+		"message": "Search by game or stream name",
 		"description": "Message describing popup stream search input"
 	},
 	"providerTokenError": {
