@@ -79,10 +79,6 @@
 	padding-left: 0;
 }
 
-.stream-list li:last-child .stream {
-	border-bottom-width: 0;
-}
-
 /*
  * Token Errors
  */
@@ -105,9 +101,16 @@
 	border-bottom: 1px solid var(--sl-border-color);
 }
 
-.stream:hover,
-.stream:focus {
+.stream-list__item:last-child .stream {
+	border-bottom-width: 0;
+}
+
+.stream-list__item.is-hovered .stream {
 	background-color: var(--sl-button-background-color-focus);
+}
+
+.stream:focus {
+	outline: none;
 }
 
 .stream:active {

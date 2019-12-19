@@ -2,8 +2,8 @@
  * External dependencies
  */
 import { html } from '/web_modules/htm/preact.js';
-import { size, reject, deburr } from '/web_modules/lodash-es.js';
-import { useContext } from '/web_modules/preact/hooks.js';
+import { size, reject, deburr, clamp } from '/web_modules/lodash-es.js';
+import { useContext, useState, useRef } from '/web_modules/preact/hooks.js';
 
 /**
  * Project dependencies
@@ -81,6 +81,8 @@ function StreamList() {
 	const auth = useSelect( ( state ) => state.auth );
 	const streams = useSelect( ( state ) => state.streams );
 	const [ search ] = useContext( SearchContext );
+	const [ hoverIndex, setHoverIndex ] = useState( /** @type {?number} */ ( null ) );
+	const listRef = useRef( /** @type {HTMLElement|undefined} */ ( undefined ) );
 
 	const numberOfConnections = size( auth );
 	if ( numberOfConnections === 0 ) {
@@ -95,19 +97,125 @@ function StreamList() {
 
 	const filteredStreams = streams.data.filter( isSearchMatch.bind( null, search ) );
 
+	// Ensure that if stream state updates or search filtering reduces the
+	// number of streams shown, the hover index is effectively constrained to
+	// the maximum number of streams.
+	const effectiveHoverIndex = (
+		hoverIndex === null || filteredStreams.length === 0 ?
+			null :
+			clamp( hoverIndex, filteredStreams.length - 1 )
+	);
+
+	/**
+	 * Returns the link element for the stream at a given zero-based index, or
+	 * null if it cannot be determined or does not exist. Ideally, this would
+	 * not pierce the abstraction of the Stream component and would instead be
+	 * implemented as agnostic to the focusable elements within a list.
+	 *
+	 * @param {number} index Index
+	 *
+	 * @return {?HTMLElement} Link element, if known.
+	 */
+	function getStreamLink( index ) {
+		return listRef.current ?
+			listRef.current.querySelector( `li:nth-child(${ index + 1 }) a` ) :
+			null;
+	}
+
+	/**
+	 * Interprets an intent to set hover index as a focus action if focus is
+	 * already within the stream list. This allows tab focus behavior to proceed
+	 * as expected after a hover index changes. If focus is not already within
+	 * the list, the default hover index behavior is used instead.
+	 *
+	 * @param {number} index Intended hover index.
+	 */
+	function setHoverIndexOrFocus( index ) {
+		const isFocusInList = listRef.current && listRef.current.contains( document.activeElement );
+		if ( isFocusInList ) {
+			const target = getStreamLink( index );
+			if ( target ) {
+				target.focus();
+			}
+		} else {
+			setHoverIndex( index );
+		}
+	}
+
+	/**
+	 * Interpets a key down to increment the hover index if key pressed is an
+	 * arrow key. This must occur in response to a `keydown` event, since
+	 * `keypress` events do not emit for arrow keys.
+	 *
+	 * @param {KeyboardEvent} event Key event.
+	 */
+	function incrementHoverIndex( event ) {
+		if ( event.key === 'ArrowUp' || event.key === 'ArrowDown' ) {
+			// Increment the hover index by an increment corresponding to the
+			// key pressed. The hover index is clamped to be constrained to a
+			// valid value based on the current number of filtered streams. The
+			// effective hover index is used to assure that the change is most
+			// accurate in respect to what is seen by the user.
+			const increment = event.key === 'ArrowUp' ? -1 : 1;
+			const nextHoverIndex = effectiveHoverIndex === null ?
+				0 :
+				clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
+
+			setHoverIndexOrFocus( nextHoverIndex );
+
+			event.preventDefault();
+		}
+	}
+
+	/**
+	 * Interpets a key press to select a stream if key pressed is an enter key.
+	 * This must occur in response to a `keypress` event, since popups created
+	 * during a `keydown` event would be blocked by Firefox popup blocker,
+	 * presumably because they're not considered an allowable user interaction.
+	 *
+	 * @param {KeyboardEvent} event Key event.
+	 */
+	function selectStream( event ) {
+		if ( event.key === 'Enter' ) {
+			event.preventDefault();
+
+			if ( effectiveHoverIndex !== null ) {
+				const stream = filteredStreams[ effectiveHoverIndex ];
+				if ( stream ) {
+					window.open( stream.url );
+					window.close();
+				}
+			}
+		}
+	}
+
 	return html`
-		<${ Toolbar } />
-		${ hasFetched && filteredStreams.length === 0 && html`
-			<${ NoSearchResults } />
-		` }
-		<ul class="stream-list">
-			${ filteredStreams.map( ( stream ) => html`
-				<li key=${ stream.url }>
-					<${ Stream } ...${ stream } />
-				</li>
-			` ) }
-		</ul>
-		${ ! hasFetched && html`<${ LoadingIndicator } />` }
+		<div onKeyDown=${ incrementHoverIndex } onKeyPress=${ selectStream }>
+			<${ Toolbar } />
+			${ hasFetched && filteredStreams.length === 0 && html`
+				<${ NoSearchResults } />
+			` }
+			<ul class="stream-list" ref=${ listRef }>
+				${ filteredStreams.map( ( stream, index ) => html`
+					<li
+						key=${ stream.url }
+						class=${
+							[
+								'stream-list__item',
+								index === effectiveHoverIndex && 'is-hovered',
+							].filter( Boolean ).join( ' ' )
+						}
+						onFocusCapture=${ () => setHoverIndex( index ) }
+						onBlurCapture=${ () => setHoverIndex( null ) }
+						onMouseEnter=${ () => setHoverIndex( index ) }
+						onMouseLeave=${ () => setHoverIndex( null ) }
+					>
+						<${ Stream } ...${ stream } />
+					</li>
+				` ) }
+			</ul>
+			${ ! hasFetched && html`<${ LoadingIndicator } />` }
+		</div>
 	`;
 }
 

@@ -1,3 +1,9 @@
+## v1.3.0 (Unreleased)
+
+### New Features
+
+- Added keyboard support to navigate stream list options using arrow keys, and select a stream using the Enter key.
+
 ## v1.2.0 (2019-12-17)
 
 ### New Features
