@@ -7,6 +7,7 @@
 ### Improvements
 
 - Tooltips will appear when the associated button has keyboard focus (e.g. the Settings button).
+- Increase contrast of hovered/focused buttons in light theme, for more identifiable keyboard selection.
 
 ## v1.2.0 (2019-12-17)
 
