@@ -333,6 +333,8 @@ input {
 	border-style: solid;
 }
 
+.tooltip:focus-within .tooltip__arrow,
+.tooltip:focus-within .tooltip__text,
 .tooltip:hover .tooltip__arrow,
 .tooltip:hover .tooltip__text {
 	opacity: 1;

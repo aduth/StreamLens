@@ -4,6 +4,10 @@
 
 - Added keyboard support to navigate stream list options using arrow keys, and select a stream using the Enter key.
 
+### Improvements
+
+- Tooltips will appear when the associated button has keyboard focus (e.g. the Settings button).
+
 ## v1.2.0 (2019-12-17)
 
 ### New Features
