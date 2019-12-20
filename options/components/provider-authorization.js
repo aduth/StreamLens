@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h, Fragment } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -25,7 +25,7 @@ import ProviderTokenError from './provider-token-error.js';
  * @param {Object} props              Component props.
  * @param {string} props.providerName Provider name.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function ProviderAuthorization( { providerName } ) {
 	const dispatch = useDispatch();
@@ -38,46 +38,59 @@ function ProviderAuthorization( { providerName } ) {
 		classes += ' is-authorized';
 	}
 
-	return html`
-		<h3 class="provider-authorization__heading">
-			<${ ProviderLabel } providerName=${ providerName } />
-		</h3>
-		${ providerAuth && providerAuth.token === null && html`
-			<${ ProviderTokenError } providerName=${ providerName } />
-		` }
-		${ providerAuth && html`
-			<div class="provider-authorization__user">
-				${ browser.i18n.getMessage( 'optionsAuthorizationLogin' ) }
-				${ ' ' }
-				<strong>${ providerAuth.user.login }</strong>
-			</div>
-		` }
-		<button
-			type="button"
-			onClick=${ () => {
-				dispatch(
-					providerAuth ?
-						'deauthenticate' :
-						'authenticate',
-					providerName,
-				);
-			} }
-			class=${ classes }
-		>
-			${ providerAuth ?
+	return h(
+		Fragment,
+		null,
+		h(
+			'h3',
+			{ className: 'provider-authorization__heading' },
+			h(
+				ProviderLabel,
+				{ providerName },
+			),
+		),
+		providerAuth && providerAuth.token === null && h(
+			ProviderTokenError,
+			{ providerName },
+		),
+		providerAuth && h(
+			'div',
+			{ className: 'provider-authorization__user' },
+			browser.i18n.getMessage( 'optionsAuthorizationLogin' ),
+			' ',
+			h( 'strong', null, providerAuth.user.login ),
+		),
+		h(
+			'button',
+			{
+				onClick() {
+					dispatch(
+						providerAuth ?
+							'deauthenticate' :
+							'authenticate',
+						providerName,
+					);
+				},
+				className: classes,
+			},
+			providerAuth ?
 				browser.i18n.getMessage( 'optionsAuthorizationDisconnect' ) :
-				html`
-					<img
-						src="/images/provider-icons/${ providerName }.svg"
-						width="20"
-						height="20"
-						class="provider-authorization__provider"
-					/>
-					${ browser.i18n.getMessage( 'optionsAuthorizationConnect' ) }
-				`
-			}
-		</button>
-	`;
+				h(
+					Fragment,
+					null,
+					h(
+						'img',
+						{
+							src: `/images/provider-icons/${ providerName }.svg`,
+							width: '20',
+							height: '20',
+							className: 'provider-authorization__provider',
+						},
+					),
+					browser.i18n.getMessage( 'optionsAuthorizationConnect' ),
+				),
+		),
+	);
 }
 
 export default ProviderAuthorization;

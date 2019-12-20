@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 import { size, reject, deburr, clamp } from '/web_modules/lodash-es.js';
 import { useContext, useState, useRef } from '/web_modules/preact/hooks.js';
 
@@ -75,14 +75,15 @@ function isSearchMatch( search, stream ) {
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {?import('preact').ComponentChild} Rendered element.
+ * @return {?import('preact').VNode} Rendered element.
  */
 function StreamList() {
 	const auth = useSelect( ( state ) => state.auth );
 	const streams = useSelect( ( state ) => state.streams );
 	const [ search ] = useContext( SearchContext );
 	const [ hoverIndex, setHoverIndex ] = useState( /** @type {?number} */ ( null ) );
-	const listRef = useRef( /** @type {HTMLElement|undefined} */ ( undefined ) );
+	/** @type {import('preact/hooks').PropRef<HTMLElement>} */
+	const listRef = useRef();
 
 	const numberOfConnections = size( auth );
 	if ( numberOfConnections === 0 ) {
@@ -92,7 +93,7 @@ function StreamList() {
 	const numberOfValidConnections = size( reject( auth, { token: null } ) );
 	const hasFetched = size( streams.lastReceived ) === numberOfValidConnections;
 	if ( hasFetched && streams.data.length === 0 ) {
-		return html`<${ NoStreamsLive } />`;
+		return h( NoStreamsLive, null );
 	}
 
 	const filteredStreams = streams.data.filter( isSearchMatch.bind( null, search ) );
@@ -189,34 +190,38 @@ function StreamList() {
 		}
 	}
 
-	return html`
-		<div onKeyDown=${ incrementHoverIndex } onKeyPress=${ selectStream }>
-			<${ Toolbar } />
-			${ hasFetched && filteredStreams.length === 0 && html`
-				<${ NoSearchResults } />
-			` }
-			<ul class="stream-list" ref=${ listRef }>
-				${ filteredStreams.map( ( stream, index ) => html`
-					<li
-						key=${ stream.url }
-						class=${
-							[
-								'stream-list__item',
-								index === effectiveHoverIndex && 'is-hovered',
-							].filter( Boolean ).join( ' ' )
-						}
-						onFocusCapture=${ () => setHoverIndex( index ) }
-						onBlurCapture=${ () => setHoverIndex( null ) }
-						onMouseEnter=${ () => setHoverIndex( index ) }
-						onMouseLeave=${ () => setHoverIndex( null ) }
-					>
-						<${ Stream } ...${ stream } />
-					</li>
-				` ) }
-			</ul>
-			${ ! hasFetched && html`<${ LoadingIndicator } />` }
-		</div>
-	`;
+	return h(
+		'div',
+		{
+			onKeyDown: incrementHoverIndex,
+			onKeyPress: selectStream,
+		},
+		h( Toolbar, null ),
+		hasFetched && filteredStreams.length === 0 && h( NoSearchResults, null ),
+		h(
+			'ul',
+			{
+				className: 'stream-list',
+				ref: /** @type {import('preact').Ref<any>} */ ( listRef ),
+			},
+			filteredStreams.map( ( stream, index ) => h(
+				'li',
+				{
+					key: stream.url,
+					className: [
+						'stream-list__item',
+						index === effectiveHoverIndex && 'is-hovered',
+					].filter( Boolean ).join( ' ' ),
+					onFocusCapture: () => setHoverIndex( index ),
+					onBlurCapture: () => setHoverIndex( null ),
+					onMouseEnter: () => setHoverIndex( index ),
+					onMouseLeave: () => setHoverIndex( null ),
+				},
+				h( Stream, stream ),
+			) ),
+		),
+		! hasFetched && h( LoadingIndicator, null ),
+	);
 }
 
 export default StreamList;

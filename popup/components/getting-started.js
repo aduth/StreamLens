@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 import { isEmpty } from '/web_modules/lodash-es.js';
 
 /**
@@ -15,7 +15,7 @@ import Card from '/common/components/card.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {?import('preact').ComponentChild} Rendered element.
+ * @return {?import('preact').VNode} Rendered element.
  */
 function GettingStarted() {
 	const auth = useSelect( ( state ) => state.auth );
@@ -29,18 +29,19 @@ function GettingStarted() {
 	const buttonText = browser.i18n.getMessage( 'popupGettingStartedSettings' );
 	const description = browser.i18n.getMessage( 'popupGettingStartedDescription' );
 
-	return html`
-		<${ Card }
-			icon="video"
-			title=${ title }
-			buttonText=${ buttonText }
-			buttonOnClick=${ () => {
+	return h(
+		Card,
+		{
+			icon: 'video',
+			buttonOnClick() {
 				browser.runtime.openOptionsPage();
 				window.close();
-			} }
-			children=${ description }
-		/>
-	`;
+			},
+			title,
+			buttonText,
+		},
+		description,
+	);
 }
 
 export default GettingStarted;

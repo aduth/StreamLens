@@ -8,7 +8,7 @@ import { useEffect } from '/web_modules/preact/hooks.js';
  */
 import useSelect from '../hooks/use-select.js';
 
-/** @typedef {import('preact').ComponentChildren} ComponentChildren */
+/** @typedef {import('preact').VNode} VNode */
 
 /**
  * Returns a wrapping element which assigns the color context as a data
@@ -16,10 +16,10 @@ import useSelect from '../hooks/use-select.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}            props          Component props.
- * @param {ComponentChildren} props.children Contents of section.
+ * @param {Object} props          Component props.
+ * @param {VNode}  props.children Contents of section.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function ColorScheme( { children } ) {
 	const colorScheme = useSelect( ( state ) => state.preferences.colorScheme );

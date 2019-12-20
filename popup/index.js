@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import { render } from '/web_modules/preact.js';
-import { html } from '/web_modules/htm/preact.js';
+import { render, h } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -17,6 +16,6 @@ import Root from './components/root.js';
 createReplicaStore().then( ( store ) => {
 	const appRoot = document.getElementById( 'app' );
 	if ( appRoot ) {
-		render( html`<${ Root } store=${ store } />`, appRoot );
+		render( h( Root, { store } ), appRoot );
 	}
 } );

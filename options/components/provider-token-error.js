@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -19,7 +19,7 @@ import { getProviderLabel } from '/common/components/provider-label.js';
  * @param {string} props.providerName Name of provider for which token error
  *                                    occurred.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {?import('preact').VNode} Rendered element.
  */
 function ProviderTokenError( { providerName } ) {
 	const dispatch = useDispatch();
@@ -32,14 +32,15 @@ function ProviderTokenError( { providerName } ) {
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
-	return html`
-		<${ Notice }
-			icon="alert"
-			text=${ text }
-			buttonText=${ buttonText }
-			buttonOnClick=${ () => dispatch( 'authenticate', providerName ) }
-		/>
-	`;
+	return h(
+		Notice,
+		{
+			icon: 'alert',
+			buttonOnClick: () => dispatch( 'authenticate', providerName ),
+			text,
+			buttonText,
+		},
+	);
 }
 
 export default ProviderTokenError;

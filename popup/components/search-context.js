@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
-import { createContext } from '/web_modules/preact.js';
+import { h, createContext } from '/web_modules/preact.js';
 import { useState } from '/web_modules/preact/hooks.js';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
@@ -15,17 +14,19 @@ export const SearchContext = createContext( [ '', () => {} ] );
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}            props          Component props.
- * @param {ComponentChildren} props.children Context children.
+ * @param {Object}            props            Component props.
+ * @param {ComponentChildren} [props.children] Context children.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 export function SearchProvider( { children } ) {
 	const value = useState( '' );
 
-	return html`
-		<${ SearchContext.Provider } value=${ value }>
-			${ children }
-		<//>
-	`;
+	return h(
+		SearchContext.Provider,
+		{
+			value,
+			children,
+		},
+	);
 }

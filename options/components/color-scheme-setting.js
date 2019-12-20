@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -19,7 +19,7 @@ import Section from './section.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function ColorSchemeSetting() {
 	const currentValue = useSelect( ( state ) => state.preferences.colorScheme );
@@ -41,25 +41,35 @@ function ColorSchemeSetting() {
 		},
 	];
 
-	return html`
-		<${ Section } title=${ title } description=${ description }>
-			<ul class="color-scheme-setting">
-				${ options.map( ( { label, value } ) => html`
-					<li key=${ value }>
-						<label>
-							<input
-								type="radio"
-								name="color-scheme-setting"
-								checked=${ value === currentValue }
-								onInput=${ () => dispatch( 'setPreferences', { colorScheme: value } ) }
-							/>
-							${ label }
-						</label>
-					</li>
-				` ) }
-			</ul>
-		<//>
-	`;
+	return h(
+		Section,
+		{
+			title,
+			description,
+		},
+		h(
+			'ul',
+			{ className: 'color-scheme-setting' },
+			options.map( ( { label, value } ) => h(
+				'li',
+				{ key: value },
+				h(
+					'label',
+					null,
+					h(
+						'input',
+						{
+							type: 'radio',
+							name: 'color-scheme-setting',
+							checked: value === currentValue,
+							onInput: () => dispatch( 'setPreferences', { colorScheme: value } ),
+						},
+					),
+					label,
+				),
+			) ),
+		),
+	);
 }
 
 export default ColorSchemeSetting;

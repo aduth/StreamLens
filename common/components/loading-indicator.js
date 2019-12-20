@@ -1,29 +1,29 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Returns a Loading Indicator element.
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function LoadingIndicator() {
 	const label = browser.i18n.getMessage( 'commonLoadingIndicatorLabel' );
 
-	return html`
-		<div
-			class="loading-indicator"
-			role="status"
-			aria-label=${ label }
-		>
-			<div class="loading-indicator__dot" />
-			<div class="loading-indicator__dot" />
-			<div class="loading-indicator__dot" />
-		</div>
-	`;
+	return h(
+		'div',
+		{
+			className: 'loading-indicator',
+			role: 'status',
+			'aria-label': label,
+		},
+		h( 'div', { className: 'loading-indicator__dot' } ),
+		h( 'div', { className: 'loading-indicator__dot' } ),
+		h( 'div', { className: 'loading-indicator__dot' } ),
+	);
 }
 
 export default LoadingIndicator;

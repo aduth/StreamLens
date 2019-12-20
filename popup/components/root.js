@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -17,30 +17,36 @@ import GettingStarted from './getting-started.js';
 import StreamList from './stream-list.js';
 import { SearchProvider } from './search-context.js';
 
-/** @typedef {import('/background/store').SLStore} SLStore */
+/** @typedef {import('/common/sync.js').SyncStore} SyncStore */
 
 /**
  * Returns a Root element.
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}  props       Component props.
- * @param {SLStore} props.store Store instance.
+ * @param {Object}    props       Component props.
+ * @param {SyncStore} props.store Store instance.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function Root( { store } ) {
-	return html`
-		<${ StoreProvider } value=${ store }>
-			<${ SearchProvider }>
-				<${ ColorScheme }>
-					<${ TokenErrors } />
-					<${ GettingStarted } />
-					<${ StreamList } />
-				<//>
-			<//>
-		<//>
-	`;
+	return h(
+		StoreProvider,
+		{
+			value: store,
+			children: h(
+				SearchProvider,
+				null,
+				h(
+					ColorScheme,
+					null,
+					h( TokenErrors, null ),
+					h( GettingStarted, null ),
+					h( StreamList, null ),
+				),
+			),
+		},
+	);
 }
 
 export default Root;

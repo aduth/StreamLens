@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 import { useContext, useRef, useEffect } from '/web_modules/preact/hooks.js';
 
 /**
@@ -15,12 +15,14 @@ import VisuallyHidden from '/common/components/visually-hidden.js';
  */
 import { SearchContext } from './search-context.js';
 
+/** @typedef {import('/common/components/tooltip').TooltipPosition} TooltipPosition */
+
 /**
  * Returns a stream list toolbar.
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function Toolbar() {
 	/** @type {import('preact/hooks').PropRef<HTMLInputElement>} */
@@ -45,33 +47,43 @@ function Toolbar() {
 
 	const searchLabel = browser.i18n.getMessage( 'popupToolbarSearchLabel' );
 
-	return html`
-		<nav class="toolbar">
-			<label class="toolbar__search">
-				<input
-					ref=${ inputRef }
-					type="text"
-					placeholder=${ searchLabel }
-					spellcheck=${ false }
-					value=${ search }
-					autocomplete="false"
-					autofocus
-					onInput=${ ( event ) => setSearch( event.currentTarget.value ) }
-					class="toolbar__search-input"
-				/>
-				<${ VisuallyHidden }>${ searchLabel }<//>
-			</label>
-			<div class="toolbar__controls">
-				<${ IconButton }
-					label="Settings"
-					tooltipPosition="bottom-left"
-					icon="cog"
-					width=${ 16 }
-					onClick=${ openOptionsPage }
-				/>
-			</div>
-		</nav>
-	`;
+	return h(
+		'nav',
+		{ className: 'toolbar' },
+		h(
+			'label',
+			{ className: 'toolbar__search' },
+			h(
+				'input',
+				{
+					ref: /** @type {import('preact').Ref<any>} */ ( inputRef ),
+					type: 'text',
+					placeholder: searchLabel,
+					spellcheck: false,
+					value: search,
+					autocomplete: 'false',
+					autofocus: true,
+					onInput: ( event ) => setSearch( event.currentTarget.value ),
+					className: 'toolbar__search-input',
+				},
+			),
+			h( VisuallyHidden, null, searchLabel ),
+		),
+		h(
+			'div',
+			{ className: 'toolbar__controls' },
+			h(
+				IconButton,
+				{
+					label: 'Settings',
+					tooltipPosition: /** @type {TooltipPosition} */ ( 'bottom-left' ),
+					icon: 'cog',
+					width: '16',
+					onClick: openOptionsPage,
+				},
+			),
+		),
+	);
 }
 
 export default Toolbar;

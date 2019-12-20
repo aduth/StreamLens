@@ -98,7 +98,7 @@ import { InvalidTokenError } from '../providers.js';
 /**
  * Twitch API pagination cursor.
  *
- * @typedef {string|void} TwitchAPIPaginationCursor
+ * @typedef {string|undefined} TwitchAPIPaginationCursor
  */
 
 /**

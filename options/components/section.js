@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
@@ -10,25 +10,33 @@ import { html } from '/web_modules/htm/preact.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}            props             Component props.
- * @param {string}            props.title       Section title.
- * @param {string}            props.description Section description.
- * @param {ComponentChildren} props.children    Contents of section.
+ * @param {Object}            props               Component props.
+ * @param {string}            props.title         Section title.
+ * @param {string}            [props.description] Optional section description.
+ * @param {ComponentChildren} [props.children]    Contents of section.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function Section( { title, description, children } ) {
-	return html`
-		<section class="section">
-			<header>
-				<h2 class="section__heading">${ title }</h2>
-			</header>
-			${ description && (
-				html`<p class="section__description">${ description }</p>`
-			) }
-			${ children }
-		</section>
-	`;
+	return h(
+		'section',
+		{ className: 'section' },
+		h(
+			'header',
+			null,
+			h(
+				'h2',
+				{ className: 'section__heading' },
+				title,
+			),
+		),
+		description && h(
+			'p',
+			{ className: 'section__description' },
+			description,
+		),
+		children,
+	);
 }
 
 export default Section;

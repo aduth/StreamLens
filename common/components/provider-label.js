@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { h, Fragment } from '/web_modules/preact.js';
+
+/**
  * Provider label mapping.
  *
  * @type {Object<string,string>}
@@ -23,8 +28,8 @@ export const getProviderLabel = ( providerName ) => LABELS[ providerName ] || nu
  * @param {Object} props              Component props.
  * @param {string} props.providerName Provider name for which to return label.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
-const ProviderLabel = ( { providerName } ) => getProviderLabel( providerName );
+const ProviderLabel = ( { providerName } ) => h( Fragment, null, getProviderLabel( providerName ) );
 
 export default ProviderLabel;

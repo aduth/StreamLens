@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 import { findKey } from '/web_modules/lodash-es.js';
 
 /**
@@ -17,7 +17,7 @@ import useDispatch from '/common/hooks/use-dispatch.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {?import('preact').ComponentChild} Rendered element.
+ * @return {?import('preact').VNode} Rendered element.
  */
 function TokenErrors() {
 	const dispatch = useDispatch();
@@ -36,17 +36,18 @@ function TokenErrors() {
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
-	return html`
-		<${ Notice }
-			icon="alert"
-			text=${ text }
-			buttonText=${ buttonText }
-			buttonOnClick=${ () => {
+	return h(
+		Notice,
+		{
+			icon: 'alert',
+			buttonOnClick() {
 				dispatch( 'authenticate', invalidProviderName );
-			} }
-			className="token-errors"
-		/>
-	`;
+			},
+			className: 'token-errors',
+			text,
+			buttonText,
+		},
+	);
 }
 
 export default TokenErrors;

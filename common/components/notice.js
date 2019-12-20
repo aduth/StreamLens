@@ -1,58 +1,60 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Internal dependencies
  */
 import Icon from './icon.js';
 
-/** @typedef {import('preact').ComponentChildren} ComponentChildren */
+/** @typedef {import('preact').VNode[]} VNode */
 
 /**
  * Returns a Notice element.
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}          props               Component props.
- * @param {string|void}     props.icon          Icon slug, if icon to be shown.
- * @param {string}          props.title         Card title.
- * @param {string}          props.text          Notice contents.
- * @param {string|void}     props.className     Optional additional classname.
- * @param {string|void}     props.buttonText    Action button text, if button to
- *                                              be shown.
- * @param {(()=>void)|void} props.buttonOnClick Action button callback, if
- *                                              button to be shown.
+ * @param {Object}     props                 Component props.
+ * @param {string}     [props.icon]          Icon slug, if icon to be shown.
+ * @param {string}     props.text            Notice contents.
+ * @param {string}     [props.className]     Optional additional classname.
+ * @param {string}     [props.buttonText]    Action button text, if button to be
+ *                                           shown.
+ * @param {(()=>void)} [props.buttonOnClick] Action button callback, if button
+ *                                           to be shown.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
 	className = [ 'notice', className ].filter( Boolean ).join( ' ' );
 
-	return html`
-		<div class=${ className }>
-			${ icon && html`
-				<${ Icon }
-					icon=${ icon }
-					height="18"
-					className="notice__icon"
-				/>
-			` }
-			<div class="notice__text">
-				${ text }
-			</div>
-			${ buttonText && html`
-				<button
-					type="button"
-					onClick=${ buttonOnClick }
-					class="notice__button is-compact"
-				>
-					${ buttonText }
-				</button>
-			` }
-		</div>
-	`;
+	return h(
+		'div',
+		{ className },
+		icon && h(
+			Icon,
+			{
+				icon,
+				height: '18',
+				className: 'notice__icon',
+			},
+		),
+		h(
+			'div',
+			{ className: 'notice__text' },
+			text,
+		),
+		buttonText && h(
+			'button',
+			{
+				type: 'button',
+				onClick: () => buttonOnClick(),
+				className: 'notice__button is-compact',
+			},
+			buttonText,
+		),
+	);
 }
 
 export default Notice;

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Project dependencies
@@ -19,24 +19,29 @@ import ProviderAuthorization from './provider-authorization.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function ProviderAuthorizations() {
 	const providerNames = useSelect( ( state ) => state.providerNames );
 	const title = browser.i18n.getMessage( 'optionsAuthorizationsTitle' );
 	const description = browser.i18n.getMessage( 'optionsAuthorizationsDescription' );
 
-	return html`
-		<${ Section } title=${ title } description=${ description }>
-			<ul class="provider-authorizations">
-				${ providerNames.map( ( providerName ) => html`
-					<li key=${ providerName }>
-						<${ ProviderAuthorization } providerName=${ providerName } />
-					</li>
-				` ) }
-			</ul>
-		<//>
-	`;
+	return h(
+		Section,
+		{
+			title,
+			description,
+		},
+		h(
+			'ul',
+			{ className: 'provider-authorizations' },
+			providerNames.map( ( providerName ) => h(
+				'li',
+				{ key: providerName },
+				h( ProviderAuthorization, { providerName } ),
+			) ),
+		),
+	);
 }
 
 export default ProviderAuthorizations;

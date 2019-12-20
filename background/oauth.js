@@ -120,9 +120,10 @@ export function getRandomString( length = 32 ) {
  *                                                        interactively, vs.
  *                                                        silent refresh.
  *
- * @return {Promise<?(string|void)>} Promise resolving to token if successful,
- *                                   `undefined` if declined, or `null` if
- *                                   failed non-interactive refresh.
+ * @return {Promise<?(string|undefined)>} Promise resolving to token if
+ *                                        successful, `undefined` if declined,
+ *                                        or `null` if failed non-interactive
+ *                                        refresh.
  */
 export async function launchOAuthFlow( {
 	authEndpoint,
@@ -137,9 +138,9 @@ export async function launchOAuthFlow( {
 	 *
 	 * @param {*} message Browser message.
 	 *
-	 * @return {?(void|string)} Token, if can be extracted from message. A null
-	 *                          value indicates a completed authorization for
-	 *                          which the token was omitted (denied).
+	 * @return {?(undefined|string)} Token, if extracted from message. A null
+	 *                               value indicates a completed authorization
+	 *                               for which the token was omitted (denied).
 	 */
 	function getTokenFromMessage( message ) {
 		let hash;
@@ -180,7 +181,7 @@ export async function launchOAuthFlow( {
 			/**
 			 * Resolve with token, if received, and remove event listeners.
 			 *
-			 * @param {?(string|void)} token Token, if received.
+			 * @param {?(string|undefined)} token Token, if received.
 			 */
 			async function onAuthComplete( token ) {
 				browser.runtime.onMessage.removeListener( checkForToken );
@@ -211,7 +212,7 @@ export async function launchOAuthFlow( {
 			 */
 			function onWindowClosed( windowId ) {
 				if ( windowId === authWindow.id ) {
-					onAuthComplete();
+					onAuthComplete( undefined );
 				}
 			}
 

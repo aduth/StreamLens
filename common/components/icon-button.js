@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
+import { h } from '/web_modules/preact.js';
 
 /**
  * Internal dependencies
@@ -29,22 +29,25 @@ import Icon from './icon.js';
  *
  * @param {import('./icon').IconProps & IconButtonProps} props Component props.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function IconButton( { onClick, label, tooltipPosition, ...iconProps } ) {
-	return html`
-		<${ Tooltip }
-			tagName="button"
-			position=${ tooltipPosition }
-			text=${ label }
-			type="button"
-			onClick=${ onClick }
-			className="icon-button"
-			aria-label=${ label }
-		>
-			<${ Icon } ...${ iconProps } />
-		<//>
-	`;
+	return h(
+		Tooltip,
+		{
+			tagName: 'button',
+			position: tooltipPosition,
+			text: label,
+			type: 'button',
+			className: 'icon-button',
+			'aria-label': label,
+			onClick,
+		},
+		h(
+			Icon,
+			iconProps,
+		),
+	);
 }
 
 export default IconButton;

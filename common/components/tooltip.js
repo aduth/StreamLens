@@ -1,9 +1,7 @@
 /**
  * External dependencies
  */
-import { html } from '/web_modules/htm/preact.js';
-
-/** @typedef {import('preact').ComponentType} ComponentType */
+import { h } from '/web_modules/preact.js';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
@@ -18,16 +16,16 @@ import { html } from '/web_modules/htm/preact.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}               props             Component props.
- * @param {string|ComponentType} [props.tagName]   Optional container type.
- * @param {string}               props.text        Tooltip text.
- * @param {TooltipPosition}      [props.position]  Tooltip position.
- * @param {ComponentChildren}    props.children    Tooltip children, used as
- *                                                 content against width tooltip
- *                                                 should be positioned.
- * @param {string}               [props.className] Optional class name.
+ * @param {Object}            props             Component props.
+ * @param {string}            [props.tagName]   Optional container type.
+ * @param {string}            props.text        Tooltip text.
+ * @param {TooltipPosition}   [props.position]  Tooltip position.
+ * @param {ComponentChildren} [props.children]  Tooltip children, used as
+ *                                              content against width tooltip
+ *                                              should be positioned.
+ * @param {string}            [props.className] Optional class name.
  *
- * @return {import('preact').ComponentChild} Rendered element.
+ * @return {import('preact').VNode} Rendered element.
  */
 function Tooltip( {
 	tagName = 'div',
@@ -45,13 +43,26 @@ function Tooltip( {
 		className,
 	].filter( Boolean ).join( ' ' );
 
-	return html`
-		<${ tagName } class=${ classes } ...${ props }>
-			<span aria-hidden="true" class="tooltip__arrow"></span>
-			<span class="tooltip__text">${ text }</span>
-			${ children }
-		</>
-	`;
+	return h(
+		tagName,
+		{
+			...props,
+			className: classes,
+		},
+		h(
+			'span',
+			{
+				'aria-hidden': true,
+				clssName: 'tooltip__arrow',
+			},
+		),
+		h(
+			'span',
+			{ className: 'tooltip__text' },
+			text,
+		),
+		children,
+	);
 }
 
 export default Tooltip;
