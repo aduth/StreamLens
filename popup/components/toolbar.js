@@ -75,7 +75,7 @@ function Toolbar() {
 			h(
 				IconButton,
 				{
-					label: 'Settings',
+					label: browser.i18n.getMessage( 'popupToolbarSettings' ),
 					tooltipPosition: /** @type {TooltipPosition} */ ( 'bottom-left' ),
 					icon: 'cog',
 					width: '16',

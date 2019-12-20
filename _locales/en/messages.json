@@ -97,6 +97,10 @@
 		"message": "Search by game or stream name",
 		"description": "Message describing popup stream search input"
 	},
+	"popupToolbarSettings": {
+		"message": "Settings",
+		"description": "Popup settings button tooltip"
+	},
 	"providerTokenError": {
 		"message": "There's an issue connecting to $providerLabel$",
 		"description": "Label used to indicate an error with a provider authorization",
