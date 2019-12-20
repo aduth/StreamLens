@@ -11,7 +11,7 @@ import useStore from './use-store.js';
 function useDispatch() {
 	const store = useStore();
 
-	return store ? store.dispatch : () => {};
+	return store.dispatch;
 }
 
 export default useDispatch;
