@@ -3,7 +3,7 @@
  */
 import { createContext } from '/web_modules/preact.js';
 
-/** @typedef {import('/common/sync.js').SyncStore} SyncStore */
+/** @typedef {import('unistore-browser-sync').SyncStore} SyncStore */
 
 /**
  * @type {import('preact').Context<?SyncStore>}

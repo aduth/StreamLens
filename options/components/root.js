@@ -14,7 +14,7 @@ import { StoreProvider } from '/common/components/store-context.js';
 import ProviderAuthorizations from './provider-authorizations.js';
 import ColorSchemeSetting from './color-scheme-setting.js';
 
-/** @typedef {import('/common/sync.js').SyncStore} SyncStore */
+/** @typedef {import('unistore-browser-sync').SyncStore} SyncStore */
 
 /**
  * Returns a Root element.

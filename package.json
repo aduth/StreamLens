@@ -52,6 +52,7 @@
     "lodash-es": "^4.17.15",
     "preact": "^10.1.0",
     "unistore": "^3.5.1",
+    "unistore-browser-sync": "^1.0.0",
     "webextension-polyfill": "^0.5.0"
   },
   "devDependencies": {
@@ -69,7 +70,8 @@
       "lodash-es",
       "preact",
       "preact/hooks",
-      "unistore"
+      "unistore",
+      "unistore-browser-sync"
     ]
   }
 }

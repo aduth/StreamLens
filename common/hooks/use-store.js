@@ -8,7 +8,7 @@ import { useContext } from '/web_modules/preact/hooks.js';
  */
 import { StoreContext } from '../components/store-context.js';
 
-/** @typedef {import('/common/sync.js').SyncStore} SyncStore */
+/** @typedef {import('unistore-browser-sync').SyncStore} SyncStore */
 
 /**
  * Hook which returns the current store from context.

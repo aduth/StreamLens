@@ -17,7 +17,7 @@ import GettingStarted from './getting-started.js';
 import StreamList from './stream-list.js';
 import { SearchProvider } from './search-context.js';
 
-/** @typedef {import('/common/sync.js').SyncStore} SyncStore */
+/** @typedef {import('unistore-browser-sync').SyncStore} SyncStore */
 
 /**
  * Returns a Root element.

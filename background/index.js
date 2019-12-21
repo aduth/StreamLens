@@ -1,7 +1,8 @@
 /**
- * Project dependencies
+ * External dependencies
  */
-import { createPrimaryStore } from '/common/sync.js';
+import createStore from '/web_modules/unistore.js';
+import { primary } from '/web_modules/unistore-browser-sync.js';
 
 /**
  * Internal dependencies
@@ -15,7 +16,7 @@ import * as actions from './store/actions.js';
 
 ( async () => {
 	const initialState = await getInitialState();
-	const store = createPrimaryStore( initialState, { ...actions } );
+	const store = primary( createStore( initialState ), { ...actions } );
 
 	migrations.initialize();
 	badge.initialize( store );
