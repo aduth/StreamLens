@@ -7,16 +7,6 @@
 	"globals": {
 		"browser": true
 	},
-	"rules": {
-		"indent": [
-			"error",
-			"tab",
-			{
-				"ignoredNodes": [ "TemplateLiteral *" ],
-				"SwitchCase": 1
-			}
-		]
-	},
 	"settings": {
 		"jsdoc": {
 			"mode": "typescript"
