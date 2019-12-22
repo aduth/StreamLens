@@ -1,48 +1,59 @@
 /**
- * Object used for matching on update, including implementation of migration.
+ * Migration implementation.
  *
- * @typedef SLUpdateMigration
- *
- * @property {string}     fromVersion Version to match for migration.
- * @property {() => void} migrate     Migration function.
+ * @typedef {()=>void} SLUpdateMigration
  */
 
 /**
  * Implemented migrations.
  *
- * @type {SLUpdateMigration[]}
+ * @type {string[]}
  */
 const MIGRATIONS = [
-	{
-		fromVersion: '1.0.0',
-		migrate() {
-			let { initialState } = window.localStorage;
-			if ( ! initialState ) {
-				return;
-			}
-
-			try {
-				initialState = JSON.parse( initialState );
-				browser.storage.sync.set( { initialState } );
-				delete window.localStorage.initialState;
-			} catch ( error ) {}
-		},
-	},
+	'1.0.0',
 ];
+
+/**
+ * Returns true if the candidate satisfies the given version, or false
+ * otherwise. A candidate satisfies a version if it occurs at or before the
+ * version.
+ *
+ * @param {string} version   Version against which to compare.
+ * @param {string} candidate Migration version.
+ *
+ * @return {boolean} Whether candidate satisfies the given version.
+ */
+export function isVersionSatisfied( version, candidate ) {
+	const partsA = version.split( '.' );
+	const partsB = candidate.split( '.' );
+
+	for ( let i = 0; i < 3; i++ ) {
+		if ( Number( partsB[ i ] ) < Number( partsA[ i ] ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
 
 /**
  * Assigns listener to handle `runtime.onInstalled` event, running migration
  * logic for version updates.
  */
 export function initialize() {
-	browser.runtime.onInstalled.addListener( ( details ) => {
+	browser.runtime.onInstalled.addListener( async ( details ) => {
 		const { reason, previousVersion } = details;
-		if ( reason !== 'update' ) {
+		if ( reason !== 'update' || ! previousVersion ) {
 			return;
 		}
 
-		MIGRATIONS
-			.filter( ( { fromVersion } ) => fromVersion === previousVersion )
-			.forEach( ( { migrate } ) => migrate() );
+		for ( let i = 0; i < MIGRATIONS.length; i++ ) {
+			const version = MIGRATIONS[ i ];
+			if ( isVersionSatisfied( previousVersion, version ) ) {
+				/** @type {{default:SLUpdateMigration}} */
+				const { default: migrate } = await import( `./migrations/${ version }.js` );
+				migrate();
+			}
+		}
 	} );
 }
