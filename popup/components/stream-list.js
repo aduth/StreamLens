@@ -195,13 +195,14 @@ function StreamList() {
 		{
 			onKeyDown: incrementHoverIndex,
 			onKeyPress: selectStream,
+			className: 'stream-list',
 		},
 		h( Toolbar, null ),
 		hasFetched && filteredStreams.length === 0 && h( NoSearchResults, null ),
 		h(
 			'ul',
 			{
-				className: 'stream-list',
+				className: 'stream-list__list',
 				ref: /** @type {import('preact').Ref<any>} */ ( listRef ),
 			},
 			filteredStreams.map( ( stream, index ) => h(
