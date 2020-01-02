@@ -15,8 +15,7 @@ const MIGRATIONS = [
 
 /**
  * Returns true if the candidate satisfies the given version, or false
- * otherwise. A candidate satisfies a version if it occurs at or before the
- * version.
+ * otherwise. A candidate satisfies a version if it occurs after the version.
  *
  * @param {string} version   Version against which to compare.
  * @param {string} candidate Migration version.
@@ -33,7 +32,7 @@ export function isVersionSatisfied( version, candidate ) {
 		}
 	}
 
-	return true;
+	return version !== candidate;
 }
 
 /**

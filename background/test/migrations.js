@@ -12,18 +12,18 @@ import { isVersionSatisfied } from '../migrations.js';
 
 strictEqual(
 	isVersionSatisfied( '1.0.0', '1.0.0' ),
-	true,
-	'Equal versions satisfies',
+	false,
+	'Equal versions does not satisfy',
 );
 
 strictEqual(
 	isVersionSatisfied( '1.1.0', '1.0.0' ),
 	false,
-	'Later version does not satisfy',
+	'Earlier version does not satisfy',
 );
 
 strictEqual(
 	isVersionSatisfied( '1.1.0', '1.2.0' ),
 	true,
-	'Earlier version does satisfy',
+	'Later version does satisfy',
 );
