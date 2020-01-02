@@ -1,3 +1,9 @@
+## v1.3.1 (Unreleased)
+
+### Bug Fixes
+
+- Resolved an issue where not every live Mixer stream would be reported if the account follows more than 100 streams.
+
 ## v1.3.0 (2019-12-18)
 
 ### New Features

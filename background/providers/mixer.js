@@ -307,7 +307,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			results.push( ...streams );
 
 			const totalCount = getTotalCount( response.headers.get( 'x-total-count' ) );
-			if ( hasExhaustedPages( page, totalCount, STREAMS_PER_PAGE ) ) {
+			if ( hasExhaustedPages( totalCount, page, STREAMS_PER_PAGE ) ) {
 				break;
 			}
 		}
