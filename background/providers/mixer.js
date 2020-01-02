@@ -190,6 +190,13 @@ import { InvalidTokenError } from '../providers.js';
 const API_BASE = 'https://mixer.com/api/v1';
 
 /**
+ * Number of streams to request per page.
+ *
+ * @type {number}
+ */
+const STREAMS_PER_PAGE = 100;
+
+/**
  * Provider name.
  *
  * @type {string}
@@ -226,13 +233,6 @@ export function hasExhaustedPages( totalCount, page, perPage ) {
 
 	return page >= Math.ceil( totalCount / perPage ) - 1;
 }
-
-/**
- * Number of streams to request per page.
- *
- * @type {number}
- */
-const STREAMS_PER_PAGE = 100;
 
 export default /** @type {import('../providers').SLProvider} */ ( {
 	name,
