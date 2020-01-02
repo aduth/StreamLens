@@ -4,6 +4,10 @@
 
 - Resolved an issue where not every live Mixer stream would be reported if the account follows more than 100 streams.
 
+### Improvements
+
+- Minor performance optimizations.
+
 ## v1.3.0 (2019-12-18)
 
 ### New Features
