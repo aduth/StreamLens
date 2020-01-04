@@ -1,3 +1,9 @@
+## v1.3.2 (Unreleased)
+
+### Bug Fixes
+
+- Horizontal scrollbars should no longer be shown in Firefox when many streams are live.
+
 ## v1.3.1 (2020-01-02)
 
 ### Bug Fixes

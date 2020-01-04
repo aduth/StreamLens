@@ -2,9 +2,19 @@
  * Explicit widths for popup contents
  */
 
-.card,
+.card {
+	width: 360px;
+}
+
 .stream-list {
-	width: 350px;
+	/*
+	 * Must be assigned as a maximum width, and rely on intrinsic width of its
+	 * inner content. Setting an explicit width would cause horizontal overflow
+	 * in Firefox.
+	 *
+	 * See: https://bugzilla.mozilla.org/show_bug.cgi?id=1395025
+	 */
+	max-width: 360px;
 }
 
 /*
@@ -141,6 +151,16 @@
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+	flex-shrink: 1;
+	/*
+	 * The explicit width should be enough to occupy the fullest possible width
+	 * of the stream list, relying on flex resizing to shrink as necessary. An
+	 * alternative could be to assign a width such that the sum total of the
+	 * stream item would occupy the same width as the stream list maximum, but
+	 * considering that the viewer count can fluctuate the width of its label,
+	 * this is not deterministic.
+	 */
+	width: 360px;
 }
 
 .stream__login {
