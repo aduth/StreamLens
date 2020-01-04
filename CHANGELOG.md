@@ -4,6 +4,10 @@
 
 - Horizontal scrollbars should no longer be shown in Firefox when many streams are live.
 
+### Improvements
+
+- Mixer: Improved efficiency of querying for live streams data.
+
 ## v1.3.1 (2020-01-02)
 
 ### Bug Fixes

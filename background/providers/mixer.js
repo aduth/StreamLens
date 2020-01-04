@@ -272,6 +272,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			const url = new URL( `${ API_BASE }/users/${ auth.user.id }/follows` );
 			url.searchParams.set( 'limit', STREAMS_PER_PAGE.toString() );
 			url.searchParams.set( 'page', page.toString() );
+			url.searchParams.set( 'where', 'online:eq:true' );
 
 			const response = await window.fetch( url.toString(), {
 				headers: {
@@ -292,17 +293,15 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			const json = await response.json();
 
 			/** @type {SLStream[]} */
-			const streams = json
-				.filter( ( channel ) => channel.online )
-				.map( ( channel ) => ( {
-					providerName: name,
-					login: channel.user.username,
-					url: 'https://mixer.com/' + channel.user.username,
-					viewers: channel.viewersCurrent,
-					title: channel.name,
-					avatar: channel.user.avatarUrl,
-					activity: channel.type.name,
-				} ) );
+			const streams = json.map( ( channel ) => ( {
+				providerName: name,
+				login: channel.user.username,
+				url: 'https://mixer.com/' + channel.user.username,
+				viewers: channel.viewersCurrent,
+				title: channel.name,
+				avatar: channel.user.avatarUrl,
+				activity: channel.type.name,
+			} ) );
 
 			results.push( ...streams );
 
