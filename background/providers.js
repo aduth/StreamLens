@@ -75,11 +75,11 @@ function getChangedAuth( prevState, state ) {
 		) ),
 
 		// Deauthorizations should destroy subscription.
-		...prevState ?
-			Object.keys( prevState.auth ).filter( ( key ) => (
+		...prevState
+			? Object.keys( prevState.auth ).filter( ( key ) => (
 				! state.auth[ key ]
-			) ) :
-			[],
+			) )
+			: [],
 	] ) );
 }
 

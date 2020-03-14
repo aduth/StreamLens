@@ -102,9 +102,9 @@ function StreamList() {
 	// number of streams shown, the hover index is effectively constrained to
 	// the maximum number of streams.
 	const effectiveHoverIndex = (
-		hoverIndex === null || filteredStreams.length === 0 ?
-			null :
-			clamp( hoverIndex, filteredStreams.length - 1 )
+		hoverIndex === null || filteredStreams.length === 0
+			? null
+			: clamp( hoverIndex, filteredStreams.length - 1 )
 	);
 
 	/**
@@ -118,9 +118,9 @@ function StreamList() {
 	 * @return {?HTMLElement} Link element, if known.
 	 */
 	function getStreamLink( index ) {
-		return listRef.current ?
-			listRef.current.querySelector( `li:nth-child(${ index + 1 }) a` ) :
-			null;
+		return listRef.current
+			? listRef.current.querySelector( `li:nth-child(${ index + 1 }) a` )
+			: null;
 	}
 
 	/**
@@ -158,9 +158,9 @@ function StreamList() {
 			// effective hover index is used to assure that the change is most
 			// accurate in respect to what is seen by the user.
 			const increment = event.key === 'ArrowUp' ? -1 : 1;
-			const nextHoverIndex = effectiveHoverIndex === null ?
-				0 :
-				clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
+			const nextHoverIndex = effectiveHoverIndex === null
+				? 0
+				: clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
 
 			setHoverIndexOrFocus( nextHoverIndex );
 

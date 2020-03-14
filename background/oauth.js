@@ -165,8 +165,8 @@ export async function launchOAuthFlow( {
 		}
 	}
 
-	return interactive ?
-		new Promise( async ( resolve ) => {
+	return interactive
+		? new Promise( async ( resolve ) => {
 			const currentWindow = await browser.windows.getCurrent();
 			const { left = 0, width = 0, top = 0, height = 0 } = currentWindow;
 			const authWindow = await browser.windows.create( {
@@ -218,8 +218,8 @@ export async function launchOAuthFlow( {
 
 			browser.windows.onRemoved.addListener( onWindowClosed );
 			browser.runtime.onMessage.addListener( checkForToken );
-		} ) :
-		new Promise( ( resolve ) => {
+		} )
+		: new Promise( ( resolve ) => {
 			const iframe = document.createElement( 'iframe' );
 			iframe.src = url;
 

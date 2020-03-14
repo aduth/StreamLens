@@ -65,17 +65,17 @@ function ProviderAuthorization( { providerName } ) {
 			{
 				onClick() {
 					dispatch(
-						providerAuth ?
-							'deauthenticate' :
-							'authenticate',
+						providerAuth
+							? 'deauthenticate'
+							: 'authenticate',
 						providerName,
 					);
 				},
 				className: classes,
 			},
-			providerAuth ?
-				browser.i18n.getMessage( 'optionsAuthorizationDisconnect' ) :
-				h(
+			providerAuth
+				? browser.i18n.getMessage( 'optionsAuthorizationDisconnect' )
+				: h(
 					Fragment,
 					null,
 					h(
