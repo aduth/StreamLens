@@ -50,19 +50,19 @@
   "dependencies": {
     "@pika/web": "^0.6.1",
     "lodash-es": "^4.17.15",
-    "preact": "^10.1.0",
+    "preact": "^10.3.4",
     "unistore": "^3.5.1",
     "unistore-browser-sync": "^1.0.0",
-    "webextension-polyfill": "^0.5.0"
+    "webextension-polyfill": "^0.6.0"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.3",
-    "@wordpress/eslint-plugin": "^3.2.0",
-    "eslint": "^6.7.2",
+    "@wordpress/eslint-plugin": "^4.0.0",
+    "eslint": "^6.8.0",
     "esm-root-loader": "^0.1.0",
-    "fast-glob": "^3.1.1",
+    "fast-glob": "^3.2.2",
     "npm-pack-zip": "^1.2.7",
-    "typescript": "^3.7.3",
+    "typescript": "^3.8.3",
     "web-ext-types": "^3.2.1"
   },
   "@pika/web": {
