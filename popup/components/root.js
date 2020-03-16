@@ -2,11 +2,11 @@
  * External dependencies
  */
 import { h } from '/web_modules/preact.js';
+import { StoreContext } from '/web_modules/prsh.js';
 
 /**
  * Project dependencies
  */
-import { StoreProvider } from '/common/components/store-context.js';
 import ColorScheme from '/common/components/color-scheme.js';
 
 /**
@@ -31,7 +31,7 @@ import { SearchProvider } from './search-context.js';
  */
 function Root( { store } ) {
 	return h(
-		StoreProvider,
+		StoreContext.Provider,
 		{
 			value: store,
 			children: h(
