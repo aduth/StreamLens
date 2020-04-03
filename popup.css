@@ -2,7 +2,8 @@
  * Explicit widths for popup contents
  */
 
-.card {
+.card,
+.loading-indicator {
 	width: 360px;
 }
 
