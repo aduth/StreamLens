@@ -2,7 +2,6 @@
 .DS_Store
 
 # Dependencies
-vendor
 node_modules
 web_modules
 

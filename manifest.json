@@ -21,7 +21,7 @@
 	"content_scripts": [
 		{
 			"matches": [ "https://streamlens.app/auth/" ],
-			"js": [ "vendor/browser-polyfill.min.js", "auth.js" ],
+			"js": [ "web_modules/browser-polyfill.min.js", "auth.js" ],
 			"all_frames": true
 		}
 	],

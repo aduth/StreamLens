@@ -6,6 +6,17 @@ import { h } from '/web_modules/preact.js';
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
 /**
+ * @typedef TooltipProps
+ *
+ * @property {string}            [tagName]   Optional container type.
+ * @property {string}            text        Tooltip text.
+ * @property {TooltipPosition}   [position]  Tooltip position.
+ * @property {ComponentChildren} [children]  Tooltip children, used as content
+ *                                           to position tooltip against.
+ * @property {string}            [className] Optional class name.
+ */
+
+/**
  * Valid tooltip position.
  *
  * @typedef {'top'|'top-center'|'top-left'|'bottom'|'bottom-center'|'bottom-left'} TooltipPosition
@@ -16,14 +27,7 @@ import { h } from '/web_modules/preact.js';
  *
  * @type {import('preact').FunctionComponent}
  *
- * @param {Object}            props             Component props.
- * @param {string}            [props.tagName]   Optional container type.
- * @param {string}            props.text        Tooltip text.
- * @param {TooltipPosition}   [props.position]  Tooltip position.
- * @param {ComponentChildren} [props.children]  Tooltip children, used as
- *                                              content against width tooltip
- *                                              should be positioned.
- * @param {string}            [props.className] Optional class name.
+ * @param {TooltipProps & Record<string,any>} props Component props.
  *
  * @return {import('preact').VNode} Rendered element.
  */

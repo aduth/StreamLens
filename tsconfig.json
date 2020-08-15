@@ -36,7 +36,6 @@
 	],
 	"exclude": [
 		"node_modules",
-		"web_modules",
-		"vendor"
+		"web_modules"
 	]
 }
