@@ -101,8 +101,7 @@ function getAuthURL( { authEndpoint, params, interactive } ) {
  * @return {string} Nonce string.
  */
 export function getRandomString( length = 32 ) {
-	return Array
-		.from( window.crypto.getRandomValues( new Uint32Array( length ) ) )
+	return Array.from( window.crypto.getRandomValues( new Uint32Array( length ) ) )
 		.map( ( i ) => i.toString( 36 ).slice( -1 ) )
 		.join( '' );
 }
@@ -125,11 +124,7 @@ export function getRandomString( length = 32 ) {
  *                                        or `null` if failed non-interactive
  *                                        refresh.
  */
-export async function launchOAuthFlow( {
-	authEndpoint,
-	params = {},
-	interactive = false,
-} ) {
+export async function launchOAuthFlow( { authEndpoint, params = {}, interactive = false } ) {
 	const url = getAuthURL( { authEndpoint, params, interactive } );
 
 	/**
@@ -167,82 +162,82 @@ export async function launchOAuthFlow( {
 
 	return interactive
 		? new Promise( async ( resolve ) => {
-			const currentWindow = await browser.windows.getCurrent();
-			const { left = 0, width = 0, top = 0, height = 0 } = currentWindow;
-			const authWindow = await browser.windows.create( {
-				url,
-				type: 'popup',
-				width: POPUP_WIDTH,
-				height: POPUP_HEIGHT,
-				left: Math.floor( left + ( width / 2 ) - ( POPUP_WIDTH / 2 ) ),
-				top: Math.floor( top + ( height / 2 ) - ( POPUP_HEIGHT / 2 ) ),
-			} );
+				const currentWindow = await browser.windows.getCurrent();
+				const { left = 0, width = 0, top = 0, height = 0 } = currentWindow;
+				const authWindow = await browser.windows.create( {
+					url,
+					type: 'popup',
+					width: POPUP_WIDTH,
+					height: POPUP_HEIGHT,
+					left: Math.floor( left + width / 2 - POPUP_WIDTH / 2 ),
+					top: Math.floor( top + height / 2 - POPUP_HEIGHT / 2 ),
+				} );
 
-			/**
-			 * Resolve with token, if received, and remove event listeners.
-			 *
-			 * @param {?(string|undefined)} token Token, if received.
-			 */
-			async function onAuthComplete( token ) {
-				browser.runtime.onMessage.removeListener( checkForToken );
-				browser.windows.onRemoved.removeListener( onWindowClosed );
-				resolve( token );
-			}
-
-			/**
-			 * Check browser message for received message, and complete
-			 * authorization if message originates from auth window.
-			 *
-			 * @param {*}                             message Browser message.
-			 * @param {browser.runtime.MessageSender} sender  Message sender.
-			 */
-			function checkForToken( message, sender ) {
-				const token = getTokenFromMessage( message );
-				if ( sender.tab && sender.tab.windowId === authWindow.id ) {
-					onAuthComplete( token );
-					browser.windows.remove( authWindow.id );
-				}
-			}
-
-			/**
-			 * Completes authorization if window is closed prematurely (users
-			 * closes prompt).
-			 *
-			 * @param {number} windowId ID of window closed.
-			 */
-			function onWindowClosed( windowId ) {
-				if ( windowId === authWindow.id ) {
-					onAuthComplete( undefined );
-				}
-			}
-
-			browser.windows.onRemoved.addListener( onWindowClosed );
-			browser.runtime.onMessage.addListener( checkForToken );
-		} )
-		: new Promise( ( resolve ) => {
-			const iframe = document.createElement( 'iframe' );
-			iframe.src = url;
-
-			/**
-			 * Check browser message for received message, and complete
-			 * authorization if message originates from auth window.
-			 *
-			 * @param {*} message Browser message.
-			 */
-			async function checkForToken( message ) {
-				const token = getTokenFromMessage( message );
-
-				// See above note in `getTokenFromMessage`. A non-undefined
-				// token, whether null or valid token, is indicative of the
-				// completion of the authorization flow for this request.
-				if ( token !== undefined ) {
-					resolve( token );
+				/**
+				 * Resolve with token, if received, and remove event listeners.
+				 *
+				 * @param {?(string|undefined)} token Token, if received.
+				 */
+				async function onAuthComplete( token ) {
 					browser.runtime.onMessage.removeListener( checkForToken );
-					document.body.removeChild( iframe );
+					browser.windows.onRemoved.removeListener( onWindowClosed );
+					resolve( token );
 				}
-			}
 
-			browser.runtime.onMessage.addListener( checkForToken );
-			document.body.appendChild( iframe );
-		} );
+				/**
+				 * Check browser message for received message, and complete
+				 * authorization if message originates from auth window.
+				 *
+				 * @param {*}                             message Browser message.
+				 * @param {browser.runtime.MessageSender} sender  Message sender.
+				 */
+				function checkForToken( message, sender ) {
+					const token = getTokenFromMessage( message );
+					if ( sender.tab && sender.tab.windowId === authWindow.id ) {
+						onAuthComplete( token );
+						browser.windows.remove( authWindow.id );
+					}
+				}
+
+				/**
+				 * Completes authorization if window is closed prematurely (users
+				 * closes prompt).
+				 *
+				 * @param {number} windowId ID of window closed.
+				 */
+				function onWindowClosed( windowId ) {
+					if ( windowId === authWindow.id ) {
+						onAuthComplete( undefined );
+					}
+				}
+
+				browser.windows.onRemoved.addListener( onWindowClosed );
+				browser.runtime.onMessage.addListener( checkForToken );
+		  } )
+		: new Promise( ( resolve ) => {
+				const iframe = document.createElement( 'iframe' );
+				iframe.src = url;
+
+				/**
+				 * Check browser message for received message, and complete
+				 * authorization if message originates from auth window.
+				 *
+				 * @param {*} message Browser message.
+				 */
+				async function checkForToken( message ) {
+					const token = getTokenFromMessage( message );
+
+					// See above note in `getTokenFromMessage`. A non-undefined
+					// token, whether null or valid token, is indicative of the
+					// completion of the authorization flow for this request.
+					if ( token !== undefined ) {
+						resolve( token );
+						browser.runtime.onMessage.removeListener( checkForToken );
+						document.body.removeChild( iframe );
+					}
+				}
+
+				browser.runtime.onMessage.addListener( checkForToken );
+				document.body.appendChild( iframe );
+		  } );
 }

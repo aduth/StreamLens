@@ -44,52 +44,39 @@ function ProviderAuthorization( { providerName } ) {
 		h(
 			'h3',
 			{ className: 'provider-authorization__heading' },
+			h( ProviderLabel, { providerName } )
+		),
+		providerAuth && providerAuth.token === null && h( ProviderTokenError, { providerName } ),
+		providerAuth &&
 			h(
-				ProviderLabel,
-				{ providerName },
+				'div',
+				{ className: 'provider-authorization__user' },
+				browser.i18n.getMessage( 'optionsAuthorizationLogin' ),
+				' ',
+				h( 'strong', null, providerAuth.user.login )
 			),
-		),
-		providerAuth && providerAuth.token === null && h(
-			ProviderTokenError,
-			{ providerName },
-		),
-		providerAuth && h(
-			'div',
-			{ className: 'provider-authorization__user' },
-			browser.i18n.getMessage( 'optionsAuthorizationLogin' ),
-			' ',
-			h( 'strong', null, providerAuth.user.login ),
-		),
 		h(
 			'button',
 			{
 				onClick() {
-					dispatch(
-						providerAuth
-							? 'deauthenticate'
-							: 'authenticate',
-						providerName,
-					);
+					dispatch( providerAuth ? 'deauthenticate' : 'authenticate', providerName );
 				},
 				className: classes,
 			},
 			providerAuth
 				? browser.i18n.getMessage( 'optionsAuthorizationDisconnect' )
 				: h(
-					Fragment,
-					null,
-					h(
-						'img',
-						{
+						Fragment,
+						null,
+						h( 'img', {
 							src: `/images/provider-icons/${ providerName }.svg`,
 							width: '20',
 							height: '20',
 							className: 'provider-authorization__provider',
-						},
-					),
-					browser.i18n.getMessage( 'optionsAuthorizationConnect' ),
-				),
-		),
+						} ),
+						browser.i18n.getMessage( 'optionsAuthorizationConnect' )
+				  )
+		)
 	);
 }
 

@@ -36,18 +36,15 @@ function TokenErrors() {
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
-	return h(
-		Notice,
-		{
-			icon: 'alert',
-			buttonOnClick() {
-				dispatch( 'authenticate', invalidProviderName );
-			},
-			className: 'token-errors',
-			text,
-			buttonText,
+	return h( Notice, {
+		icon: 'alert',
+		buttonOnClick() {
+			dispatch( 'authenticate', invalidProviderName );
 		},
-	);
+		className: 'token-errors',
+		text,
+		buttonText,
+	} );
 }
 
 export default TokenErrors;

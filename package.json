@@ -59,10 +59,13 @@
     "@wordpress/eslint-plugin": "^7.1.0",
     "es-module-lexer": "^0.3.24",
     "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-jsdoc": "^30.2.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "esm-root-loader": "^0.1.0",
     "fast-glob": "^3.2.4",
     "npm-pack-zip": "^1.2.7",
+    "prettier": "npm:wp-prettier@^2.0.5",
     "rollup": "^2.26.0",
     "typescript": "^3.9.7",
     "web-ext-types": "^3.2.1"

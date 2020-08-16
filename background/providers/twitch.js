@@ -259,55 +259,65 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 		async function fetchStreams( userIds ) {
 			const pages = chunk( userIds, MAX_PER_PAGE );
 
-			return ( await Promise.all( pages.map( async ( page ) => {
-				const streamsURL = new URL( API_BASE + '/streams' );
-				streamsURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
+			return (
+				await Promise.all(
+					pages.map( async ( page ) => {
+						const streamsURL = new URL( API_BASE + '/streams' );
+						streamsURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
 
-				const usersURL = new URL( API_BASE + '/users' );
-				usersURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
+						const usersURL = new URL( API_BASE + '/users' );
+						usersURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
 
-				page.forEach( ( userId ) => {
-					streamsURL.searchParams.append( 'user_id', userId );
-					usersURL.searchParams.append( 'id', userId );
-				} );
+						page.forEach( ( userId ) => {
+							streamsURL.searchParams.append( 'user_id', userId );
+							usersURL.searchParams.append( 'id', userId );
+						} );
 
-				/** @type {TwitchAPIPaginatedResponse<TwitchStream[]>} */
-				const streams = await fetchJSONWithClientId( streamsURL.toString() );
-				if ( ! streams.data.length ) {
-					return [];
-				}
+						/** @type {TwitchAPIPaginatedResponse<TwitchStream[]>} */
+						const streams = await fetchJSONWithClientId( streamsURL.toString() );
+						if ( ! streams.data.length ) {
+							return [];
+						}
 
-				const gamesURL = new URL( API_BASE + '/games' );
-				gamesURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
-				streams.data.forEach( ( stream ) => {
-					gamesURL.searchParams.append( 'id', stream.game_id );
-				} );
+						const gamesURL = new URL( API_BASE + '/games' );
+						gamesURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
+						streams.data.forEach( ( stream ) => {
+							gamesURL.searchParams.append( 'id', stream.game_id );
+						} );
 
-				/** @type {[TwitchAPIResponse<TwitchGame[]>,TwitchAPIPaginatedResponse<TwitchUser[]>]} */
-				const [ games, users ] = await Promise.all( [
-					fetchJSONWithClientId( gamesURL.toString() ),
-					fetchJSONWithClientId( usersURL.toString() ),
-				] );
+						/** @type {[TwitchAPIResponse<TwitchGame[]>,TwitchAPIPaginatedResponse<TwitchUser[]>]} */
+						const [ games, users ] = await Promise.all( [
+							fetchJSONWithClientId( gamesURL.toString() ),
+							fetchJSONWithClientId( usersURL.toString() ),
+						] );
 
-				return streams.data.reduce( ( result, stream ) => {
-					const user = find( users.data, { id: stream.user_id } );
-					const game = find( games.data, { id: stream.game_id } );
+						return streams.data.reduce( ( result, stream ) => {
+							const user = find( users.data, {
+								id: stream.user_id,
+							} );
+							const game = find( games.data, {
+								id: stream.game_id,
+							} );
 
-					if ( user ) {
-						result.push( /** @type {SLStream} */ ( {
-							providerName: name,
-							login: stream.user_name,
-							url: 'https://twitch.tv/' + user.login,
-							viewers: stream.viewer_count,
-							title: stream.title,
-							avatar: user.profile_image_url,
-							activity: game ? game.name : undefined,
-						} ) );
-					}
+							if ( user ) {
+								result.push(
+									/** @type {SLStream} */ ( {
+										providerName: name,
+										login: stream.user_name,
+										url: 'https://twitch.tv/' + user.login,
+										viewers: stream.viewer_count,
+										title: stream.title,
+										avatar: user.profile_image_url,
+										activity: game ? game.name : undefined,
+									} )
+								);
+							}
 
-					return result;
-				}, /** @type {SLStream[]} */ ( [] ) );
-			} ) ) ).flat();
+							return result;
+						}, /** @type {SLStream[]} */ ( [] ) );
+					} )
+				)
+			 ).flat();
 		}
 
 		const follows = await fetchFollows( auth.user.id );

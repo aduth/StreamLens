@@ -25,7 +25,7 @@ function NoSearchResults() {
 			icon: 'video-slash',
 			title,
 		},
-		description,
+		description
 	);
 }
 

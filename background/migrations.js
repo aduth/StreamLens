@@ -41,8 +41,8 @@ export function initialize() {
 			return;
 		}
 
-		MIGRATIONS
-			.filter( ( { fromVersion } ) => fromVersion === previousVersion )
-			.forEach( ( { migrate } ) => migrate() );
+		MIGRATIONS.filter(
+			( { fromVersion } ) => fromVersion === previousVersion
+		).forEach( ( { migrate } ) => migrate() );
 	} );
 }

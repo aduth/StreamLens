@@ -50,10 +50,9 @@ export function registerProviderName( state, name ) {
 export function updateStreams( state, providerName, streams, receivedAt = Date.now() ) {
 	return {
 		streams: {
-			data: [
-				...reject( state.streams.data, { providerName } ),
-				...streams,
-			].sort( ( a, b ) => b.viewers - a.viewers ),
+			data: [ ...reject( state.streams.data, { providerName } ), ...streams ].sort(
+				( a, b ) => b.viewers - a.viewers
+			),
 			lastReceived: {
 				...state.streams.lastReceived,
 				[ providerName ]: receivedAt,

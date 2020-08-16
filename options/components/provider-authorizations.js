@@ -35,12 +35,10 @@ function ProviderAuthorizations() {
 		h(
 			'ul',
 			{ className: 'provider-authorizations' },
-			providerNames.map( ( providerName ) => h(
-				'li',
-				{ key: providerName },
-				h( ProviderAuthorization, { providerName } ),
-			) ),
-		),
+			providerNames.map( ( providerName ) =>
+				h( 'li', { key: providerName }, h( ProviderAuthorization, { providerName } ) )
+			)
+		)
 	);
 }
 

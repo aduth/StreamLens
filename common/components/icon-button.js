@@ -43,10 +43,7 @@ function IconButton( { onClick, label, tooltipPosition, ...iconProps } ) {
 			'aria-label': label,
 			onClick,
 		},
-		h(
-			Icon,
-			iconProps,
-		),
+		h( Icon, iconProps )
 	);
 }
 

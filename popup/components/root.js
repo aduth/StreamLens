@@ -30,23 +30,20 @@ import { SearchProvider } from './search-context.js';
  * @return {import('preact').VNode} Rendered element.
  */
 function Root( { store } ) {
-	return h(
-		StoreContext.Provider,
-		{
-			value: store,
-			children: h(
-				SearchProvider,
+	return h( StoreContext.Provider, {
+		value: store,
+		children: h(
+			SearchProvider,
+			null,
+			h(
+				ColorScheme,
 				null,
-				h(
-					ColorScheme,
-					null,
-					h( TokenErrors, null ),
-					h( GettingStarted, null ),
-					h( StreamList, null ),
-				),
-			),
-		},
-	);
+				h( TokenErrors, null ),
+				h( GettingStarted, null ),
+				h( StreamList, null )
+			)
+		),
+	} );
 }
 
 export default Root;

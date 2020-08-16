@@ -34,11 +34,11 @@ import './setup.js';
 						error.actual,
 						'\n\n',
 						error.stack,
-						'\n\n',
+						'\n\n'
 					);
 
 					process.exit( 1 );
-				} ),
+				} )
 		);
 	}
 

@@ -3,11 +3,7 @@
  */
 import mixer from './providers/mixer.js';
 import twitch from './providers/twitch.js';
-import {
-	registerProviderName,
-	updateStreams,
-	setTokenError,
-} from './store/actions.js';
+import { registerProviderName, updateStreams, setTokenError } from './store/actions.js';
 
 /** @typedef {import('./store').SLProviderUser} SLProviderUser */
 
@@ -65,22 +61,23 @@ export const providers = {};
  * @return {string[]} Provider names for changed authorizations.
  */
 function getChangedAuth( prevState, state ) {
-	return Array.from( new Set( [
-		// New authorizations should incur subscription, or when token
-		// transitions to or from an error state.
-		...Object.keys( state.auth ).filter( ( key ) => (
-			! prevState ||
-			! prevState.auth[ key ] ||
-			!! prevState.auth[ key ].token !== !! state.auth[ key ].token
-		) ),
+	return Array.from(
+		new Set( [
+			// New authorizations should incur subscription, or when token
+			// transitions to or from an error state.
+			...Object.keys( state.auth ).filter(
+				( key ) =>
+					! prevState ||
+					! prevState.auth[ key ] ||
+					!! prevState.auth[ key ].token !== !! state.auth[ key ].token
+			),
 
-		// Deauthorizations should destroy subscription.
-		...prevState
-			? Object.keys( prevState.auth ).filter( ( key ) => (
-				! state.auth[ key ]
-			) )
-			: [],
-	] ) );
+			// Deauthorizations should destroy subscription.
+			...( prevState
+				? Object.keys( prevState.auth ).filter( ( key ) => ! state.auth[ key ] )
+				: [] ),
+		] )
+	);
 }
 
 /**
@@ -91,9 +88,7 @@ function getChangedAuth( prevState, state ) {
 function registerProviders( store ) {
 	Object.assign( providers, { twitch, mixer } );
 
-	Object
-		.keys( providers )
-		.forEach( store.action( registerProviderName ) );
+	Object.keys( providers ).forEach( store.action( registerProviderName ) );
 }
 
 /**
@@ -143,10 +138,7 @@ function startSubscriptions( store ) {
 				}
 			}
 
-			subscriptions[ providerName ] = setInterval(
-				refresh,
-				REFRESH_INTERVAL,
-			);
+			subscriptions[ providerName ] = setInterval( refresh, REFRESH_INTERVAL );
 
 			refresh();
 		} );

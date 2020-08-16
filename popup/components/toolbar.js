@@ -53,36 +53,30 @@ function Toolbar() {
 		h(
 			'label',
 			{ className: 'toolbar__search' },
-			h(
-				'input',
-				{
-					ref: /** @type {import('preact').Ref<any>} */ ( inputRef ),
-					type: 'text',
-					placeholder: searchLabel,
-					spellcheck: false,
-					value: search,
-					autocomplete: 'false',
-					autofocus: true,
-					onInput: ( event ) => setSearch( event.currentTarget.value ),
-					className: 'toolbar__search-input',
-				},
-			),
-			h( VisuallyHidden, null, searchLabel ),
+			h( 'input', {
+				ref: /** @type {import('preact').Ref<any>} */ ( inputRef ),
+				type: 'text',
+				placeholder: searchLabel,
+				spellcheck: false,
+				value: search,
+				autocomplete: 'false',
+				autofocus: true,
+				onInput: ( event ) => setSearch( event.currentTarget.value ),
+				className: 'toolbar__search-input',
+			} ),
+			h( VisuallyHidden, null, searchLabel )
 		),
 		h(
 			'div',
 			{ className: 'toolbar__controls' },
-			h(
-				IconButton,
-				{
-					label: browser.i18n.getMessage( 'popupToolbarSettings' ),
-					tooltipPosition: /** @type {TooltipPosition} */ ( 'bottom-left' ),
-					icon: 'cog',
-					width: '16',
-					onClick: openOptionsPage,
-				},
-			),
-		),
+			h( IconButton, {
+				label: browser.i18n.getMessage( 'popupToolbarSettings' ),
+				tooltipPosition: /** @type {TooltipPosition} */ ( 'bottom-left' ),
+				icon: 'cog',
+				width: '16',
+				onClick: openOptionsPage,
+			} )
+		)
 	);
 }
 

@@ -32,28 +32,23 @@ function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
 	return h(
 		'div',
 		{ className },
-		icon && h(
-			Icon,
-			{
+		icon &&
+			h( Icon, {
 				icon,
 				height: '18',
 				className: 'notice__icon',
-			},
-		),
-		h(
-			'div',
-			{ className: 'notice__text' },
-			text,
-		),
-		buttonText && h(
-			'button',
-			{
-				type: 'button',
-				onClick: () => buttonOnClick(),
-				className: 'notice__button is-compact',
-			},
-			buttonText,
-		),
+			} ),
+		h( 'div', { className: 'notice__text' }, text ),
+		buttonText &&
+			h(
+				'button',
+				{
+					type: 'button',
+					onClick: () => buttonOnClick(),
+					className: 'notice__button is-compact',
+				},
+				buttonText
+			)
 	);
 }
 

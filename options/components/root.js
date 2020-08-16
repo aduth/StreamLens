@@ -23,16 +23,10 @@ import ColorSchemeSetting from './color-scheme-setting.js';
  * @return {import('preact').VNode} Rendered element.
  */
 function Root( { store } ) {
-	return h(
-		StoreContext.Provider,
-		{
-			value: store,
-			children: [
-				h( ProviderAuthorizations, null ),
-				h( ColorSchemeSetting, null ),
-			],
-		},
-	);
+	return h( StoreContext.Provider, {
+		value: store,
+		children: [ h( ProviderAuthorizations, null ), h( ColorSchemeSetting, null ) ],
+	} );
 }
 
 export default Root;

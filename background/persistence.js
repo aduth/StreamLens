@@ -35,10 +35,7 @@ export async function get() {
  * @param {SLStore} store
  */
 export function initialize( store ) {
-	let {
-		auth: lastAuth,
-		preferences: lastPreferences,
-	} = store.getState();
+	let { auth: lastAuth, preferences: lastPreferences } = store.getState();
 
 	/**
 	 * Handle state change to update storage with latest state.

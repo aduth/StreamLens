@@ -19,11 +19,7 @@ const mapWebModules = {
 			const { s: start, e: end } = imports[ i ];
 			const source = code.substring( start, end );
 			if ( dependencies.includes( source ) ) {
-				code = (
-					code.slice( 0, start ) +
-					'/web_modules/' + source + '.js' +
-					code.slice( end )
-				);
+				code = code.slice( 0, start ) + '/web_modules/' + source + '.js' + code.slice( end );
 			}
 		}
 
@@ -31,8 +27,8 @@ const mapWebModules = {
 	},
 };
 
-export default /** @type {import('rollup').RollupOptions[]} */ (
-	dependencies.map( ( dependency ) => ( {
+export default /** @type {import('rollup').RollupOptions[]} */ ( dependencies.map(
+	( dependency ) => ( {
 		input: dependency,
 		context: 'window',
 		output: {
@@ -40,9 +36,6 @@ export default /** @type {import('rollup').RollupOptions[]} */ (
 			format: 'esm',
 		},
 		external: dependencies,
-		plugins: [
-			nodeResolve(),
-			mapWebModules,
-		],
-	} ) )
-);
+		plugins: [ nodeResolve(), mapWebModules ],
+	} )
+) );

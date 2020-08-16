@@ -35,33 +35,24 @@ function Card( { icon, title, children, className, buttonText, buttonOnClick } )
 	return h(
 		'div',
 		{ className },
-		icon && h(
-			Icon,
-			{
+		icon &&
+			h( Icon, {
 				icon,
 				height: '40',
 				className: 'card__icon',
-			},
-		),
-		h(
-			'h4',
-			{ className: 'card__title' },
-			title,
-		),
-		h(
-			'p',
-			{ className: 'card__description' },
-			children,
-		),
-		buttonText && h(
-			'button',
-			{
-				type: 'button',
-				onClick: () => buttonOnClick(),
-				className: 'card__button',
-			},
-			buttonText,
-		),
+			} ),
+		h( 'h4', { className: 'card__title' }, title ),
+		h( 'p', { className: 'card__description' }, children ),
+		buttonText &&
+			h(
+				'button',
+				{
+					type: 'button',
+					onClick: () => buttonOnClick(),
+					className: 'card__button',
+				},
+				buttonText
+			)
 	);
 }
 

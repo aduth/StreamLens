@@ -1,5 +1,9 @@
 {
-	"extends": "plugin:@wordpress/eslint-plugin/recommended-with-formatting",
+	"extends": [
+		"plugin:@wordpress/eslint-plugin/recommended-with-formatting",
+		"plugin:prettier/recommended",
+		"prettier/react"
+	],
 	"parserOptions": {
 		"ecmaVersion": 2019,
 		"sourceType": "module"
@@ -11,5 +15,8 @@
 		"jsdoc": {
 			"mode": "typescript"
 		}
+	},
+	"rules": {
+		"prettier/prettier": "error"
 	}
 }

@@ -101,11 +101,10 @@ function StreamList() {
 	// Ensure that if stream state updates or search filtering reduces the
 	// number of streams shown, the hover index is effectively constrained to
 	// the maximum number of streams.
-	const effectiveHoverIndex = (
+	const effectiveHoverIndex =
 		hoverIndex === null || filteredStreams.length === 0
 			? null
-			: clamp( hoverIndex, filteredStreams.length - 1 )
-	);
+			: clamp( hoverIndex, filteredStreams.length - 1 );
 
 	/**
 	 * Returns the link element for the stream at a given zero-based index, or
@@ -158,9 +157,10 @@ function StreamList() {
 			// effective hover index is used to assure that the change is most
 			// accurate in respect to what is seen by the user.
 			const increment = event.key === 'ArrowUp' ? -1 : 1;
-			const nextHoverIndex = effectiveHoverIndex === null
-				? 0
-				: clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
+			const nextHoverIndex =
+				effectiveHoverIndex === null
+					? 0
+					: clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
 
 			setHoverIndexOrFocus( nextHoverIndex );
 
@@ -205,23 +205,24 @@ function StreamList() {
 				className: 'stream-list__list',
 				ref: /** @type {import('preact').Ref<any>} */ ( listRef ),
 			},
-			filteredStreams.map( ( stream, index ) => h(
-				'li',
-				{
-					key: stream.url,
-					className: [
-						'stream-list__item',
-						index === effectiveHoverIndex && 'is-hovered',
-					].filter( Boolean ).join( ' ' ),
-					onFocusCapture: () => setHoverIndex( index ),
-					onBlurCapture: () => setHoverIndex( null ),
-					onMouseEnter: () => setHoverIndex( index ),
-					onMouseLeave: () => setHoverIndex( null ),
-				},
-				h( Stream, stream ),
-			) ),
+			filteredStreams.map( ( stream, index ) =>
+				h(
+					'li',
+					{
+						key: stream.url,
+						className: [ 'stream-list__item', index === effectiveHoverIndex && 'is-hovered' ]
+							.filter( Boolean )
+							.join( ' ' ),
+						onFocusCapture: () => setHoverIndex( index ),
+						onBlurCapture: () => setHoverIndex( null ),
+						onMouseEnter: () => setHoverIndex( index ),
+						onMouseLeave: () => setHoverIndex( null ),
+					},
+					h( Stream, stream )
+				)
+			)
 		),
-		! hasFetched && h( LoadingIndicator, null ),
+		! hasFetched && h( LoadingIndicator, null )
 	);
 }
 

@@ -22,7 +22,7 @@ function LoadingIndicator() {
 		},
 		h( 'div', { className: 'loading-indicator__dot' } ),
 		h( 'div', { className: 'loading-indicator__dot' } ),
-		h( 'div', { className: 'loading-indicator__dot' } ),
+		h( 'div', { className: 'loading-indicator__dot' } )
 	);
 }
 

@@ -42,44 +42,27 @@ function Stream( { url, title, providerName, login, avatar, activity, viewers } 
 		h(
 			'div',
 			{ className: 'stream__avatar-provider' },
-			avatar && h(
-				'img',
-				{
+			avatar &&
+				h( 'img', {
 					src: avatar,
 					width: '32',
 					height: '32',
 					className: 'stream__avatar',
-				},
-			),
-			h(
-				'img',
-				{
-					src: `/images/provider-icons/${ providerName }.svg`,
-					width: '16',
-					height: '16',
-					className: 'stream__provider',
-				},
-			),
+				} ),
+			h( 'img', {
+				src: `/images/provider-icons/${ providerName }.svg`,
+				width: '16',
+				height: '16',
+				className: 'stream__provider',
+			} )
 		),
 		h(
 			'div',
 			{ className: 'stream__login-activity' },
-			h(
-				'div',
-				{ className: 'stream__login' },
-				login,
-			),
-			activity && h(
-				'div',
-				{ className: 'stream__activity' },
-				activity,
-			),
+			h( 'div', { className: 'stream__login' }, login ),
+			activity && h( 'div', { className: 'stream__activity' }, activity )
 		),
-		h(
-			'div',
-			{ className: 'stream__viewers' },
-			new Intl.NumberFormat().format( viewers ),
-		),
+		h( 'div', { className: 'stream__viewers' }, new Intl.NumberFormat().format( viewers ) )
 	);
 }
 

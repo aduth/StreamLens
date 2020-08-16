@@ -22,11 +22,8 @@ export const SearchContext = createContext( [ '', () => {} ] );
 export function SearchProvider( { children } ) {
 	const value = useState( '' );
 
-	return h(
-		SearchContext.Provider,
-		{
-			value,
-			children,
-		},
-	);
+	return h( SearchContext.Provider, {
+		value,
+		children,
+	} );
 }

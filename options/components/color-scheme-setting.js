@@ -50,25 +50,27 @@ function ColorSchemeSetting() {
 		h(
 			'ul',
 			{ className: 'color-scheme-setting' },
-			options.map( ( { label, value } ) => h(
-				'li',
-				{ key: value },
+			options.map( ( { label, value } ) =>
 				h(
-					'label',
-					null,
+					'li',
+					{ key: value },
 					h(
-						'input',
-						{
+						'label',
+						null,
+						h( 'input', {
 							type: 'radio',
 							name: 'color-scheme-setting',
 							checked: value === currentValue,
-							onInput: () => dispatch( 'setPreferences', { colorScheme: value } ),
-						},
-					),
-					label,
-				),
-			) ),
-		),
+							onInput: () =>
+								dispatch( 'setPreferences', {
+									colorScheme: value,
+								} ),
+						} ),
+						label
+					)
+				)
+			)
+		)
 	);
 }
 

@@ -25,7 +25,7 @@ function NoStreamsLive() {
 			icon: 'video-slash',
 			title,
 		},
-		description,
+		description
 	);
 }
 

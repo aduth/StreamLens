@@ -32,15 +32,12 @@ function ProviderTokenError( { providerName } ) {
 	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
 	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
 
-	return h(
-		Notice,
-		{
-			icon: 'alert',
-			buttonOnClick: () => dispatch( 'authenticate', providerName ),
-			text,
-			buttonText,
-		},
-	);
+	return h( Notice, {
+		icon: 'alert',
+		buttonOnClick: () => dispatch( 'authenticate', providerName ),
+		text,
+		buttonText,
+	} );
 }
 
 export default ProviderTokenError;

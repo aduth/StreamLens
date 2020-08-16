@@ -40,7 +40,7 @@ function GettingStarted() {
 			title,
 			buttonText,
 		},
-		description,
+		description
 	);
 }
 
