@@ -12,8 +12,8 @@ const dependencies = [
 ];
 
 const mapWebModules = {
-	renderChunk( code ) {
-		const [ imports ] = parse( code );
+	async renderChunk( code ) {
+		const [ imports ] = await parse( code );
 
 		for ( let i = imports.length - 1; i >= 0; i-- ) {
 			const { s: start, e: end } = imports[ i ];
