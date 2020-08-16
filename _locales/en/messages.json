@@ -1,6 +1,6 @@
 {
 	"extDescription": {
-		"message": "Live status updates for your followed streams on Twitch and Mixer",
+		"message": "Live status updates for your followed streams on Twitch",
 		"description": "Extension description"
 	},
 	"commonLoadingIndicatorLabel": {
@@ -107,7 +107,7 @@
 		"placeholders": {
 			"providerLabel": {
 				"content": "$1",
-				"example": "Mixer"
+				"example": "Twitch"
 			}
 		}
 	},

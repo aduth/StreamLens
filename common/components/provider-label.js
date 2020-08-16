@@ -10,7 +10,6 @@ import { h, Fragment } from '/web_modules/preact.js';
  */
 const LABELS = {
 	twitch: 'Twitch',
-	mixer: 'Mixer',
 };
 
 /**

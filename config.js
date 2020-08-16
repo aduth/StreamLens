@@ -22,7 +22,4 @@ export const applications = {
 	twitch: {
 		clientId: 'tjitmvnig93faxcivnlhuxvtl8s8vh7',
 	},
-	mixer: {
-		clientId: 'e2087e528c0369a41e8bcd8d79a051882fb4585503b8f3f4',
-	},
 };

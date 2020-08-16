@@ -1,73 +1,73 @@
 {
-  "name": "stream-lens",
-  "private": true,
-  "type": "module",
-  "version": "1.3.2",
-  "description": "Browser extension for displaying live stream status for Twitch, Mixer",
-  "scripts": {
-    "test": "npm run test:lint && npm run test:types && npm run test:unit",
-    "clean": "rm -rf web_modules",
-    "prepare": "npm run clean && rollup -c",
-    "test:lint": "eslint .",
-    "test:types": "tsc",
-    "test:unit": "node --experimental-modules --experimental-loader=esm-root-loader test/runner.js",
-    "prebundle": "npm run prepare",
-    "bundle": "npm-pack-zip"
-  },
-  "author": {
-    "name": "Andrew Duthie",
-    "email": "andrew@andrewduthie.com",
-    "url": "https://andrewduthie.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aduth/StreamLens.git"
-  },
-  "license": "GPL-3.0-or-later",
-  "files": [
-    "_locales",
-    "background",
-    "common",
-    "fonts",
-    "images",
-    "options",
-    "popup",
-    "web_modules",
-    "auth.js",
-    "background.html",
-    "common.css",
-    "config.js",
-    "manifest.json",
-    "options.css",
-    "options.html",
-    "popup.css",
-    "popup.html",
-    "!.DS_Store",
-    "!test"
-  ],
-  "dependencies": {
-    "lodash-es": "^4.17.15",
-    "preact": "^10.4.7",
-    "prsh": "^1.0.1",
-    "unistore": "^3.5.2",
-    "unistore-browser-sync": "^1.0.0",
-    "webextension-polyfill": "^0.6.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@types/lodash-es": "^4.17.3",
-    "@wordpress/eslint-plugin": "^7.1.0",
-    "es-module-lexer": "^0.3.24",
-    "eslint": "^7.7.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-jsdoc": "^30.2.2",
-    "eslint-plugin-prettier": "^3.1.4",
-    "esm-root-loader": "^0.1.0",
-    "fast-glob": "^3.2.4",
-    "npm-pack-zip": "^1.2.7",
-    "prettier": "npm:wp-prettier@^2.0.5",
-    "rollup": "^2.26.0",
-    "typescript": "^3.9.7",
-    "web-ext-types": "^3.2.1"
-  }
+	"name": "stream-lens",
+	"private": true,
+	"type": "module",
+	"version": "1.3.2",
+	"description": "Browser extension for displaying live stream status for Twitch",
+	"scripts": {
+		"test": "npm run test:lint && npm run test:types && npm run test:unit",
+		"clean": "rm -rf web_modules",
+		"prepare": "npm run clean && rollup -c",
+		"test:lint": "eslint .",
+		"test:types": "tsc",
+		"test:unit": "node --experimental-modules --experimental-loader=esm-root-loader test/runner.js",
+		"prebundle": "npm run prepare",
+		"bundle": "npm-pack-zip"
+	},
+	"author": {
+		"name": "Andrew Duthie",
+		"email": "andrew@andrewduthie.com",
+		"url": "https://andrewduthie.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aduth/StreamLens.git"
+	},
+	"license": "GPL-3.0-or-later",
+	"files": [
+		"_locales",
+		"background",
+		"common",
+		"fonts",
+		"images",
+		"options",
+		"popup",
+		"web_modules",
+		"auth.js",
+		"background.html",
+		"common.css",
+		"config.js",
+		"manifest.json",
+		"options.css",
+		"options.html",
+		"popup.css",
+		"popup.html",
+		"!.DS_Store",
+		"!test"
+	],
+	"dependencies": {
+		"lodash-es": "^4.17.15",
+		"preact": "^10.4.7",
+		"prsh": "^1.0.1",
+		"unistore": "^3.5.2",
+		"unistore-browser-sync": "^1.0.0",
+		"webextension-polyfill": "^0.6.0"
+	},
+	"devDependencies": {
+		"@rollup/plugin-node-resolve": "^9.0.0",
+		"@types/lodash-es": "^4.17.3",
+		"@wordpress/eslint-plugin": "^7.1.0",
+		"es-module-lexer": "^0.3.24",
+		"eslint": "^7.7.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-jsdoc": "^30.2.2",
+		"eslint-plugin-prettier": "^3.1.4",
+		"esm-root-loader": "^0.1.0",
+		"fast-glob": "^3.2.4",
+		"npm-pack-zip": "^1.2.7",
+		"prettier": "npm:wp-prettier@^2.0.5",
+		"rollup": "^2.26.0",
+		"typescript": "^3.9.7",
+		"web-ext-types": "^3.2.1"
+	}
 }

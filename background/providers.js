@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import mixer from './providers/mixer.js';
 import twitch from './providers/twitch.js';
 import { registerProviderName, updateStreams, setTokenError } from './store/actions.js';
 
@@ -86,7 +85,7 @@ function getChangedAuth( prevState, state ) {
  * @param {SLStore} store
  */
 function registerProviders( store ) {
-	Object.assign( providers, { twitch, mixer } );
+	Object.assign( providers, { twitch } );
 
 	Object.keys( providers ).forEach( store.action( registerProviderName ) );
 }

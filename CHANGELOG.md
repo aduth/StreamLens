@@ -1,3 +1,9 @@
+## v1.4.0 (Unreleased)
+
+### Miscellaneous
+
+- Removed Mixer support, since Mixer is no longer.
+
 ## v1.3.2 (2020-01-03)
 
 ### Bug Fixes
