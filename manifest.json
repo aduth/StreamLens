@@ -21,13 +21,11 @@
 	"content_scripts": [
 		{
 			"matches": [ "https://streamlens.app/auth/" ],
-			"js": [ "web_modules/browser-polyfill.min.js", "auth.js" ],
+			"js": [ "web_modules/webextension-polyfill.js", "auth.js" ],
 			"all_frames": true
 		}
 	],
 	"default_locale": "en",
-	"permissions": [
-		"storage"
-	],
+	"permissions": [ "storage" ],
 	"manifest_version": 2
 }
