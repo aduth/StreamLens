@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { isEmpty } from '/web_modules/lodash-es.js';
+import { h } from 'preact';
+import { isEmpty } from 'lodash-es';
 
 /**
  * Project dependencies

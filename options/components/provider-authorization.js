@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { h, Fragment } from '/web_modules/preact.js';
+import { h, Fragment } from 'preact';
 
 /**
  * Project dependencies

@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { useContext, useRef, useEffect } from '/web_modules/preact/hooks.js';
+import { h } from 'preact';
+import { useContext, useRef, useEffect } from 'preact/hooks';
 
 /**
  * Project dependencies

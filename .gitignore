@@ -3,7 +3,6 @@
 
 # Dependencies
 node_modules
-web_modules
 
 # Generated
 stream-lens.zip

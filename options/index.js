@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import { render, h } from '/web_modules/preact.js';
-import createStore from '/web_modules/unistore.js';
-import { replica } from '/web_modules/unistore-browser-sync.js';
+import { render, h } from 'preact';
+import createStore from 'unistore';
+import { replica } from 'unistore-browser-sync';
 
 /**
  * Internal dependencies

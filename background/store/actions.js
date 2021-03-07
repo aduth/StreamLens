@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { omit, reject } from '/web_modules/lodash-es.js';
+import { omit, reject } from 'lodash-es';
 
 /**
  * Project dependencies

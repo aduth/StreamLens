@@ -6,5 +6,17 @@
 <link rel="stylesheet" href="common.css">
 <link rel="stylesheet" href="popup.css">
 <div id="app"></div>
-<script src="/web_modules/webextension-polyfill.js"></script>
+<script type="importmap">
+{
+	"imports": {
+		"lodash-es": "/node_modules/lodash-es/lodash.js",
+		"preact": "/node_modules/preact/dist/preact.module.js",
+		"preact/hooks": "/node_modules/preact/hooks/dist/hooks.module.js",
+		"prsh": "/node_modules/prsh/prsh.js",
+		"unistore": "/node_modules/unistore/dist/unistore.es.js",
+		"unistore-browser-sync": "/node_modules/unistore-browser-sync/index.js"
+	}
+}
+</script>
+<script src="/node_modules/webextension-polyfill/dist/browser-polyfill.js"></script>
 <script type="module" src="popup/index.js"></script>

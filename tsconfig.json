@@ -2,11 +2,6 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"/web_modules/*.js": [
-				"node_modules/@types/*",
-				"node_modules/*",
-				"web_modules/*.js"
-			],
 			"/*": [
 				"*"
 			]
@@ -35,7 +30,6 @@
 		"popup"
 	],
 	"exclude": [
-		"node_modules",
-		"web_modules"
+		"node_modules"
 	]
 }

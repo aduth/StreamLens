@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { snakeCase } from '/web_modules/lodash-es.js';
+import { snakeCase } from 'lodash-es';
 
 /**
  * Project dependencies

@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { findKey } from '/web_modules/lodash-es.js';
+import { h } from 'preact';
+import { findKey } from 'lodash-es';
 
 /**
  * Project dependencies

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useSelector } from '/web_modules/prsh.js';
+import { useSelector } from 'prsh';
 
 /** @typedef {import('/background/store.js').SLState} SLState */
 
