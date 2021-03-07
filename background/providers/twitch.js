@@ -201,7 +201,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 				},
 			} );
 
-			if ( response.status === 400 ) {
+			if ( response.status === 401 ) {
 				throw new InvalidTokenError();
 			} else {
 				return response.json();
