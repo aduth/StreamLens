@@ -31,11 +31,11 @@ import { SearchContext } from './search-context.js';
  *
  * @return {string} Normalized term.
  */
-function getNormalSearchTerm( term ) {
-	return deburr( term )
+function getNormalSearchTerm(term) {
+	return deburr(term)
 		.toLocaleLowerCase()
-		.replace( /\s+/, ' ' )
-		.replace( /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, '' );
+		.replace(/\s+/, ' ')
+		.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, '');
 }
 
 /**
@@ -48,8 +48,8 @@ function getNormalSearchTerm( term ) {
  *
  * @return {boolean} Whether candidate includes search term.
  */
-export function isTolerantStringMatch( needle, haystack ) {
-	return getNormalSearchTerm( haystack ).includes( getNormalSearchTerm( needle ) );
+export function isTolerantStringMatch(needle, haystack) {
+	return getNormalSearchTerm(haystack).includes(getNormalSearchTerm(needle));
 }
 
 /**
@@ -61,12 +61,12 @@ export function isTolerantStringMatch( needle, haystack ) {
  *
  * @return {boolean} Whether stream is match for search term.
  */
-function isSearchMatch( search, stream ) {
+function isSearchMatch(search, stream) {
 	return (
-		! search ||
-		( stream.activity && isTolerantStringMatch( search, stream.activity ) ) ||
-		isTolerantStringMatch( search, stream.login ) ||
-		isTolerantStringMatch( search, stream.title )
+		!search ||
+		(stream.activity && isTolerantStringMatch(search, stream.activity)) ||
+		isTolerantStringMatch(search, stream.login) ||
+		isTolerantStringMatch(search, stream.title)
 	);
 }
 
@@ -78,25 +78,25 @@ function isSearchMatch( search, stream ) {
  * @return {?import('preact').VNode} Rendered element.
  */
 function StreamList() {
-	const auth = useSelect( ( state ) => state.auth );
-	const streams = useSelect( ( state ) => state.streams );
-	const [ search ] = useContext( SearchContext );
-	const [ hoverIndex, setHoverIndex ] = useState( /** @type {?number} */ ( null ) );
+	const auth = useSelect((state) => state.auth);
+	const streams = useSelect((state) => state.streams);
+	const [search] = useContext(SearchContext);
+	const [hoverIndex, setHoverIndex] = useState(/** @type {?number} */ (null));
 	/** @type {import('preact/hooks').PropRef<HTMLElement>} */
 	const listRef = useRef();
 
-	const numberOfConnections = size( auth );
-	if ( numberOfConnections === 0 ) {
+	const numberOfConnections = size(auth);
+	if (numberOfConnections === 0) {
 		return null;
 	}
 
-	const numberOfValidConnections = size( reject( auth, { token: null } ) );
-	const hasFetched = size( streams.lastReceived ) === numberOfValidConnections;
-	if ( hasFetched && streams.data.length === 0 ) {
-		return h( NoStreamsLive, null );
+	const numberOfValidConnections = size(reject(auth, { token: null }));
+	const hasFetched = size(streams.lastReceived) === numberOfValidConnections;
+	if (hasFetched && streams.data.length === 0) {
+		return h(NoStreamsLive, null);
 	}
 
-	const filteredStreams = streams.data.filter( isSearchMatch.bind( null, search ) );
+	const filteredStreams = streams.data.filter(isSearchMatch.bind(null, search));
 
 	// Ensure that if stream state updates or search filtering reduces the
 	// number of streams shown, the hover index is effectively constrained to
@@ -104,7 +104,7 @@ function StreamList() {
 	const effectiveHoverIndex =
 		hoverIndex === null || filteredStreams.length === 0
 			? null
-			: clamp( hoverIndex, filteredStreams.length - 1 );
+			: clamp(hoverIndex, filteredStreams.length - 1);
 
 	/**
 	 * Returns the link element for the stream at a given zero-based index, or
@@ -116,10 +116,8 @@ function StreamList() {
 	 *
 	 * @return {?HTMLElement} Link element, if known.
 	 */
-	function getStreamLink( index ) {
-		return listRef.current
-			? listRef.current.querySelector( `li:nth-child(${ index + 1 }) a` )
-			: null;
+	function getStreamLink(index) {
+		return listRef.current ? listRef.current.querySelector(`li:nth-child(${index + 1}) a`) : null;
 	}
 
 	/**
@@ -130,15 +128,15 @@ function StreamList() {
 	 *
 	 * @param {number} index Intended hover index.
 	 */
-	function setHoverIndexOrFocus( index ) {
-		const isFocusInList = listRef.current && listRef.current.contains( document.activeElement );
-		if ( isFocusInList ) {
-			const target = getStreamLink( index );
-			if ( target ) {
+	function setHoverIndexOrFocus(index) {
+		const isFocusInList = listRef.current && listRef.current.contains(document.activeElement);
+		if (isFocusInList) {
+			const target = getStreamLink(index);
+			if (target) {
 				target.focus();
 			}
 		} else {
-			setHoverIndex( index );
+			setHoverIndex(index);
 		}
 	}
 
@@ -149,8 +147,8 @@ function StreamList() {
 	 *
 	 * @param {KeyboardEvent} event Key event.
 	 */
-	function incrementHoverIndex( event ) {
-		if ( event.key === 'ArrowUp' || event.key === 'ArrowDown' ) {
+	function incrementHoverIndex(event) {
+		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
 			// Increment the hover index by an increment corresponding to the
 			// key pressed. The hover index is clamped to be constrained to a
 			// valid value based on the current number of filtered streams. The
@@ -160,9 +158,9 @@ function StreamList() {
 			const nextHoverIndex =
 				effectiveHoverIndex === null
 					? 0
-					: clamp( effectiveHoverIndex + increment, 0, filteredStreams.length - 1 );
+					: clamp(effectiveHoverIndex + increment, 0, filteredStreams.length - 1);
 
-			setHoverIndexOrFocus( nextHoverIndex );
+			setHoverIndexOrFocus(nextHoverIndex);
 
 			event.preventDefault();
 		}
@@ -176,14 +174,14 @@ function StreamList() {
 	 *
 	 * @param {KeyboardEvent} event Key event.
 	 */
-	function selectStream( event ) {
-		if ( event.key === 'Enter' ) {
+	function selectStream(event) {
+		if (event.key === 'Enter') {
 			event.preventDefault();
 
-			if ( effectiveHoverIndex !== null ) {
-				const stream = filteredStreams[ effectiveHoverIndex ];
-				if ( stream ) {
-					window.open( stream.url );
+			if (effectiveHoverIndex !== null) {
+				const stream = filteredStreams[effectiveHoverIndex];
+				if (stream) {
+					window.open(stream.url);
 					window.close();
 				}
 			}
@@ -197,32 +195,32 @@ function StreamList() {
 			onKeyPress: selectStream,
 			className: 'stream-list',
 		},
-		h( Toolbar, null ),
-		hasFetched && filteredStreams.length === 0 && h( NoSearchResults, null ),
+		h(Toolbar, null),
+		hasFetched && filteredStreams.length === 0 && h(NoSearchResults, null),
 		h(
 			'ul',
 			{
 				className: 'stream-list__list',
-				ref: /** @type {import('preact').Ref<any>} */ ( listRef ),
+				ref: /** @type {import('preact').Ref<any>} */ (listRef),
 			},
-			filteredStreams.map( ( stream, index ) =>
+			filteredStreams.map((stream, index) =>
 				h(
 					'li',
 					{
 						key: stream.url,
-						className: [ 'stream-list__item', index === effectiveHoverIndex && 'is-hovered' ]
-							.filter( Boolean )
-							.join( ' ' ),
-						onFocusCapture: () => setHoverIndex( index ),
-						onBlurCapture: () => setHoverIndex( null ),
-						onMouseEnter: () => setHoverIndex( index ),
-						onMouseLeave: () => setHoverIndex( null ),
+						className: ['stream-list__item', index === effectiveHoverIndex && 'is-hovered']
+							.filter(Boolean)
+							.join(' '),
+						onFocusCapture: () => setHoverIndex(index),
+						onBlurCapture: () => setHoverIndex(null),
+						onMouseEnter: () => setHoverIndex(index),
+						onMouseLeave: () => setHoverIndex(null),
 					},
-					h( Stream, stream )
+					h(Stream, stream)
 				)
 			)
 		),
-		! hasFetched && h( LoadingIndicator, null )
+		!hasFetched && h(LoadingIndicator, null)
 	);
 }
 

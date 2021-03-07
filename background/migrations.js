@@ -17,15 +17,15 @@ const MIGRATIONS = [
 		fromVersion: '1.0.0',
 		migrate() {
 			let { initialState } = window.localStorage;
-			if ( ! initialState ) {
+			if (!initialState) {
 				return;
 			}
 
 			try {
-				initialState = JSON.parse( initialState );
-				browser.storage.sync.set( { initialState } );
+				initialState = JSON.parse(initialState);
+				browser.storage.sync.set({ initialState });
 				delete window.localStorage.initialState;
-			} catch ( error ) {}
+			} catch (error) {}
 		},
 	},
 ];
@@ -35,14 +35,14 @@ const MIGRATIONS = [
  * logic for version updates.
  */
 export function initialize() {
-	browser.runtime.onInstalled.addListener( ( details ) => {
+	browser.runtime.onInstalled.addListener((details) => {
 		const { reason, previousVersion } = details;
-		if ( reason !== 'update' ) {
+		if (reason !== 'update') {
 			return;
 		}
 
-		MIGRATIONS.filter(
-			( { fromVersion } ) => fromVersion === previousVersion
-		).forEach( ( { migrate } ) => migrate() );
-	} );
+		MIGRATIONS.filter(({ fromVersion }) => fromVersion === previousVersion).forEach(({ migrate }) =>
+			migrate()
+		);
+	});
 }

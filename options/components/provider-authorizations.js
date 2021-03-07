@@ -22,9 +22,9 @@ import ProviderAuthorization from './provider-authorization.js';
  * @return {import('preact').VNode} Rendered element.
  */
 function ProviderAuthorizations() {
-	const providerNames = useSelect( ( state ) => state.providerNames );
-	const title = browser.i18n.getMessage( 'optionsAuthorizationsTitle' );
-	const description = browser.i18n.getMessage( 'optionsAuthorizationsDescription' );
+	const providerNames = useSelect((state) => state.providerNames);
+	const title = browser.i18n.getMessage('optionsAuthorizationsTitle');
+	const description = browser.i18n.getMessage('optionsAuthorizationsDescription');
 
 	return h(
 		Section,
@@ -35,8 +35,8 @@ function ProviderAuthorizations() {
 		h(
 			'ul',
 			{ className: 'provider-authorizations' },
-			providerNames.map( ( providerName ) =>
-				h( 'li', { key: providerName }, h( ProviderAuthorization, { providerName } ) )
+			providerNames.map((providerName) =>
+				h('li', { key: providerName }, h(ProviderAuthorization, { providerName }))
 			)
 		)
 	);

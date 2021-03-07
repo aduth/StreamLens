@@ -16,8 +16,8 @@ import { Card } from '@streamlens/components';
  * @return {import('preact').VNode} Rendered element.
  */
 function NoSearchResults() {
-	const title = browser.i18n.getMessage( 'popupNoSearchResultsTitle' );
-	const description = browser.i18n.getMessage( 'popupNoSearchResultsDescription' );
+	const title = browser.i18n.getMessage('popupNoSearchResultsTitle');
+	const description = browser.i18n.getMessage('popupNoSearchResultsDescription');
 
 	return h(
 		Card,

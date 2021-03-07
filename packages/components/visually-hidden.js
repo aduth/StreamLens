@@ -16,8 +16,8 @@ import { h } from 'preact';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function VisuallyHidden( { children } ) {
-	return h( 'span', { className: 'visually-hidden' }, children );
+function VisuallyHidden({ children }) {
+	return h('span', { className: 'visually-hidden' }, children);
 }
 
 export default VisuallyHidden;

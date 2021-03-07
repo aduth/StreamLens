@@ -153,21 +153,21 @@ const name = 'twitch';
  */
 const MAX_PER_PAGE = 100;
 
-export default /** @type {import('../providers').SLProvider} */ ( {
+export default /** @type {import('../providers').SLProvider} */ ({
 	name,
 
 	supportsOIDC: true,
 
 	authEndpoint: 'https://id.twitch.tv/oauth2/authorize',
 
-	async getUser( token ) {
-		const response = await window.fetch( 'https://id.twitch.tv/oauth2/validate', {
+	async getUser(token) {
+		const response = await window.fetch('https://id.twitch.tv/oauth2/validate', {
 			headers: {
 				Authorization: 'OAuth ' + token,
 			},
-		} );
+		});
 
-		if ( response.status !== 200 ) {
+		if (response.status !== 200) {
 			throw new InvalidTokenError();
 		}
 
@@ -180,7 +180,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 		};
 	},
 
-	async getStreams( auth ) {
+	async getStreams(auth) {
 		/**
 		 * Performs a fetch assuming to return JSON, including client ID and
 		 * current authorization token in the request.
@@ -192,16 +192,16 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 		 *
 		 * @return {Promise<*>} Response JSON.
 		 */
-		async function fetchJSONWithClientId( url ) {
-			const response = await window.fetch( url, {
+		async function fetchJSONWithClientId(url) {
+			const response = await window.fetch(url, {
 				headers: {
 					'Content-Type': 'application/json',
 					'Client-Id': applications.twitch.clientId,
 					Authorization: 'Bearer ' + auth.token,
 				},
-			} );
+			});
 
-			if ( response.status === 401 ) {
+			if (response.status === 401) {
 				throw new InvalidTokenError();
 			} else {
 				return response.json();
@@ -216,33 +216,33 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 		 *
 		 * @return {Promise<string[]>} User followed IDs.
 		 */
-		async function fetchFollows( userId ) {
-			const url = new URL( `${ API_BASE }/users/follows` );
-			url.searchParams.set( 'first', MAX_PER_PAGE.toString() );
-			url.searchParams.set( 'from_id', userId.toString() );
+		async function fetchFollows(userId) {
+			const url = new URL(`${API_BASE}/users/follows`);
+			url.searchParams.set('first', MAX_PER_PAGE.toString());
+			url.searchParams.set('from_id', userId.toString());
 
 			const results = [];
 
 			/** @type {TwitchAPIPaginationCursor} */
 			let cursor;
 			do {
-				if ( cursor ) {
-					url.searchParams.set( 'after', cursor );
+				if (cursor) {
+					url.searchParams.set('after', cursor);
 				}
 
 				/** @type {TwitchAPIPaginatedResponse<TwitchFollow[]>} */
-				const json = await fetchJSONWithClientId( url.toString() );
+				const json = await fetchJSONWithClientId(url.toString());
 
-				results.push( ...json.data.map( ( follow ) => follow.to_id ) );
+				results.push(...json.data.map((follow) => follow.to_id));
 
 				// Even if response includes all results, a pagination cursor will
 				// be assigned. Abort early if safe to assume results complete.
-				if ( json.data.length === json.total ) {
+				if (json.data.length === json.total) {
 					break;
 				}
 
 				cursor = json.pagination.cursor;
-			} while ( cursor );
+			} while (cursor);
 
 			return results;
 		}
@@ -256,52 +256,52 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 		 * @return {Promise<SLStream[]>} Promise resolving to array of stream
 		 *                               objects.
 		 */
-		async function fetchStreams( userIds ) {
-			const pages = chunk( userIds, MAX_PER_PAGE );
+		async function fetchStreams(userIds) {
+			const pages = chunk(userIds, MAX_PER_PAGE);
 
 			return (
 				await Promise.all(
-					pages.map( async ( page ) => {
-						const streamsURL = new URL( API_BASE + '/streams' );
-						streamsURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
+					pages.map(async (page) => {
+						const streamsURL = new URL(API_BASE + '/streams');
+						streamsURL.searchParams.set('first', MAX_PER_PAGE.toString());
 
-						const usersURL = new URL( API_BASE + '/users' );
-						usersURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
+						const usersURL = new URL(API_BASE + '/users');
+						usersURL.searchParams.set('first', MAX_PER_PAGE.toString());
 
-						page.forEach( ( userId ) => {
-							streamsURL.searchParams.append( 'user_id', userId );
-							usersURL.searchParams.append( 'id', userId );
-						} );
+						page.forEach((userId) => {
+							streamsURL.searchParams.append('user_id', userId);
+							usersURL.searchParams.append('id', userId);
+						});
 
 						/** @type {TwitchAPIPaginatedResponse<TwitchStream[]>} */
-						const streams = await fetchJSONWithClientId( streamsURL.toString() );
-						if ( ! streams.data.length ) {
+						const streams = await fetchJSONWithClientId(streamsURL.toString());
+						if (!streams.data.length) {
 							return [];
 						}
 
-						const gamesURL = new URL( API_BASE + '/games' );
-						gamesURL.searchParams.set( 'first', MAX_PER_PAGE.toString() );
-						streams.data.forEach( ( stream ) => {
-							gamesURL.searchParams.append( 'id', stream.game_id );
-						} );
+						const gamesURL = new URL(API_BASE + '/games');
+						gamesURL.searchParams.set('first', MAX_PER_PAGE.toString());
+						streams.data.forEach((stream) => {
+							gamesURL.searchParams.append('id', stream.game_id);
+						});
 
 						/** @type {[TwitchAPIResponse<TwitchGame[]>,TwitchAPIPaginatedResponse<TwitchUser[]>]} */
-						const [ games, users ] = await Promise.all( [
-							fetchJSONWithClientId( gamesURL.toString() ),
-							fetchJSONWithClientId( usersURL.toString() ),
-						] );
+						const [games, users] = await Promise.all([
+							fetchJSONWithClientId(gamesURL.toString()),
+							fetchJSONWithClientId(usersURL.toString()),
+						]);
 
-						return streams.data.reduce( ( result, stream ) => {
-							const user = find( users.data, {
+						return streams.data.reduce((result, stream) => {
+							const user = find(users.data, {
 								id: stream.user_id,
-							} );
-							const game = find( games.data, {
+							});
+							const game = find(games.data, {
 								id: stream.game_id,
-							} );
+							});
 
-							if ( user ) {
+							if (user) {
 								result.push(
-									/** @type {SLStream} */ ( {
+									/** @type {SLStream} */ ({
 										providerName: name,
 										login: stream.user_name,
 										url: 'https://twitch.tv/' + user.login,
@@ -309,18 +309,18 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 										title: stream.title,
 										avatar: user.profile_image_url,
 										activity: game ? game.name : undefined,
-									} )
+									})
 								);
 							}
 
 							return result;
-						}, /** @type {SLStream[]} */ ( [] ) );
-					} )
+						}, /** @type {SLStream[]} */ ([]));
+					})
 				)
-			 ).flat();
+			).flat();
 		}
 
-		const follows = await fetchFollows( /** @type {string} */ ( auth.user.id ) );
-		return fetchStreams( follows );
+		const follows = await fetchFollows(/** @type {string} */ (auth.user.id));
+		return fetchStreams(follows);
 	},
-} );
+});

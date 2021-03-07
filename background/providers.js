@@ -59,23 +59,21 @@ export const providers = {};
  *
  * @return {string[]} Provider names for changed authorizations.
  */
-function getChangedAuth( prevState, state ) {
+function getChangedAuth(prevState, state) {
 	return Array.from(
-		new Set( [
+		new Set([
 			// New authorizations should incur subscription, or when token
 			// transitions to or from an error state.
-			...Object.keys( state.auth ).filter(
-				( key ) =>
-					! prevState ||
-					! prevState.auth[ key ] ||
-					!! prevState.auth[ key ].token !== !! state.auth[ key ].token
+			...Object.keys(state.auth).filter(
+				(key) =>
+					!prevState ||
+					!prevState.auth[key] ||
+					!!prevState.auth[key].token !== !!state.auth[key].token
 			),
 
 			// Deauthorizations should destroy subscription.
-			...( prevState
-				? Object.keys( prevState.auth ).filter( ( key ) => ! state.auth[ key ] )
-				: [] ),
-		] )
+			...(prevState ? Object.keys(prevState.auth).filter((key) => !state.auth[key]) : []),
+		])
 	);
 }
 
@@ -84,10 +82,10 @@ function getChangedAuth( prevState, state ) {
  *
  * @param {SLStore} store
  */
-function registerProviders( store ) {
-	Object.assign( providers, { twitch } );
+function registerProviders(store) {
+	Object.assign(providers, { twitch });
 
-	Object.keys( providers ).forEach( store.action( registerProviderName ) );
+	Object.keys(providers).forEach(store.action(registerProviderName));
 }
 
 /**
@@ -95,61 +93,61 @@ function registerProviders( store ) {
  *
  * @param {SLStore} store
  */
-function startSubscriptions( store ) {
+function startSubscriptions(store) {
 	const subscriptions = {};
 
 	let lastState;
-	function onStateChange( state ) {
-		getChangedAuth( lastState, state ).forEach( ( providerName ) => {
+	function onStateChange(state) {
+		getChangedAuth(lastState, state).forEach((providerName) => {
 			// Before setting new subscription, unsubscribe from current if
 			// exists.
-			const intervalId = subscriptions[ providerName ];
-			if ( intervalId ) {
-				clearInterval( intervalId );
-				delete subscriptions[ intervalId ];
+			const intervalId = subscriptions[providerName];
+			if (intervalId) {
+				clearInterval(intervalId);
+				delete subscriptions[intervalId];
 			}
 
 			// Attach subscription only if valid usable token exists.
-			const getAuth = () => store.getState().auth[ providerName ];
+			const getAuth = () => store.getState().auth[providerName];
 			const getToken = () => getAuth().token;
-			if ( ! getAuth() || ! getToken() ) {
+			if (!getAuth() || !getToken()) {
 				return;
 			}
 
 			// If, by some chance, an authorization exists for an unknown
 			// provider name, abort. This could occur given state persistence
 			// and future updates adding / removing providers.
-			const provider = providers[ providerName ];
-			if ( ! provider ) {
+			const provider = providers[providerName];
+			if (!provider) {
 				return;
 			}
 
 			async function refresh() {
 				try {
-					const streams = await provider.getStreams( getAuth() );
-					store.action( updateStreams )( providerName, streams );
-				} catch ( error ) {
-					if ( error instanceof InvalidTokenError ) {
-						store.action( setTokenError )( providerName );
+					const streams = await provider.getStreams(getAuth());
+					store.action(updateStreams)(providerName, streams);
+				} catch (error) {
+					if (error instanceof InvalidTokenError) {
+						store.action(setTokenError)(providerName);
 					} else {
 						throw error;
 					}
 				}
 			}
 
-			subscriptions[ providerName ] = setInterval( refresh, REFRESH_INTERVAL );
+			subscriptions[providerName] = setInterval(refresh, REFRESH_INTERVAL);
 
 			refresh();
-		} );
+		});
 
 		lastState = state;
 	}
 
 	// Check for provider change on state change.
-	store.subscribe( onStateChange );
+	store.subscribe(onStateChange);
 
 	// Handle initial subscriptions.
-	onStateChange( store.getState() );
+	onStateChange(store.getState());
 }
 
 /**
@@ -162,7 +160,7 @@ export class InvalidTokenError extends Error {}
  *
  * @param {SLStore} store
  */
-export function initialize( store ) {
-	registerProviders( store );
-	startSubscriptions( store );
+export function initialize(store) {
+	registerProviders(store);
+	startSubscriptions(store);
 }

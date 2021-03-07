@@ -14,12 +14,12 @@ import * as persistence from './persistence.js';
 import * as migrations from './migrations.js';
 import * as actions from './store/actions.js';
 
-( async () => {
+(async () => {
 	const initialState = await getInitialState();
-	const store = primary( createStore( initialState ), { ...actions } );
+	const store = primary(createStore(initialState), { ...actions });
 
 	migrations.initialize();
-	badge.initialize( store );
-	providers.initialize( store );
-	persistence.initialize( store );
-} )();
+	badge.initialize(store);
+	providers.initialize(store);
+	persistence.initialize(store);
+})();

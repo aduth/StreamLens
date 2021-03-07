@@ -21,13 +21,13 @@ import useSelect from '../hooks/use-select.js';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function ColorScheme( { children } ) {
-	const colorScheme = useSelect( ( state ) => state.preferences.colorScheme );
+function ColorScheme({ children }) {
+	const colorScheme = useSelect((state) => state.preferences.colorScheme);
 
-	useEffect( () => {
+	useEffect(() => {
 		const normalColorScheme = colorScheme === null ? 'inherit' : colorScheme;
 		document.body.dataset.theme = normalColorScheme;
-	}, [ colorScheme ] );
+	}, [colorScheme]);
 
 	return children;
 }

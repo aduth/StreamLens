@@ -11,7 +11,7 @@ import { h } from 'preact';
  * @return {import('preact').VNode} Rendered element.
  */
 function LoadingIndicator() {
-	const label = browser.i18n.getMessage( 'commonLoadingIndicatorLabel' );
+	const label = browser.i18n.getMessage('commonLoadingIndicatorLabel');
 
 	return h(
 		'div',
@@ -20,9 +20,9 @@ function LoadingIndicator() {
 			role: 'status',
 			'aria-label': label,
 		},
-		h( 'div', { className: 'loading-indicator__dot' } ),
-		h( 'div', { className: 'loading-indicator__dot' } ),
-		h( 'div', { className: 'loading-indicator__dot' } )
+		h('div', { className: 'loading-indicator__dot' }),
+		h('div', { className: 'loading-indicator__dot' }),
+		h('div', { className: 'loading-indicator__dot' })
 	);
 }
 

@@ -18,9 +18,9 @@
 export async function get() {
 	try {
 		/** @type {SLStorageValue} */
-		const { initialState = {} } = await browser.storage.sync.get( 'initialState' );
+		const { initialState = {} } = await browser.storage.sync.get('initialState');
 		return initialState;
-	} catch ( error ) {
+	} catch (error) {
 		// An error can be thrown if the get operation fails. This can happen,
 		// for example, when loading as a temporary extension in Firefox.
 		//
@@ -34,7 +34,7 @@ export async function get() {
  *
  * @param {SLStore} store
  */
-export function initialize( store ) {
+export function initialize(store) {
 	let { auth: lastAuth, preferences: lastPreferences } = store.getState();
 
 	/**
@@ -42,22 +42,22 @@ export function initialize( store ) {
 	 *
 	 * @param {SLState} state Next state.
 	 */
-	function persistChange( state ) {
+	function persistChange(state) {
 		const { auth, preferences } = state;
-		if ( auth !== lastAuth || preferences !== lastPreferences ) {
+		if (auth !== lastAuth || preferences !== lastPreferences) {
 			lastAuth = auth;
 			lastPreferences = preferences;
 
 			// Fire and forget to ensure consecutive `set` is called in order of
 			// state change irrespective completion of previous persist.
-			browser.storage.sync.set( {
+			browser.storage.sync.set({
 				initialState: {
 					auth,
 					preferences,
 				},
-			} );
+			});
 		}
 	}
 
-	store.subscribe( persistChange );
+	store.subscribe(persistChange);
 }

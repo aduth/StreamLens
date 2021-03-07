@@ -31,9 +31,9 @@ import { h } from 'preact';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function Tooltip( { tagName = 'div', text, position = 'top', children, className, ...props } ) {
-	const [ y, x = 'center' ] = position.split( '-' );
-	const classes = [ 'tooltip', 'is-' + y, 'is-' + x, className ].filter( Boolean ).join( ' ' );
+function Tooltip({ tagName = 'div', text, position = 'top', children, className, ...props }) {
+	const [y, x = 'center'] = position.split('-');
+	const classes = ['tooltip', 'is-' + y, 'is-' + x, className].filter(Boolean).join(' ');
 
 	return h(
 		tagName,
@@ -41,11 +41,11 @@ function Tooltip( { tagName = 'div', text, position = 'top', children, className
 			...props,
 			className: classes,
 		},
-		h( 'span', {
+		h('span', {
 			'aria-hidden': true,
 			clssName: 'tooltip__arrow',
-		} ),
-		h( 'span', { className: 'tooltip__text' }, text ),
+		}),
+		h('span', { className: 'tooltip__text' }, text),
 		children
 	);
 }

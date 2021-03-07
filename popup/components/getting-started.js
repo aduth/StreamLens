@@ -18,16 +18,16 @@ import { Card } from '@streamlens/components';
  * @return {?import('preact').VNode} Rendered element.
  */
 function GettingStarted() {
-	const auth = useSelect( ( state ) => state.auth );
+	const auth = useSelect((state) => state.auth);
 
-	const isNew = isEmpty( auth );
-	if ( ! isNew ) {
+	const isNew = isEmpty(auth);
+	if (!isNew) {
 		return null;
 	}
 
-	const title = browser.i18n.getMessage( 'popupGettingStartedWelcome' );
-	const buttonText = browser.i18n.getMessage( 'popupGettingStartedSettings' );
-	const description = browser.i18n.getMessage( 'popupGettingStartedDescription' );
+	const title = browser.i18n.getMessage('popupGettingStartedWelcome');
+	const buttonText = browser.i18n.getMessage('popupGettingStartedSettings');
+	const description = browser.i18n.getMessage('popupGettingStartedDescription');
 
 	return h(
 		Card,

@@ -60,9 +60,9 @@ const ICONS = {
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function Icon( { icon, width, height, className } ) {
-	const { viewBoxWidth = 512, path } = ICONS[ icon ];
-	const classes = [ 'icon', className ].filter( Boolean ).join( ' ' );
+function Icon({ icon, width, height, className }) {
+	const { viewBoxWidth = 512, path } = ICONS[icon];
+	const classes = ['icon', className].filter(Boolean).join(' ');
 
 	return h(
 		'svg',
@@ -71,15 +71,15 @@ function Icon( { icon, width, height, className } ) {
 			focusable: 'false',
 			role: 'img',
 			xmlns: 'http://www.w3.org/2000/svg',
-			viewBox: `0 0 ${ viewBoxWidth } 512`,
+			viewBox: `0 0 ${viewBoxWidth} 512`,
 			className: classes,
 			width,
 			height,
 		},
-		h( 'path', {
+		h('path', {
 			fill: 'currentColor',
 			d: path,
-		} )
+		})
 	);
 }
 

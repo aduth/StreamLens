@@ -10,18 +10,18 @@ import glob from 'fast-glob';
  */
 import './setup.js';
 
-( async () => {
-	const suites = glob.stream( '+(background|packages|options|popup)/**/test/*.js' );
+(async () => {
+	const suites = glob.stream('+(background|packages|options|popup)/**/test/*.js');
 
-	console.log( 'Running…\n' );
+	console.log('Running…\n');
 
 	const progress = [];
 
-	for await ( const suite of suites ) {
+	for await (const suite of suites) {
 		progress.push(
-			import( '../' + suite )
-				.then( () => console.log( '✅ ', suite ) )
-				.catch( ( error ) => {
+			import('../' + suite)
+				.then(() => console.log('✅ ', suite))
+				.catch((error) => {
 					console.error(
 						'🚨 \x1b[31mError on test:',
 						error.message,
@@ -37,12 +37,12 @@ import './setup.js';
 						'\n\n'
 					);
 
-					process.exit( 1 );
-				} )
+					process.exit(1);
+				})
 		);
 	}
 
-	await Promise.all( progress );
+	await Promise.all(progress);
 
-	console.log( '\nAll tests run successfully!' );
-} )();
+	console.log('\nAll tests run successfully!');
+})();

@@ -31,7 +31,7 @@ import Icon from './icon.js';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function IconButton( { onClick, label, tooltipPosition, ...iconProps } ) {
+function IconButton({ onClick, label, tooltipPosition, ...iconProps }) {
 	return h(
 		Tooltip,
 		{
@@ -43,7 +43,7 @@ function IconButton( { onClick, label, tooltipPosition, ...iconProps } ) {
 			'aria-label': label,
 			onClick,
 		},
-		h( Icon, iconProps )
+		h(Icon, iconProps)
 	);
 }
 

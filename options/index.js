@@ -10,9 +10,9 @@ import { replica } from 'unistore-browser-sync';
  */
 import Root from './components/root.js';
 
-replica( createStore() ).then( ( store ) => {
-	const appRoot = document.getElementById( 'app' );
-	if ( appRoot ) {
-		render( h( Root, { store } ), appRoot );
+replica(createStore()).then((store) => {
+	const appRoot = document.getElementById('app');
+	if (appRoot) {
+		render(h(Root, { store }), appRoot);
 	}
-} );
+});

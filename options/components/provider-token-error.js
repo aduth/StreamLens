@@ -21,23 +21,23 @@ import { getProviderLabel } from '@streamlens/components/provider-label';
  *
  * @return {?import('preact').VNode} Rendered element.
  */
-function ProviderTokenError( { providerName } ) {
+function ProviderTokenError({ providerName }) {
 	const dispatch = useDispatch();
 
-	const label = getProviderLabel( providerName );
-	if ( ! label ) {
+	const label = getProviderLabel(providerName);
+	if (!label) {
 		return null;
 	}
 
-	const text = browser.i18n.getMessage( 'providerTokenError', [ label ] );
-	const buttonText = browser.i18n.getMessage( 'providerTokenErrorFix' );
+	const text = browser.i18n.getMessage('providerTokenError', [label]);
+	const buttonText = browser.i18n.getMessage('providerTokenErrorFix');
 
-	return h( Notice, {
+	return h(Notice, {
 		icon: 'alert',
-		buttonOnClick: () => dispatch( 'authenticate', providerName ),
+		buttonOnClick: () => dispatch('authenticate', providerName),
 		text,
 		buttonText,
-	} );
+	});
 }
 
 export default ProviderTokenError;

@@ -19,7 +19,7 @@ const LABELS = {
  *
  * @return {?string} Provider label.
  */
-export const getProviderLabel = ( providerName ) => LABELS[ providerName ] || null;
+export const getProviderLabel = (providerName) => LABELS[providerName] || null;
 
 /**
  * Returns a Provider Label element.
@@ -29,6 +29,6 @@ export const getProviderLabel = ( providerName ) => LABELS[ providerName ] || nu
  *
  * @return {import('preact').VNode} Rendered element.
  */
-const ProviderLabel = ( { providerName } ) => h( Fragment, null, getProviderLabel( providerName ) );
+const ProviderLabel = ({ providerName }) => h(Fragment, null, getProviderLabel(providerName));
 
 export default ProviderLabel;

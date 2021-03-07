@@ -15,8 +15,8 @@ import { useSelector } from 'prsh';
  *
  * @return {SLSelected} Selector-derived value.
  */
-function useSelect( selector ) {
-	return useSelector( selector );
+function useSelect(selector) {
+	return useSelector(selector);
 }
 
 export default useSelect;

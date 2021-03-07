@@ -108,6 +108,6 @@ export async function getInitialState() {
 	// Merge provided initial state (e.g. from persistence) with default.
 	return {
 		...DEFAULT_STATE,
-		...( await persistence.get() ),
+		...(await persistence.get()),
 	};
 }

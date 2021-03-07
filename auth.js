@@ -1,1 +1,1 @@
-browser.runtime.sendMessage( window.location.href );
+browser.runtime.sendMessage(window.location.href);

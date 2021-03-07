@@ -61,33 +61,33 @@ const POPUP_HEIGHT = 780;
  *
  * @return {string} Authorization URL.
  */
-function getAuthURL( { authEndpoint, params, interactive } ) {
-	const url = new URL( authEndpoint );
+function getAuthURL({ authEndpoint, params, interactive }) {
+	const url = new URL(authEndpoint);
 
-	for ( const key in PARAMETERS ) {
+	for (const key in PARAMETERS) {
 		// Assign value from constant as default.
-		let value = PARAMETERS[ key ];
+		let value = PARAMETERS[key];
 
 		// Defer to passed value.
-		if ( params.hasOwnProperty( key ) ) {
-			value = params[ key ];
+		if (params.hasOwnProperty(key)) {
+			value = params[key];
 		}
 
 		// Only set if defined.
-		if ( value !== undefined ) {
-			url.searchParams.set( snakeCase( key ), value );
+		if (value !== undefined) {
+			url.searchParams.set(snakeCase(key), value);
 		}
 	}
 
 	// Generate nonce for CSRF protection, verified upon a received token.
 	const nonce = getRandomString();
-	url.searchParams.set( 'state', nonce );
+	url.searchParams.set('state', nonce);
 
 	// Non-interactive is effected via `prompt` parameter.
 	//
 	// See: https://openid.net/specs/openid-connect-core-1_0.html#Authenticates
-	if ( ! interactive ) {
-		url.searchParams.set( 'prompt', 'none' );
+	if (!interactive) {
+		url.searchParams.set('prompt', 'none');
 	}
 
 	return url.toString();
@@ -100,10 +100,10 @@ function getAuthURL( { authEndpoint, params, interactive } ) {
  *
  * @return {string} Nonce string.
  */
-export function getRandomString( length = 32 ) {
-	return Array.from( window.crypto.getRandomValues( new Uint32Array( length ) ) )
-		.map( ( i ) => i.toString( 36 ).slice( -1 ) )
-		.join( '' );
+export function getRandomString(length = 32) {
+	return Array.from(window.crypto.getRandomValues(new Uint32Array(length)))
+		.map((i) => i.toString(36).slice(-1))
+		.join('');
 }
 
 /**
@@ -124,8 +124,8 @@ export function getRandomString( length = 32 ) {
  *                                        or `null` if failed non-interactive
  *                                        refresh.
  */
-export async function launchOAuthFlow( { authEndpoint, params = {}, interactive = false } ) {
-	const url = getAuthURL( { authEndpoint, params, interactive } );
+export async function launchOAuthFlow({ authEndpoint, params = {}, interactive = false }) {
+	const url = getAuthURL({ authEndpoint, params, interactive });
 
 	/**
 	 * Attempts to extract token from message if message is a URL with state,
@@ -137,18 +137,18 @@ export async function launchOAuthFlow( { authEndpoint, params = {}, interactive 
 	 *                               value indicates a completed authorization
 	 *                               for which the token was omitted (denied).
 	 */
-	function getTokenFromMessage( message ) {
+	function getTokenFromMessage(message) {
 		let hash;
 		try {
-			( { hash } = new URL( message ) );
-		} catch ( error ) {
+			({ hash } = new URL(message));
+		} catch (error) {
 			return;
 		}
 
-		const messageParams = new URLSearchParams( hash.slice( 1 ) );
-		const nonce = new URLSearchParams( url ).get( 'state' );
+		const messageParams = new URLSearchParams(hash.slice(1));
+		const nonce = new URLSearchParams(url).get('state');
 
-		if ( messageParams.get( 'state' ) === nonce ) {
+		if (messageParams.get('state') === nonce) {
 			// At this point, it can be certain that the message is the response
 			// from the endpoint. It's not guaranteed that the access token is
 			// present in the parameters (e.g. in case of error or denied
@@ -156,32 +156,32 @@ export async function launchOAuthFlow( { authEndpoint, params = {}, interactive 
 			// case of a missing value, the token can be differentiated between
 			// `undefined` and `null` as indicating whether a response (valid or
 			// not) was received.
-			return messageParams.get( 'access_token' );
+			return messageParams.get('access_token');
 		}
 	}
 
 	return interactive
-		? new Promise( async ( resolve ) => {
+		? new Promise(async (resolve) => {
 				const currentWindow = await browser.windows.getCurrent();
 				const { left = 0, width = 0, top = 0, height = 0 } = currentWindow;
-				const authWindow = await browser.windows.create( {
+				const authWindow = await browser.windows.create({
 					url,
 					type: 'popup',
 					width: POPUP_WIDTH,
 					height: POPUP_HEIGHT,
-					left: Math.floor( left + width / 2 - POPUP_WIDTH / 2 ),
-					top: Math.floor( top + height / 2 - POPUP_HEIGHT / 2 ),
-				} );
+					left: Math.floor(left + width / 2 - POPUP_WIDTH / 2),
+					top: Math.floor(top + height / 2 - POPUP_HEIGHT / 2),
+				});
 
 				/**
 				 * Resolve with token, if received, and remove event listeners.
 				 *
 				 * @param {?(string|undefined)} token Token, if received.
 				 */
-				async function onAuthComplete( token ) {
-					browser.runtime.onMessage.removeListener( checkForToken );
-					browser.windows.onRemoved.removeListener( onWindowClosed );
-					resolve( token );
+				async function onAuthComplete(token) {
+					browser.runtime.onMessage.removeListener(checkForToken);
+					browser.windows.onRemoved.removeListener(onWindowClosed);
+					resolve(token);
 				}
 
 				/**
@@ -191,11 +191,11 @@ export async function launchOAuthFlow( { authEndpoint, params = {}, interactive 
 				 * @param {*}                             message Browser message.
 				 * @param {browser.runtime.MessageSender} sender  Message sender.
 				 */
-				function checkForToken( message, sender ) {
-					const token = getTokenFromMessage( message );
-					if ( sender.tab && sender.tab.windowId === authWindow.id ) {
-						onAuthComplete( token );
-						browser.windows.remove( authWindow.id );
+				function checkForToken(message, sender) {
+					const token = getTokenFromMessage(message);
+					if (sender.tab && sender.tab.windowId === authWindow.id) {
+						onAuthComplete(token);
+						browser.windows.remove(authWindow.id);
 					}
 				}
 
@@ -205,17 +205,17 @@ export async function launchOAuthFlow( { authEndpoint, params = {}, interactive 
 				 *
 				 * @param {number} windowId ID of window closed.
 				 */
-				function onWindowClosed( windowId ) {
-					if ( windowId === authWindow.id ) {
-						onAuthComplete( undefined );
+				function onWindowClosed(windowId) {
+					if (windowId === authWindow.id) {
+						onAuthComplete(undefined);
 					}
 				}
 
-				browser.windows.onRemoved.addListener( onWindowClosed );
-				browser.runtime.onMessage.addListener( checkForToken );
-		  } )
-		: new Promise( ( resolve ) => {
-				const iframe = document.createElement( 'iframe' );
+				browser.windows.onRemoved.addListener(onWindowClosed);
+				browser.runtime.onMessage.addListener(checkForToken);
+		  })
+		: new Promise((resolve) => {
+				const iframe = document.createElement('iframe');
 				iframe.src = url;
 
 				/**
@@ -224,20 +224,20 @@ export async function launchOAuthFlow( { authEndpoint, params = {}, interactive 
 				 *
 				 * @param {*} message Browser message.
 				 */
-				async function checkForToken( message ) {
-					const token = getTokenFromMessage( message );
+				async function checkForToken(message) {
+					const token = getTokenFromMessage(message);
 
 					// See above note in `getTokenFromMessage`. A non-undefined
 					// token, whether null or valid token, is indicative of the
 					// completion of the authorization flow for this request.
-					if ( token !== undefined ) {
-						resolve( token );
-						browser.runtime.onMessage.removeListener( checkForToken );
-						document.body.removeChild( iframe );
+					if (token !== undefined) {
+						resolve(token);
+						browser.runtime.onMessage.removeListener(checkForToken);
+						document.body.removeChild(iframe);
 					}
 				}
 
-				browser.runtime.onMessage.addListener( checkForToken );
-				document.body.appendChild( iframe );
-		  } );
+				browser.runtime.onMessage.addListener(checkForToken);
+				document.body.appendChild(iframe);
+		  });
 }

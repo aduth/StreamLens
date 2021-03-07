@@ -21,21 +21,21 @@ import Section from './section.js';
  * @return {import('preact').VNode} Rendered element.
  */
 function ColorSchemeSetting() {
-	const currentValue = useSelect( ( state ) => state.preferences.colorScheme );
+	const currentValue = useSelect((state) => state.preferences.colorScheme);
 	const dispatch = useDispatch();
-	const title = browser.i18n.getMessage( 'optionsColorSchemeTitle' );
-	const description = browser.i18n.getMessage( 'optionsColorSchemeDescription' );
+	const title = browser.i18n.getMessage('optionsColorSchemeTitle');
+	const description = browser.i18n.getMessage('optionsColorSchemeDescription');
 	const options = [
 		{
-			label: browser.i18n.getMessage( 'optionsColorSchemeInherit' ),
+			label: browser.i18n.getMessage('optionsColorSchemeInherit'),
 			value: null,
 		},
 		{
-			label: browser.i18n.getMessage( 'optionsColorSchemeLight' ),
+			label: browser.i18n.getMessage('optionsColorSchemeLight'),
 			value: 'light',
 		},
 		{
-			label: browser.i18n.getMessage( 'optionsColorSchemeDark' ),
+			label: browser.i18n.getMessage('optionsColorSchemeDark'),
 			value: 'dark',
 		},
 	];
@@ -49,22 +49,22 @@ function ColorSchemeSetting() {
 		h(
 			'ul',
 			{ className: 'color-scheme-setting' },
-			options.map( ( { label, value } ) =>
+			options.map(({ label, value }) =>
 				h(
 					'li',
 					{ key: value },
 					h(
 						'label',
 						null,
-						h( 'input', {
+						h('input', {
 							type: 'radio',
 							name: 'color-scheme-setting',
 							checked: value === currentValue,
 							onInput: () =>
-								dispatch( 'setPreferences', {
+								dispatch('setPreferences', {
 									colorScheme: value,
-								} ),
-						} ),
+								}),
+						}),
 						label
 					)
 				)

@@ -30,9 +30,9 @@ import { providers } from '../providers.js';
  *
  * @return {Partial<SLState>} State patch object.
  */
-export function registerProviderName( state, name ) {
+export function registerProviderName(state, name) {
 	return {
-		providerNames: [ ...new Set( [ ...state.providerNames, name ] ) ],
+		providerNames: [...new Set([...state.providerNames, name])],
 	};
 }
 
@@ -47,15 +47,15 @@ export function registerProviderName( state, name ) {
  *
  * @return {Partial<SLState>} State patch object.
  */
-export function updateStreams( state, providerName, streams, receivedAt = Date.now() ) {
+export function updateStreams(state, providerName, streams, receivedAt = Date.now()) {
 	return {
 		streams: {
-			data: [ ...reject( state.streams.data, { providerName } ), ...streams ].sort(
-				( a, b ) => b.viewers - a.viewers
+			data: [...reject(state.streams.data, { providerName }), ...streams].sort(
+				(a, b) => b.viewers - a.viewers
 			),
 			lastReceived: {
 				...state.streams.lastReceived,
-				[ providerName ]: receivedAt,
+				[providerName]: receivedAt,
 			},
 		},
 	};
@@ -69,35 +69,35 @@ export function updateStreams( state, providerName, streams, receivedAt = Date.n
  *
  * @return {Promise<Partial<SLState>>} State patch object.
  */
-export async function authenticate( state, providerName ) {
-	if ( ! providers.hasOwnProperty( providerName ) ) {
+export async function authenticate(state, providerName) {
+	if (!providers.hasOwnProperty(providerName)) {
 		return {};
 	}
 
-	const { clientId } = applications[ providerName ];
-	const { authEndpoint, getUser } = providers[ providerName ];
+	const { clientId } = applications[providerName];
+	const { authEndpoint, getUser } = providers[providerName];
 
-	const token = await launchOAuthFlow( {
+	const token = await launchOAuthFlow({
 		authEndpoint,
 		interactive: true,
 		params: { clientId },
-	} );
+	});
 
-	if ( ! token ) {
+	if (!token) {
 		return {};
 	}
 
 	let user;
 	try {
-		user = await getUser( token );
-	} catch ( error ) {
+		user = await getUser(token);
+	} catch (error) {
 		return {};
 	}
 
 	return {
 		auth: {
 			...state.auth,
-			[ providerName ]: { token, user },
+			[providerName]: { token, user },
 		},
 	};
 }
@@ -110,13 +110,13 @@ export async function authenticate( state, providerName ) {
  *
  * @return {Partial<SLState>} State patch object.
  */
-export function deauthenticate( state, providerName ) {
+export function deauthenticate(state, providerName) {
 	return {
 		streams: {
-			data: reject( state.streams.data, { providerName } ),
-			lastReceived: omit( state.streams.lastReceived, providerName ),
+			data: reject(state.streams.data, { providerName }),
+			lastReceived: omit(state.streams.lastReceived, providerName),
 		},
-		auth: omit( state.auth, providerName ),
+		auth: omit(state.auth, providerName),
 	};
 }
 
@@ -128,26 +128,26 @@ export function deauthenticate( state, providerName ) {
  *
  * @return {Promise<Partial<SLState>>} State patch object.
  */
-export async function setTokenError( state, providerName ) {
-	const { clientId } = applications[ providerName ];
-	const { authEndpoint, supportsOIDC } = providers[ providerName ];
+export async function setTokenError(state, providerName) {
+	const { clientId } = applications[providerName];
+	const { authEndpoint, supportsOIDC } = providers[providerName];
 
 	let nextToken;
-	if ( supportsOIDC ) {
+	if (supportsOIDC) {
 		// If the provider supports OpenID Connect, an attempt can be made to
 		// silently refresh the authorization token via the `prompt` parameter.
-		nextToken = await launchOAuthFlow( {
+		nextToken = await launchOAuthFlow({
 			authEndpoint,
 			params: { clientId },
-		} );
+		});
 	}
 
 	return {
-		streams: deauthenticate( state, providerName ).streams,
+		streams: deauthenticate(state, providerName).streams,
 		auth: {
 			...state.auth,
-			[ providerName ]: {
-				...state.auth[ providerName ],
+			[providerName]: {
+				...state.auth[providerName],
 				token: nextToken || null,
 			},
 		},
@@ -162,7 +162,7 @@ export async function setTokenError( state, providerName ) {
  *
  * @return {Partial<SLState>} State patch object.
  */
-export function setPreferences( state, preferences ) {
+export function setPreferences(state, preferences) {
 	return {
 		preferences: {
 			...state.preferences,

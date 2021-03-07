@@ -26,19 +26,19 @@ import Icon from './icon.js';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
-	className = [ 'notice', className ].filter( Boolean ).join( ' ' );
+function Notice({ icon, text, buttonText, buttonOnClick, className }) {
+	className = ['notice', className].filter(Boolean).join(' ');
 
 	return h(
 		'div',
 		{ className },
 		icon &&
-			h( Icon, {
+			h(Icon, {
 				icon,
 				height: '18',
 				className: 'notice__icon',
-			} ),
-		h( 'div', { className: 'notice__text' }, text ),
+			}),
+		h('div', { className: 'notice__text' }, text),
 		buttonText &&
 			buttonOnClick &&
 			h(

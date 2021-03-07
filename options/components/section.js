@@ -17,12 +17,12 @@ import { h } from 'preact';
  *
  * @return {import('preact').VNode} Rendered element.
  */
-function Section( { title, description, children } ) {
+function Section({ title, description, children }) {
 	return h(
 		'section',
 		{ className: 'section' },
-		h( 'header', null, h( 'h2', { className: 'section__heading' }, title ) ),
-		description && h( 'p', { className: 'section__description' }, description ),
+		h('header', null, h('h2', { className: 'section__heading' }, title)),
+		description && h('p', { className: 'section__description' }, description),
 		children
 	);
 }
