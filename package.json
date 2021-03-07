@@ -8,14 +8,14 @@
 		"packages/**"
 	],
 	"scripts": {
-		"build": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-factory=h",
-		"dev": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-fragment=Fragment --sourcemap=inline --watch",
+		"build": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-factory=h",
+		"dev": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-fragment=Fragment --sourcemap=inline --watch",
 		"test": "npm run test:lint && npm run test:types && npm run test:unit",
 		"clean": "rm -rf build",
 		"prepare": "npm run clean && npm run build",
 		"test:lint": "eslint .",
 		"test:types": "tsc",
-		"test:unit": "node --experimental-loader @streamlens/esbuild-loader/jsx test/runner.js",
+		"test:unit": "node --experimental-loader @streamlens/esbuild-loader test/runner.js",
 		"prebundle": "npm run prepare",
 		"bundle": "npm-pack-zip"
 	},

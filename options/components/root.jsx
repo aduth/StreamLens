@@ -5,17 +5,10 @@ import { h } from 'preact';
 import { StoreContext } from 'prsh';
 
 /**
- * Project dependencies
- */
-import { ColorScheme } from '@streamlens/components';
-
-/**
  * Internal dependencies
  */
-import TokenErrors from './token-errors.js';
-import GettingStarted from './getting-started.js';
-import StreamList from './stream-list.js';
-import { SearchProvider } from './search-context.js';
+import ProviderAuthorizations from './provider-authorizations.jsx';
+import ColorSchemeSetting from './color-scheme-setting.jsx';
 
 /** @typedef {import('unistore-browser-sync').SyncStore} SyncStore */
 
@@ -28,13 +21,8 @@ import { SearchProvider } from './search-context.js';
 function Root({ store }) {
 	return (
 		<StoreContext.Provider value={store}>
-			<SearchProvider>
-				<ColorScheme>
-					<TokenErrors />
-					<GettingStarted />
-					<StreamList />
-				</ColorScheme>
-			</SearchProvider>
+			<ProviderAuthorizations />
+			<ColorSchemeSetting />
 		</StoreContext.Provider>
 	);
 }

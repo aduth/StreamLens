@@ -6,7 +6,7 @@ import { strictEqual } from 'assert';
 /**
  * Internal dependencies
  */
-import { isTolerantStringMatch } from '../stream-list.js';
+import { isTolerantStringMatch } from '../stream-list.jsx';
 
 /* isTolerantStringMatch */
 

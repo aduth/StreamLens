@@ -11,8 +11,8 @@ import { useSelect } from '@streamlens/hooks';
 /**
  * Internal dependencies
  */
-import Section from './section.js';
-import ProviderAuthorization from './provider-authorization.js';
+import Section from './section.jsx';
+import ProviderAuthorization from './provider-authorization.jsx';
 
 /**
  * Returns a Provider Authorizations element.

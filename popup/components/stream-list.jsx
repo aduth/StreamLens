@@ -14,11 +14,11 @@ import { useSelect } from '@streamlens/hooks';
 /**
  * Internal dependencies
  */
-import Stream from './stream.js';
-import Toolbar from './toolbar.js';
-import NoStreamsLive from './no-streams-live.js';
-import NoSearchResults from './no-search-results.js';
-import { SearchContext } from './search-context.js';
+import Stream from './stream.jsx';
+import Toolbar from './toolbar.jsx';
+import NoStreamsLive from './no-streams-live.jsx';
+import NoSearchResults from './no-search-results.jsx';
+import { SearchContext } from './search-context.jsx';
 
 /** @typedef {import('/background/store').SLStream} SLStream */
 

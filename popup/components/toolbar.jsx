@@ -12,7 +12,7 @@ import { IconButton, VisuallyHidden } from '@streamlens/components';
 /**
  * Internal dependencies
  */
-import { SearchContext } from './search-context.js';
+import { SearchContext } from './search-context.jsx';
 
 /** @typedef {import('@streamlens/components/tooltip').TooltipPosition} TooltipPosition */
 

@@ -12,7 +12,7 @@ import { useSelect, useDispatch } from '@streamlens/hooks';
 /**
  * Internal dependencies
  */
-import ProviderTokenError from './provider-token-error.js';
+import ProviderTokenError from './provider-token-error.jsx';
 
 /** @typedef {import('/background/providers').SLProvider} SLProvider */
 

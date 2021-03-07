@@ -8,7 +8,7 @@ import { replica } from 'unistore-browser-sync';
 /**
  * Internal dependencies
  */
-import Root from './components/root.js';
+import Root from './components/root.jsx';
 
 replica(createStore()).then((store) => {
 	const appRoot = document.getElementById('app');

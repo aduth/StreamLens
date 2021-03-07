@@ -1,9 +1,5 @@
 {
 	"name": "@streamlens/esbuild-loader",
 	"private": true,
-	"type": "module",
-	"exports": {
-		".": "./index.js",
-		"./jsx": "./jsx.js"
-	}
+	"type": "module"
 }

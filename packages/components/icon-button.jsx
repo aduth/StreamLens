@@ -6,8 +6,8 @@ import { h } from 'preact';
 /**
  * Internal dependencies
  */
-import Tooltip from './tooltip.js';
-import Icon from './icon.js';
+import Tooltip from './tooltip.jsx';
+import Icon from './icon.jsx';
 
 /** @typedef {import('./tooltip').TooltipPosition} TooltipPosition */
 

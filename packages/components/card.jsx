@@ -6,7 +6,7 @@ import { h } from 'preact';
 /**
  * Internal dependencies
  */
-import Icon from './icon.js';
+import Icon from './icon.jsx';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
