@@ -8,14 +8,14 @@
 		"packages/**"
 	],
 	"scripts": {
-		"build": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm",
-		"dev": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm --sourcemap=inline --watch",
+		"build": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-factory=h",
+		"dev": "esbuild background/index.js popup/index.js options/index.js --bundle --outdir=build --format=esm --loader:.js=jsx --jsx-fragment=Fragment --sourcemap=inline --watch",
 		"test": "npm run test:lint && npm run test:types && npm run test:unit",
 		"clean": "rm -rf build",
 		"prepare": "npm run clean && npm run build",
 		"test:lint": "eslint .",
 		"test:types": "tsc",
-		"test:unit": "node test/runner.js",
+		"test:unit": "node --experimental-loader @streamlens/esbuild-loader/jsx test/runner.js",
 		"prebundle": "npm run prepare",
 		"bundle": "npm-pack-zip"
 	},
@@ -65,6 +65,7 @@
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
+		"eslint-plugin-react": "^7.22.0",
 		"fast-glob": "^3.2.5",
 		"npm-pack-zip": "^1.2.9",
 		"prettier": "^2.2.1",

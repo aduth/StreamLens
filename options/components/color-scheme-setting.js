@@ -15,10 +15,6 @@ import Section from './section.js';
 
 /**
  * Returns a Provider Authorizations element.
- *
- * @type {import('preact').FunctionComponent}
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function ColorSchemeSetting() {
 	const currentValue = useSelect((state) => state.preferences.colorScheme);
@@ -40,36 +36,28 @@ function ColorSchemeSetting() {
 		},
 	];
 
-	return h(
-		Section,
-		{
-			title,
-			description,
-		},
-		h(
-			'ul',
-			{ className: 'color-scheme-setting' },
-			options.map(({ label, value }) =>
-				h(
-					'li',
-					{ key: value },
-					h(
-						'label',
-						null,
-						h('input', {
-							type: 'radio',
-							name: 'color-scheme-setting',
-							checked: value === currentValue,
-							onInput: () =>
-								dispatch('setPreferences', {
-									colorScheme: value,
-								}),
-						}),
-						label
-					)
-				)
-			)
-		)
+	return (
+		<Section title={title} description={description}>
+			<ul className="color-scheme-setting">
+				{options.map(({ label, value }) => (
+					<li key={value}>
+						<label>
+							<input
+								type="radio"
+								name="color-scheme-setting"
+								checked={value === currentValue}
+								onInput={() =>
+									dispatch('setPreferences', {
+										colorScheme: value,
+									})
+								}
+							/>
+							{label}
+						</label>
+					</li>
+				))}
+			</ul>
+		</Section>
 	);
 }
 

@@ -12,18 +12,11 @@ export const SearchContext = createContext(['', () => {}]);
 /**
  * Returns an element which provides the search state context to its children.
  *
- * @type {import('preact').FunctionComponent}
- *
- * @param {Object}            props            Component props.
- * @param {ComponentChildren} [props.children] Context children.
- *
- * @return {import('preact').VNode} Rendered element.
+ * @param {Object}            props          Component props.
+ * @param {ComponentChildren} props.children Context children.
  */
 export function SearchProvider({ children }) {
 	const value = useState('');
 
-	return h(SearchContext.Provider, {
-		value,
-		children,
-	});
+	return <SearchContext.Provider value={value}>{children}</SearchContext.Provider>;
 }

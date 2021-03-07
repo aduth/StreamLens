@@ -18,10 +18,6 @@ import { SearchContext } from './search-context.js';
 
 /**
  * Returns a stream list toolbar.
- *
- * @type {import('preact').FunctionComponent}
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function Toolbar() {
 	/** @type {import('preact/hooks').PropRef<HTMLInputElement>} */
@@ -46,36 +42,32 @@ function Toolbar() {
 
 	const searchLabel = browser.i18n.getMessage('popupToolbarSearchLabel');
 
-	return h(
-		'nav',
-		{ className: 'toolbar' },
-		h(
-			'label',
-			{ className: 'toolbar__search' },
-			h('input', {
-				ref: /** @type {import('preact').Ref<any>} */ (inputRef),
-				type: 'text',
-				placeholder: searchLabel,
-				spellcheck: false,
-				value: search,
-				autocomplete: 'false',
-				autofocus: true,
-				onInput: (event) => setSearch(event.currentTarget.value),
-				className: 'toolbar__search-input',
-			}),
-			h(VisuallyHidden, null, searchLabel)
-		),
-		h(
-			'div',
-			{ className: 'toolbar__controls' },
-			h(IconButton, {
-				label: browser.i18n.getMessage('popupToolbarSettings'),
-				tooltipPosition: /** @type {TooltipPosition} */ ('bottom-left'),
-				icon: 'cog',
-				width: '16',
-				onClick: openOptionsPage,
-			})
-		)
+	return (
+		<nav className="toolbar">
+			<label className="toolbar__search">
+				<input
+					ref={/** @type {import('preact').Ref<any>} */ (inputRef)}
+					type="text"
+					placeholder={searchLabel}
+					spellcheck={false}
+					value={search}
+					autocomplete="false"
+					autofocus={true}
+					onInput={(event) => setSearch(event.currentTarget.value)}
+					className="toolbar__search-input"
+				/>
+				<VisuallyHidden>{searchLabel}</VisuallyHidden>
+			</label>
+			<div className="toolbar__controls">
+				<IconButton
+					label={browser.i18n.getMessage('popupToolbarSettings')}
+					tooltipPosition={/** @type {TooltipPosition} */ ('bottom-left')}
+					icon="cog"
+					width="16"
+					onClick={openOptionsPage}
+				/>
+			</div>
+		</nav>
 	);
 }
 

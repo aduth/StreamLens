@@ -13,13 +13,9 @@ import { getProviderLabel } from '@streamlens/components/provider-label';
 /**
  * Returns a Token Errors element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {Object} props              Component props.
  * @param {string} props.providerName Name of provider for which token error
  *                                    occurred.
- *
- * @return {?import('preact').VNode} Rendered element.
  */
 function ProviderTokenError({ providerName }) {
 	const dispatch = useDispatch();
@@ -32,12 +28,14 @@ function ProviderTokenError({ providerName }) {
 	const text = browser.i18n.getMessage('providerTokenError', [label]);
 	const buttonText = browser.i18n.getMessage('providerTokenErrorFix');
 
-	return h(Notice, {
-		icon: 'alert',
-		buttonOnClick: () => dispatch('authenticate', providerName),
-		text,
-		buttonText,
-	});
+	return (
+		<Notice
+			icon="alert"
+			buttonOnClick={() => dispatch('authenticate', providerName)}
+			text={text}
+			buttonText={buttonText}
+		/>
+	);
 }
 
 export default ProviderTokenError;

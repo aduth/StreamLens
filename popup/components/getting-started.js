@@ -12,10 +12,6 @@ import { Card } from '@streamlens/components';
 
 /**
  * Returns a Getting Started element.
- *
- * @type {import('preact').FunctionComponent}
- *
- * @return {?import('preact').VNode} Rendered element.
  */
 function GettingStarted() {
 	const auth = useSelect((state) => state.auth);
@@ -29,18 +25,18 @@ function GettingStarted() {
 	const buttonText = browser.i18n.getMessage('popupGettingStartedSettings');
 	const description = browser.i18n.getMessage('popupGettingStartedDescription');
 
-	return h(
-		Card,
-		{
-			icon: 'video',
-			buttonOnClick() {
+	return (
+		<Card
+			icon="video"
+			buttonOnClick={() => {
 				browser.runtime.openOptionsPage();
 				window.close();
-			},
-			title,
-			buttonText,
-		},
-		description
+			}}
+			title={title}
+			buttonText={buttonText}
+		>
+			{description}
+		</Card>
 	);
 }
 

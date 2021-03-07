@@ -54,32 +54,25 @@ const ICONS = {
 /**
  * Returns an Icon element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {IconProps} props Component props.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function Icon({ icon, width, height, className }) {
 	const { viewBoxWidth = 512, path } = ICONS[icon];
 	const classes = ['icon', className].filter(Boolean).join(' ');
 
-	return h(
-		'svg',
-		{
-			'aria-hidden': true,
-			focusable: 'false',
-			role: 'img',
-			xmlns: 'http://www.w3.org/2000/svg',
-			viewBox: `0 0 ${viewBoxWidth} 512`,
-			className: classes,
-			width,
-			height,
-		},
-		h('path', {
-			fill: 'currentColor',
-			d: path,
-		})
+	return (
+		<svg
+			aria-hidden
+			focusable="false"
+			role="img"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox={`0 0 ${viewBoxWidth} 512`}
+			className={classes}
+			width={width}
+			height={height}
+		>
+			<path fill="currentColor" d={path} />
+		</svg>
 	);
 }
 

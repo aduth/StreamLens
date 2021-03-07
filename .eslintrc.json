@@ -1,8 +1,12 @@
 {
 	"extends": ["eslint:recommended", "plugin:prettier/recommended"],
+	"plugins": ["react"],
 	"parserOptions": {
 		"ecmaVersion": 2020,
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	},
 	"env": {
 		"es6": true,
@@ -11,8 +15,17 @@
 	"globals": {
 		"browser": true
 	},
+	"settings": {
+		"react": {
+			"pragma": "h",
+			"Fragment": "Fragment"
+		}
+	},
 	"rules": {
 		"prettier/prettier": "error",
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/react-in-jsx-scope": "error",
 		"no-async-promise-executor": "off",
 		"no-empty": ["error", { "allowEmptyCatch": true }],
 		"no-prototype-builtins": "off"

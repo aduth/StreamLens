@@ -26,9 +26,7 @@ export const getProviderLabel = (providerName) => LABELS[providerName] || null;
  *
  * @param {Object} props              Component props.
  * @param {string} props.providerName Provider name for which to return label.
- *
- * @return {import('preact').VNode} Rendered element.
  */
-const ProviderLabel = ({ providerName }) => h(Fragment, null, getProviderLabel(providerName));
+const ProviderLabel = ({ providerName }) => <>{getProviderLabel(providerName)}</>;
 
 export default ProviderLabel;

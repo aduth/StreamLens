@@ -25,25 +25,21 @@ import Icon from './icon.js';
 /**
  * Returns an Icon element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {import('./icon').IconProps & IconButtonProps} props Component props.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function IconButton({ onClick, label, tooltipPosition, ...iconProps }) {
-	return h(
-		Tooltip,
-		{
-			tagName: 'button',
-			position: tooltipPosition,
-			text: label,
-			type: 'button',
-			className: 'icon-button',
-			'aria-label': label,
-			onClick,
-		},
-		h(Icon, iconProps)
+	return (
+		<Tooltip
+			tagName="button"
+			position={tooltipPosition}
+			text={label}
+			type="button"
+			className="icon-button"
+			aria-label={label}
+			onClick={onClick}
+		>
+			<Icon {...iconProps} />
+		</Tooltip>
 	);
 }
 

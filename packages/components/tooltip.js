@@ -25,11 +25,7 @@ import { h } from 'preact';
 /**
  * Returns a Tooltip element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {TooltipProps & Record<string,any>} props Component props.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function Tooltip({ tagName = 'div', text, position = 'top', children, className, ...props }) {
 	const [y, x = 'center'] = position.split('-');
@@ -41,11 +37,8 @@ function Tooltip({ tagName = 'div', text, position = 'top', children, className,
 			...props,
 			className: classes,
 		},
-		h('span', {
-			'aria-hidden': true,
-			clssName: 'tooltip__arrow',
-		}),
-		h('span', { className: 'tooltip__text' }, text),
+		<span aria-hidden className="tooltip__arrow" />,
+		<span className="tooltip__text">{text}</span>,
 		children
 	);
 }

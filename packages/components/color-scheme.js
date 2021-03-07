@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { h, Fragment } from 'preact';
 import { useEffect } from 'preact/hooks';
 
 /**
@@ -8,18 +9,14 @@ import { useEffect } from 'preact/hooks';
  */
 import useSelect from '../hooks/use-select.js';
 
-/** @typedef {import('preact').VNode} VNode */
+/** @typedef {import('preact').ComponentChildren} ComponentChildren */
 
 /**
  * Returns a wrapping element which assigns the color context as a data
  * attribute on its wrapping element.
  *
- * @type {import('preact').FunctionComponent}
- *
- * @param {Object} props          Component props.
- * @param {VNode}  props.children Contents of section.
- *
- * @return {import('preact').VNode} Rendered element.
+ * @param {Object}            props          Component props.
+ * @param {ComponentChildren} props.children Contents of section.
  */
 function ColorScheme({ children }) {
 	const colorScheme = useSelect((state) => state.preferences.colorScheme);
@@ -29,7 +26,7 @@ function ColorScheme({ children }) {
 		document.body.dataset.theme = normalColorScheme;
 	}, [colorScheme]);
 
-	return children;
+	return <>{children}</>;
 }
 
 export default ColorScheme;

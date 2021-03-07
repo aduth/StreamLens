@@ -13,10 +13,6 @@ import { useSelect, useDispatch } from '@streamlens/hooks';
 
 /**
  * Returns a Token Errors element.
- *
- * @type {import('preact').FunctionComponent}
- *
- * @return {?import('preact').VNode} Rendered element.
  */
 function TokenErrors() {
 	const dispatch = useDispatch();
@@ -35,15 +31,17 @@ function TokenErrors() {
 	const text = browser.i18n.getMessage('providerTokenError', [label]);
 	const buttonText = browser.i18n.getMessage('providerTokenErrorFix');
 
-	return h(Notice, {
-		icon: 'alert',
-		buttonOnClick() {
-			dispatch('authenticate', invalidProviderName);
-		},
-		className: 'token-errors',
-		text,
-		buttonText,
-	});
+	return (
+		<Notice
+			icon="alert"
+			buttonOnClick={() => {
+				dispatch('authenticate', invalidProviderName);
+			}}
+			className="token-errors"
+			text={text}
+			buttonText={buttonText}
+		/>
+	);
 }
 
 export default TokenErrors;

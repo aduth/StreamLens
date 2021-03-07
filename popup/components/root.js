@@ -22,22 +22,21 @@ import { SearchProvider } from './search-context.js';
 /**
  * Returns a Root element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {Object}    props       Component props.
  * @param {SyncStore} props.store Store instance.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function Root({ store }) {
-	return h(StoreContext.Provider, {
-		value: store,
-		children: h(
-			SearchProvider,
-			null,
-			h(ColorScheme, null, h(TokenErrors, null), h(GettingStarted, null), h(StreamList, null))
-		),
-	});
+	return (
+		<StoreContext.Provider value={store}>
+			<SearchProvider>
+				<ColorScheme>
+					<TokenErrors />
+					<GettingStarted />
+					<StreamList />
+				</ColorScheme>
+			</SearchProvider>
+		</StoreContext.Provider>
+	);
 }
 
 export default Root;

@@ -19,12 +19,8 @@ import ProviderTokenError from './provider-token-error.js';
 /**
  * Returns a Provider Authorization element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {Object} props              Component props.
  * @param {string} props.providerName Provider name.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function ProviderAuthorization({ providerName }) {
 	const dispatch = useDispatch();
@@ -37,41 +33,42 @@ function ProviderAuthorization({ providerName }) {
 		classes += ' is-authorized';
 	}
 
-	return h(
-		Fragment,
-		null,
-		h('h3', { className: 'provider-authorization__heading' }, h(ProviderLabel, { providerName })),
-		providerAuth && providerAuth.token === null && h(ProviderTokenError, { providerName }),
-		providerAuth &&
-			h(
-				'div',
-				{ className: 'provider-authorization__user' },
-				browser.i18n.getMessage('optionsAuthorizationLogin'),
-				' ',
-				h('strong', null, providerAuth.user.login)
-			),
-		h(
-			'button',
-			{
-				onClick() {
+	return (
+		<>
+			<h3 className="provider-authorization__heading">
+				<ProviderLabel providerName={providerName} />
+			</h3>
+			{providerAuth && providerAuth.token === null && (
+				<ProviderTokenError providerName={providerName} />
+			)}
+			{providerAuth && (
+				<div className="provider-authorization__user">
+					{browser.i18n.getMessage('optionsAuthorizationLogin')}' '
+					<strong>{providerAuth.user.login}</strong>
+				</div>
+			)}
+			<button
+				type="button"
+				onClick={() => {
 					dispatch(providerAuth ? 'deauthenticate' : 'authenticate', providerName);
-				},
-				className: classes,
-			},
-			providerAuth
-				? browser.i18n.getMessage('optionsAuthorizationDisconnect')
-				: h(
-						Fragment,
-						null,
-						h('img', {
-							src: `/images/provider-icons/${providerName}.svg`,
-							width: '20',
-							height: '20',
-							className: 'provider-authorization__provider',
-						}),
-						browser.i18n.getMessage('optionsAuthorizationConnect')
-				  )
-		)
+				}}
+				className={classes}
+			>
+				{providerAuth ? (
+					browser.i18n.getMessage('optionsAuthorizationDisconnect')
+				) : (
+					<>
+						<img
+							src={`/images/provider-icons/${providerName}.svg`}
+							width="20"
+							height="20"
+							className="provider-authorization__provider"
+						/>
+						{browser.i18n.getMessage('optionsAuthorizationConnect')}
+					</>
+				)}
+			</button>
+		</>
 	);
 }
 

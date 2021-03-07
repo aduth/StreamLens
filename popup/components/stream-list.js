@@ -72,10 +72,6 @@ function isSearchMatch(search, stream) {
 
 /**
  * Returns a Stream List element.
- *
- * @type {import('preact').FunctionComponent}
- *
- * @return {?import('preact').VNode} Rendered element.
  */
 function StreamList() {
 	const auth = useSelect((state) => state.auth);
@@ -93,7 +89,7 @@ function StreamList() {
 	const numberOfValidConnections = size(reject(auth, { token: null }));
 	const hasFetched = size(streams.lastReceived) === numberOfValidConnections;
 	if (hasFetched && streams.data.length === 0) {
-		return h(NoStreamsLive, null);
+		return <NoStreamsLive />;
 	}
 
 	const filteredStreams = streams.data.filter(isSearchMatch.bind(null, search));
@@ -188,39 +184,28 @@ function StreamList() {
 		}
 	}
 
-	return h(
-		'div',
-		{
-			onKeyDown: incrementHoverIndex,
-			onKeyPress: selectStream,
-			className: 'stream-list',
-		},
-		h(Toolbar, null),
-		hasFetched && filteredStreams.length === 0 && h(NoSearchResults, null),
-		h(
-			'ul',
-			{
-				className: 'stream-list__list',
-				ref: /** @type {import('preact').Ref<any>} */ (listRef),
-			},
-			filteredStreams.map((stream, index) =>
-				h(
-					'li',
-					{
-						key: stream.url,
-						className: ['stream-list__item', index === effectiveHoverIndex && 'is-hovered']
+	return (
+		<div onKeyDown={incrementHoverIndex} onKeyPress={selectStream} className="stream-list">
+			<Toolbar />
+			{hasFetched && filteredStreams.length === 0 && <NoSearchResults />}
+			<ul className="stream-list__list" ref={/** @type {import('preact').Ref<any>} */ (listRef)}>
+				{filteredStreams.map((stream, index) => (
+					<li
+						key={stream.url}
+						className={['stream-list__item', index === effectiveHoverIndex && 'is-hovered']
 							.filter(Boolean)
-							.join(' '),
-						onFocusCapture: () => setHoverIndex(index),
-						onBlurCapture: () => setHoverIndex(null),
-						onMouseEnter: () => setHoverIndex(index),
-						onMouseLeave: () => setHoverIndex(null),
-					},
-					h(Stream, stream)
-				)
-			)
-		),
-		!hasFetched && h(LoadingIndicator, null)
+							.join(' ')}
+						onFocusCapture={() => setHoverIndex(index)}
+						onBlurCapture={() => setHoverIndex(null)}
+						onMouseEnter={() => setHoverIndex(index)}
+						onMouseLeave={() => setHoverIndex(null)}
+					>
+						<Stream {...stream} />
+					</li>
+				))}
+			</ul>
+			{!hasFetched && <LoadingIndicator />}
+		</div>
 	);
 }
 

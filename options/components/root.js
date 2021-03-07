@@ -15,18 +15,16 @@ import ColorSchemeSetting from './color-scheme-setting.js';
 /**
  * Returns a Root element.
  *
- * @type {import('preact').FunctionComponent}
- *
  * @param {Object}    props       Component props.
  * @param {SyncStore} props.store Store instance.
- *
- * @return {import('preact').VNode} Rendered element.
  */
 function Root({ store }) {
-	return h(StoreContext.Provider, {
-		value: store,
-		children: [h(ProviderAuthorizations, null), h(ColorSchemeSetting, null)],
-	});
+	return (
+		<StoreContext.Provider value={store}>
+			<ProviderAuthorizations />
+			<ColorSchemeSetting />
+		</StoreContext.Provider>
+	);
 }
 
 export default Root;

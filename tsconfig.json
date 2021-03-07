@@ -2,18 +2,22 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"/*": [ "*" ]
+			"/*": ["*"]
 		},
 		"module": "esnext",
 		"moduleResolution": "node",
 		"target": "es2019",
 		"allowJs": true,
 		"checkJs": true,
-		"lib": [ "dom", "esnext" ],
+		"lib": ["dom", "esnext"],
 		"skipLibCheck": true,
-		"typeRoots": [ "node_modules/@types", "node_modules/web-ext-types" ],
+		"typeRoots": ["node_modules/@types", "node_modules/web-ext-types"],
 		"noEmit": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"jsx": "preserve",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"jsxImportSource": "preact"
 	},
 	"include": [
 		"background",
@@ -23,5 +27,5 @@
 		"packages/hooks",
 		"packages/components"
 	],
-	"exclude": [ "node_modules" ]
+	"exclude": ["node_modules"]
 }
