@@ -40,6 +40,7 @@ function Notice( { icon, text, buttonText, buttonOnClick, className } ) {
 			} ),
 		h( 'div', { className: 'notice__text' }, text ),
 		buttonText &&
+			buttonOnClick &&
 			h(
 				'button',
 				{

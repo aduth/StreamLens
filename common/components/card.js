@@ -44,6 +44,7 @@ function Card( { icon, title, children, className, buttonText, buttonOnClick } )
 		h( 'h4', { className: 'card__title' }, title ),
 		h( 'p', { className: 'card__description' }, children ),
 		buttonText &&
+			buttonOnClick &&
 			h(
 				'button',
 				{

@@ -54,8 +54,8 @@ export const providers = {};
  * names for which authorization has changed to exist, not exist, or transition
  * to or from a state of error.
  *
- * @param {SLState} [prevState] Previous state, if exists.
- * @param {SLState} state       Next state.
+ * @param {SLState|undefined} prevState Previous state, if exists.
+ * @param {SLState}           state     Next state.
  *
  * @return {string[]} Provider names for changed authorizations.
  */

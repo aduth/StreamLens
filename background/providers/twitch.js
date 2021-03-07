@@ -320,7 +320,7 @@ export default /** @type {import('../providers').SLProvider} */ ( {
 			 ).flat();
 		}
 
-		const follows = await fetchFollows( auth.user.id );
+		const follows = await fetchFollows( /** @type {string} */ ( auth.user.id ) );
 		return fetchStreams( follows );
 	},
 } );
