@@ -1,5 +1,9 @@
 ## v1.4.0 (Unreleased)
 
+### Bug Fixes
+
+- Fix an issue where expired Twitch tokens are not correctly refreshed.
+
 ### Miscellaneous
 
 - Removed Mixer support, since Mixer is no longer.
