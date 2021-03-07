@@ -1,14 +1,13 @@
 /**
  * External dependencies
  */
-import { h, Fragment } from '/web_modules/preact.js';
+import { h, Fragment } from 'preact';
 
 /**
  * Project dependencies
  */
-import ProviderLabel from '/common/components/provider-label.js';
-import useSelect from '/common/hooks/use-select.js';
-import useDispatch from '/common/hooks/use-dispatch.js';
+import { ProviderLabel } from '@streamlens/components';
+import { useSelect, useDispatch } from '@streamlens/hooks';
 
 /**
  * Internal dependencies

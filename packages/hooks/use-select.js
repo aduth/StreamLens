@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-import { useSelector } from '/web_modules/prsh.js';
+import { useSelector } from 'prsh';
 
-/** @typedef {import('/background/store.js').SLState} SLState */
+/** @typedef {import('/background/store').SLState} SLState */
 
 /**
  * Hook which returns a value derived using a given selector function, updated

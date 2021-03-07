@@ -1,13 +1,13 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { StoreContext } from '/web_modules/prsh.js';
+import { h } from 'preact';
+import { StoreContext } from 'prsh';
 
 /**
  * Project dependencies
  */
-import ColorScheme from '/common/components/color-scheme.js';
+import { ColorScheme } from '@streamlens/components';
 
 /**
  * Internal dependencies

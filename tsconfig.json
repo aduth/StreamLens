@@ -2,40 +2,26 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"/web_modules/*.js": [
-				"node_modules/@types/*",
-				"node_modules/*",
-				"web_modules/*.js"
-			],
-			"/*": [
-				"*"
-			]
+			"/*": [ "*" ]
 		},
 		"module": "esnext",
 		"moduleResolution": "node",
 		"target": "es2019",
 		"allowJs": true,
 		"checkJs": true,
-		"lib": [
-			"dom",
-			"esnext"
-		],
+		"lib": [ "dom", "esnext" ],
 		"skipLibCheck": true,
-		"typeRoots": [
-			"node_modules/@types",
-			"node_modules/web-ext-types"
-		],
+		"typeRoots": [ "node_modules/@types", "node_modules/web-ext-types" ],
 		"noEmit": true,
 		"strictNullChecks": true
 	},
 	"include": [
 		"background",
-		"common",
+		"packages",
 		"options",
-		"popup"
+		"popup",
+		"packages/hooks",
+		"packages/components"
 	],
-	"exclude": [
-		"node_modules",
-		"web_modules"
-	]
+	"exclude": [ "node_modules" ]
 }

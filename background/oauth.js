@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { snakeCase } from '/web_modules/lodash-es.js';
+import { snakeCase } from 'lodash-es';
 
 /**
  * Project dependencies
  */
-import { authRedirectURL } from '/config.js';
+import { authRedirectURL } from '../config.js';
 
 /**
  * Suported authorization request parameters, values serving as defaults.

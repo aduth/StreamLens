@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { omit, reject } from '/web_modules/lodash-es.js';
+import { omit, reject } from 'lodash-es';
 
 /**
  * Project dependencies
  */
-import { applications } from '/config.js';
+import { applications } from '../../config.js';
 
 /**
  * Internal dependencies

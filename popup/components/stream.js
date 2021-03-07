@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
+import { h } from 'preact';
 
 /** @typedef {import('/background/store').SLStream} SLStream */
 

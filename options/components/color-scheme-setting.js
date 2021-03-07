@@ -1,13 +1,12 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
+import { h } from 'preact';
 
 /**
  * Project dependencies
  */
-import useSelect from '/common/hooks/use-select.js';
-import useDispatch from '/common/hooks/use-dispatch.js';
+import { useSelect, useDispatch } from '@streamlens/hooks';
 
 /**
  * Internal dependencies

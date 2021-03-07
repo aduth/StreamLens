@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { useStore } from '/web_modules/prsh.js';
+import { useStore } from 'prsh';
 
 /**
  * Hook which returns a dispatch function, from the store context if available.

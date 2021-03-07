@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
+import { h } from 'preact';
 
 /**
  * Project dependencies
  */
-import Card from '/common/components/card.js';
+import { Card } from '@streamlens/components';
 
 /**
  * Returns a No Streams Live element.

@@ -11,7 +11,7 @@ import glob from 'fast-glob';
 import './setup.js';
 
 ( async () => {
-	const suites = glob.stream( '+(background|common|options|popup)/**/test/*.js' );
+	const suites = glob.stream( '+(background|packages|options|popup)/**/test/*.js' );
 
 	console.log( 'Running…\n' );
 

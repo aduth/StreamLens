@@ -1,14 +1,14 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
+import { h } from 'preact';
 
 /**
  * Project dependencies
  */
-import useDispatch from '/common/hooks/use-dispatch.js';
-import Notice from '/common/components/notice.js';
-import { getProviderLabel } from '/common/components/provider-label.js';
+import { useDispatch } from '@streamlens/hooks';
+import { Notice } from '@streamlens/components';
+import { getProviderLabel } from '@streamlens/components/provider-label';
 
 /**
  * Returns a Token Errors element.

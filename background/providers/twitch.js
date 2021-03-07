@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { find, chunk } from '/web_modules/lodash-es.js';
+import { find, chunk } from 'lodash-es';
 
 /**
  * Project dependencies
  */
-import { applications } from '/config.js';
+import { applications } from '../../config.js';
 
 /**
  * Internal dependencies

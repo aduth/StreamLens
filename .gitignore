@@ -3,9 +3,9 @@
 
 # Dependencies
 node_modules
-web_modules
 
 # Generated
+build
 stream-lens.zip
 
 # Logs

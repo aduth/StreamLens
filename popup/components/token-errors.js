@@ -1,16 +1,15 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { findKey } from '/web_modules/lodash-es.js';
+import { h } from 'preact';
+import { findKey } from 'lodash-es';
 
 /**
  * Project dependencies
  */
-import Notice from '/common/components/notice.js';
-import { getProviderLabel } from '/common/components/provider-label.js';
-import useSelect from '/common/hooks/use-select.js';
-import useDispatch from '/common/hooks/use-dispatch.js';
+import { Notice } from '@streamlens/components';
+import { getProviderLabel } from '@streamlens/components/provider-label';
+import { useSelect, useDispatch } from '@streamlens/hooks';
 
 /**
  * Returns a Token Errors element.

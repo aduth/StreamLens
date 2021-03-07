@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { h, createContext } from '/web_modules/preact.js';
-import { useState } from '/web_modules/preact/hooks.js';
+import { h, createContext } from 'preact';
+import { useState } from 'preact/hooks';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 

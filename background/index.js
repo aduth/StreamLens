@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import createStore from '/web_modules/unistore.js';
-import { primary } from '/web_modules/unistore-browser-sync.js';
+import createStore from 'unistore';
+import { primary } from 'unistore-browser-sync';
 
 /**
  * Internal dependencies

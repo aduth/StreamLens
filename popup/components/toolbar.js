@@ -1,21 +1,20 @@
 /**
  * External dependencies
  */
-import { h } from '/web_modules/preact.js';
-import { useContext, useRef, useEffect } from '/web_modules/preact/hooks.js';
+import { h } from 'preact';
+import { useContext, useRef, useEffect } from 'preact/hooks';
 
 /**
  * Project dependencies
  */
-import IconButton from '/common/components/icon-button.js';
-import VisuallyHidden from '/common/components/visually-hidden.js';
+import { IconButton, VisuallyHidden } from '@streamlens/components';
 
 /**
  * Internal dependencies
  */
 import { SearchContext } from './search-context.js';
 
-/** @typedef {import('/common/components/tooltip').TooltipPosition} TooltipPosition */
+/** @typedef {import('@streamlens/components/tooltip').TooltipPosition} TooltipPosition */
 
 /**
  * Returns a stream list toolbar.
