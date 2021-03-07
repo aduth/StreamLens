@@ -49,11 +49,11 @@
 	],
 	"dependencies": {
 		"lodash-es": "^4.17.21",
-		"preact": "^10.4.7",
+		"preact": "^10.5.12",
 		"prsh": "^1.0.1",
 		"unistore": "^3.5.2",
 		"unistore-browser-sync": "^1.0.0",
-		"webextension-polyfill": "^0.6.0"
+		"webextension-polyfill": "^0.7.0"
 	},
 	"bundledDependencies": [
 		"webextension-polyfill"
@@ -65,8 +65,8 @@
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
-		"fast-glob": "^3.2.4",
-		"npm-pack-zip": "^1.2.7",
+		"fast-glob": "^3.2.5",
+		"npm-pack-zip": "^1.2.9",
 		"prettier": "^2.2.1",
 		"typescript": "^4.2.3",
 		"web-ext-types": "^3.2.1"
