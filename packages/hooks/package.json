@@ -1,5 +1,5 @@
 {
-  "name": "@streamlens/hooks",
-  "private": true,
-  "type": "module"
+	"name": "@streamlens/hooks",
+	"private": true,
+	"type": "module"
 }
