@@ -15,7 +15,7 @@
 		"prepare": "npm run clean && npm run build",
 		"test:lint": "eslint .",
 		"test:types": "tsc",
-		"test:unit": "node --experimental-loader @streamlens/esbuild-loader test/runner.js",
+		"test:unit": "node --experimental-loader esbuild-esm-loader test/runner.js",
 		"prebundle": "npm run prepare",
 		"bundle": "npm-pack-zip"
 	},
@@ -61,7 +61,8 @@
 	"devDependencies": {
 		"@types/lodash-es": "^4.17.4",
 		"@types/node": "^14.14.32",
-		"esbuild": "^0.8.56",
+		"esbuild": "^0.9.2",
+		"esbuild-esm-loader": "^0.1.0",
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",
