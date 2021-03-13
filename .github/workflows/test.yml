@@ -10,5 +10,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - run: npm i -g npm@latest # For NPM v7 workspace support, not included in Node v14
       - run: npm ci
       - run: npm test
