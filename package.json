@@ -49,28 +49,28 @@
 	],
 	"dependencies": {
 		"lodash-es": "^4.17.21",
-		"preact": "^10.5.12",
+		"preact": "^10.5.13",
 		"prsh": "^1.0.1",
 		"unistore": "^3.5.2",
 		"unistore-browser-sync": "^1.0.0",
-		"webextension-polyfill": "^0.7.0"
+		"webextension-polyfill": "^0.8.0"
 	},
 	"bundledDependencies": [
 		"webextension-polyfill"
 	],
 	"devDependencies": {
 		"@types/lodash-es": "^4.17.4",
-		"@types/node": "^14.14.32",
-		"esbuild": "^0.9.2",
+		"@types/node": "^14.14.41",
+		"esbuild": "^0.11.14",
 		"esbuild-esm-loader": "^0.1.0",
-		"eslint": "^7.21.0",
-		"eslint-config-prettier": "^8.1.0",
-		"eslint-plugin-prettier": "^3.3.1",
-		"eslint-plugin-react": "^7.22.0",
+		"eslint": "^7.25.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react": "^7.23.2",
 		"fast-glob": "^3.2.5",
 		"npm-pack-zip": "^1.2.9",
 		"prettier": "^2.2.1",
-		"typescript": "^4.2.3",
+		"typescript": "^4.2.4",
 		"web-ext-types": "^3.2.1"
 	}
 }
