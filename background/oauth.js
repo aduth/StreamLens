@@ -124,7 +124,7 @@ export function getRandomString(length = 32) {
  *                                        or `null` if failed non-interactive
  *                                        refresh.
  */
-export async function launchOAuthFlow({ authEndpoint, params = {}, interactive = false }) {
+export function launchOAuthFlow({ authEndpoint, params = {}, interactive = false }) {
 	const url = getAuthURL({ authEndpoint, params, interactive });
 
 	/**
@@ -178,7 +178,7 @@ export async function launchOAuthFlow({ authEndpoint, params = {}, interactive =
 				 *
 				 * @param {?(string|undefined)} token Token, if received.
 				 */
-				async function onAuthComplete(token) {
+				function onAuthComplete(token) {
 					browser.runtime.onMessage.removeListener(checkForToken);
 					browser.windows.onRemoved.removeListener(onWindowClosed);
 					resolve(token);
@@ -224,7 +224,7 @@ export async function launchOAuthFlow({ authEndpoint, params = {}, interactive =
 				 *
 				 * @param {*} message Browser message.
 				 */
-				async function checkForToken(message) {
+				function checkForToken(message) {
 					const token = getTokenFromMessage(message);
 
 					// See above note in `getTokenFromMessage`. A non-undefined
