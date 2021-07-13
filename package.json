@@ -8,8 +8,8 @@
 		"packages/**"
 	],
 	"scripts": {
-		"build": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --jsx-factory=h --minify",
-		"dev": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --jsx-fragment=Fragment --sourcemap=inline --watch",
+		"build": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --jsx-factory=h --jsx-fragment=Fragment --minify",
+		"dev": "esbuild background/index.js popup/index.jsx options/index.jsx --bundle --outdir=build --format=esm --jsx-factory=h --jsx-fragment=Fragment --sourcemap=inline --watch",
 		"test": "npm run test:lint && npm run test:types && npm run test:unit",
 		"clean": "rm -rf build",
 		"prepare": "npm run clean && npm run build",
