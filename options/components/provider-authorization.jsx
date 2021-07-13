@@ -43,7 +43,7 @@ function ProviderAuthorization({ providerName }) {
 			)}
 			{providerAuth && (
 				<div className="provider-authorization__user">
-					{browser.i18n.getMessage('optionsAuthorizationLogin')}' '
+					{browser.i18n.getMessage('optionsAuthorizationLogin')}{' '}
 					<strong>{providerAuth.user.login}</strong>
 				</div>
 			)}
