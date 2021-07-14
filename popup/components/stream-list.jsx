@@ -78,8 +78,7 @@ function StreamList() {
 	const streams = useSelect((state) => state.streams);
 	const [search] = useContext(SearchContext);
 	const [hoverIndex, setHoverIndex] = useState(/** @type {?number} */ (null));
-	/** @type {import('preact/hooks').PropRef<HTMLElement>} */
-	const listRef = useRef();
+	const listRef = useRef(/** @type {HTMLUListElement?} */ (null));
 
 	const numberOfConnections = size(auth);
 	if (numberOfConnections === 0) {
@@ -188,7 +187,7 @@ function StreamList() {
 		<div onKeyDown={incrementHoverIndex} onKeyPress={selectStream} className="stream-list">
 			<Toolbar />
 			{hasFetched && filteredStreams.length === 0 && <NoSearchResults />}
-			<ul className="stream-list__list" ref={/** @type {import('preact').Ref<any>} */ (listRef)}>
+			<ul className="stream-list__list" ref={listRef}>
 				{filteredStreams.map((stream, index) => (
 					<li
 						key={stream.url}

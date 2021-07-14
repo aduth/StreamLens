@@ -20,17 +20,12 @@ import { SearchContext } from './search-context.jsx';
  * Returns a stream list toolbar.
  */
 function Toolbar() {
-	/** @type {import('preact/hooks').PropRef<HTMLInputElement>} */
-	const inputRef = useRef();
+	const inputRef = useRef(/** @type {HTMLInputElement?} */ (null));
 	const [search, setSearch] = useContext(SearchContext);
 
 	// Auto-focus does not appear to work correctly for Firefox popup rendering.
 	// This forces focus when the toolbar is mounted.
-	useEffect(() => {
-		if (inputRef.current) {
-			inputRef.current.focus();
-		}
-	}, []);
+	useEffect(() => inputRef.current?.focus(), []);
 
 	/**
 	 * Opens the extension options panel and closes the popup.
@@ -46,7 +41,7 @@ function Toolbar() {
 		<nav className="toolbar">
 			<label className="toolbar__search">
 				<input
-					ref={/** @type {import('preact').Ref<any>} */ (inputRef)}
+					ref={inputRef}
 					type="text"
 					placeholder={searchLabel}
 					spellcheck={false}
