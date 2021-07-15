@@ -1,6 +1,3 @@
-/**
- * Internal dependencies
- */
 import twitch from './providers/twitch.js';
 import { registerProviderName, updateStreams, setTokenError } from './store/actions.js';
 

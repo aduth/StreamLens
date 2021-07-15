@@ -1,11 +1,4 @@
-/**
- * External dependencies
- */
 import { snakeCase } from 'lodash-es';
-
-/**
- * Project dependencies
- */
 import { authRedirectURL } from '../config.js';
 
 /**

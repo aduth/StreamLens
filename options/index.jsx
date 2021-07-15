@@ -1,13 +1,6 @@
-/**
- * External dependencies
- */
 import { render, h } from 'preact';
 import createStore from 'unistore';
 import { replica } from 'unistore-browser-sync';
-
-/**
- * Internal dependencies
- */
 import Root from './components/root.jsx';
 
 replica(createStore()).then((store) => {

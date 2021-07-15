@@ -1,19 +1,8 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
 import { size, reject, deburr, clamp } from 'lodash-es';
 import { useContext, useState, useRef } from 'preact/hooks';
-
-/**
- * Project dependencies
- */
 import { LoadingIndicator } from '@streamlens/components';
 import { useSelect } from '@streamlens/hooks';
-
-/**
- * Internal dependencies
- */
 import Stream from './stream.jsx';
 import Toolbar from './toolbar.jsx';
 import NoStreamsLive from './no-streams-live.jsx';

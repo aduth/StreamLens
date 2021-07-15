@@ -1,6 +1,3 @@
-/**
- * Internal dependencies
- */
 import * as persistence from './persistence.js';
 
 /** @typedef {import('./providers').SLProvider} SLProvider */

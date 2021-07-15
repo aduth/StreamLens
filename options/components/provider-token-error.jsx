@@ -1,11 +1,4 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Project dependencies
- */
 import { useDispatch } from '@streamlens/hooks';
 import { Notice } from '@streamlens/components';
 import { getProviderLabel } from '@streamlens/components/provider-label';

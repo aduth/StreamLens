@@ -1,16 +1,5 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Project dependencies
- */
 import { useSelect } from '@streamlens/hooks';
-
-/**
- * Internal dependencies
- */
 import Section from './section.jsx';
 import ProviderAuthorization from './provider-authorization.jsx';
 

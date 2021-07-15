@@ -1,16 +1,5 @@
-/**
- * External dependencies
- */
 import { find, chunk } from 'lodash-es';
-
-/**
- * Project dependencies
- */
 import { applications } from '../../config.js';
-
-/**
- * Internal dependencies
- */
 import { InvalidTokenError } from '../providers.js';
 
 /** @typedef {import('../store').SLStream} SLStream */

@@ -1,11 +1,4 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Internal dependencies
- */
 import Icon from './icon.jsx';
 
 /** @typedef {import('preact').ComponentChildren[]} VNode */

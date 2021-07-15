@@ -1,6 +1,3 @@
-/**
- * External dependencies
- */
 import { some, isEmpty, size } from 'lodash-es';
 
 /** @typedef {import('./store').SLStore} SLStore */

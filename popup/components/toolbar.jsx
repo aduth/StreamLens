@@ -1,17 +1,6 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
 import { useContext, useRef, useEffect } from 'preact/hooks';
-
-/**
- * Project dependencies
- */
 import { IconButton, VisuallyHidden } from '@streamlens/components';
-
-/**
- * Internal dependencies
- */
 import { SearchContext } from './search-context.jsx';
 
 /** @typedef {import('@streamlens/components/tooltip').TooltipPosition} TooltipPosition */

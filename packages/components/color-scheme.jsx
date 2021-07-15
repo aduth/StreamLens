@@ -1,12 +1,5 @@
-/**
- * External dependencies
- */
 import { h, Fragment } from 'preact';
 import { useEffect } from 'preact/hooks';
-
-/**
- * Internal dependencies
- */
 import useSelect from '../hooks/use-select.js';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */

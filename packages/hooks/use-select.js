@@ -1,6 +1,3 @@
-/**
- * External dependencies
- */
 import { useSelector } from 'prsh';
 
 /** @typedef {import('/background/store').SLState} SLState */

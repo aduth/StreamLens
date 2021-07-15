@@ -1,16 +1,5 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Project dependencies
- */
 import { useSelect, useDispatch } from '@streamlens/hooks';
-
-/**
- * Internal dependencies
- */
 import Section from './section.jsx';
 
 /**

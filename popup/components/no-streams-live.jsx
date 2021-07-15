@@ -1,11 +1,4 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Project dependencies
- */
 import { Card } from '@streamlens/components';
 
 /**

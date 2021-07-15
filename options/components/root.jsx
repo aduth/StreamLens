@@ -1,12 +1,5 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
 import { StoreContext } from 'prsh';
-
-/**
- * Internal dependencies
- */
 import ProviderAuthorizations from './provider-authorizations.jsx';
 import ColorSchemeSetting from './color-scheme-setting.jsx';
 

@@ -1,16 +1,5 @@
-/**
- * External dependencies
- */
 import { omit, reject } from 'lodash-es';
-
-/**
- * Project dependencies
- */
 import { applications } from '../../config.js';
-
-/**
- * Internal dependencies
- */
 import { launchOAuthFlow } from '../oauth.js';
 import { providers } from '../providers.js';
 

@@ -1,11 +1,4 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
-
-/**
- * Internal dependencies
- */
 import Tooltip from './tooltip.jsx';
 import Icon from './icon.jsx';
 

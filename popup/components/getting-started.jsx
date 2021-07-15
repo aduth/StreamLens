@@ -1,12 +1,5 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
 import { isEmpty } from 'lodash-es';
-
-/**
- * Project dependencies
- */
 import { useSelect } from '@streamlens/hooks';
 import { Card } from '@streamlens/components';
 

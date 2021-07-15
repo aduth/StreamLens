@@ -1,6 +1,3 @@
-/**
- * External dependencies
- */
 import { h, createContext } from 'preact';
 import { useState } from 'preact/hooks';
 

@@ -1,12 +1,5 @@
-/**
- * External dependencies
- */
 import createStore from 'unistore';
 import { primary } from 'unistore-browser-sync';
-
-/**
- * Internal dependencies
- */
 import { getInitialState } from './store.js';
 import * as badge from './badge.js';
 import * as providers from './providers.js';

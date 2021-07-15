@@ -1,6 +1,3 @@
-/**
- * External dependencies
- */
 import { h, Fragment } from 'preact';
 
 /**

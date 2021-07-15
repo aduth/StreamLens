@@ -1,6 +1,3 @@
-/**
- * External dependencies
- */
 import { h } from 'preact';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
