@@ -26,10 +26,11 @@
 	},
 	"overrides": [
 		{
-			"files": ["test/**/*"],
+			"files": ["**/test/**/*"],
 			"env": {
 				"browser": false,
-				"node": true
+				"node": true,
+				"mocha": true
 			}
 		}
 	]

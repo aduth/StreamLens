@@ -1,23 +1,27 @@
 /**
  * External dependencies
  */
-import { strictEqual } from 'assert';
+import { expect } from 'chai';
 
 /**
  * Internal dependencies
  */
 import { getRandomString } from '../oauth.js';
 
-/* getRandomString */
+describe('getRandomString', () => {
+	it('produces a string', () => {
+		expect(getRandomString()).to.be.a('string');
+	});
 
-strictEqual(typeof getRandomString(), 'string', 'Produces a string');
+	it('produces a string of default length 32', () => {
+		expect(getRandomString()).to.have.lengthOf(32);
+	});
 
-strictEqual(getRandomString().length, 32, 'Produces a string of default length 32');
+	it('produces a string of custom length', () => {
+		expect(getRandomString(40)).to.have.lengthOf(40);
+	});
 
-strictEqual(getRandomString(40).length, 40, 'Produces a string of custom length');
-
-strictEqual(
-	/[^0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ]/i.test(getRandomString()),
-	false,
-	'Includes only Base36'
-);
+	it('includes only base36', () => {
+		expect(getRandomString()).to.not.match(/[^0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ]/i);
+	});
+});

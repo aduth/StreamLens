@@ -1,17 +1,20 @@
 /**
  * External dependencies
  */
-import { strictEqual } from 'assert';
+import { expect } from 'chai';
 
 /**
  * Internal dependencies
  */
 import { isTolerantStringMatch } from '../stream-list.jsx';
 
-/* isTolerantStringMatch */
-
-strictEqual(
-	isTolerantStringMatch('age of empires definitive edition', 'Age of Empires: Definitive Edition'),
-	true,
-	'Normalizes case, ignores whitespace, punctuation'
-);
+describe('isTolerantStringMatch', () => {
+	it('normalizes case, ignores whitespace, punctuation', () => {
+		expect(
+			isTolerantStringMatch(
+				'age of empires definitive edition',
+				'Age of Empires: Definitive Edition'
+			)
+		).to.be.true;
+	});
+});
