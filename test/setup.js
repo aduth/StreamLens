@@ -1,10 +1,6 @@
 /**
  * External dependencies
  */
-import { randomFillSync } from 'crypto';
+import { webcrypto } from 'crypto';
 
-global.window = {
-	crypto: {
-		getRandomValues: randomFillSync,
-	},
-};
+global.crypto = webcrypto;

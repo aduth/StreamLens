@@ -101,7 +101,7 @@ function getAuthURL({ authEndpoint, params, interactive }) {
  * @return {string} Nonce string.
  */
 export function getRandomString(length = 32) {
-	return Array.from(window.crypto.getRandomValues(new Uint32Array(length)))
+	return Array.from(crypto.getRandomValues(new Uint32Array(length)))
 		.map((i) => i.toString(36).slice(-1))
 		.join('');
 }
