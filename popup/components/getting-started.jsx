@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { isEmpty } from 'lodash-es';
-import { useSelect } from '@streamlens/hooks';
+import { useSelect } from '@streamlens/state';
 import { Card } from '@streamlens/components';
 
 /**

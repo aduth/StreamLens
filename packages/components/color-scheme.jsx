@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact';
 import { useEffect } from 'preact/hooks';
-import useSelect from '../hooks/use-select.js';
+import useSelect from '../state/use-select.js';
 
 /** @typedef {import('preact').ComponentChildren} ComponentChildren */
 

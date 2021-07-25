@@ -24,7 +24,7 @@
 		"packages",
 		"options",
 		"popup",
-		"packages/hooks",
+		"packages/state",
 		"packages/components"
 	],
 	"exclude": ["node_modules"]

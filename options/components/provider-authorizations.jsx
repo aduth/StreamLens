@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useSelect } from '@streamlens/hooks';
+import { useSelect } from '@streamlens/state';
 import Section from './section.jsx';
 import ProviderAuthorization from './provider-authorization.jsx';
 

@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useDispatch } from '@streamlens/hooks';
+import { useDispatch } from '@streamlens/state';
 import { Notice } from '@streamlens/components';
 import { getProviderLabel } from '@streamlens/components/provider-label';
 

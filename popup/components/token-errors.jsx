@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { findKey } from 'lodash-es';
 import { Notice } from '@streamlens/components';
 import { getProviderLabel } from '@streamlens/components/provider-label';
-import { useSelect, useDispatch } from '@streamlens/hooks';
+import { useSelect, useDispatch } from '@streamlens/state';
 
 /**
  * Returns a Token Errors element.

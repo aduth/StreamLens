@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useSelect, useDispatch } from '@streamlens/hooks';
+import { useSelect, useDispatch } from '@streamlens/state';
 import Section from './section.jsx';
 
 /**

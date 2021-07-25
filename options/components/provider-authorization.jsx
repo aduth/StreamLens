@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact';
 import { ProviderLabel } from '@streamlens/components';
-import { useSelect, useDispatch } from '@streamlens/hooks';
+import { useSelect, useDispatch } from '@streamlens/state';
 import ProviderTokenError from './provider-token-error.jsx';
 
 /** @typedef {import('/background/providers').SLProvider} SLProvider */
