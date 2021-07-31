@@ -6,10 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '14'
-      - run: npm i -g npm@latest # For NPM v7 workspace support, not included in Node v14
-      - run: npm ci
-      - run: npm test
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
