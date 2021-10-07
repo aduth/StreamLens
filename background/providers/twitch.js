@@ -145,8 +145,6 @@ const MAX_PER_PAGE = 100;
 export default /** @type {import('../providers').SLProvider} */ ({
 	name,
 
-	supportsOIDC: true,
-
 	authEndpoint: 'https://id.twitch.tv/oauth2/authorize',
 
 	async getUser(token) {
