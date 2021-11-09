@@ -1,9 +1,0 @@
-export { default as Card } from './card.jsx';
-export { default as ColorScheme } from './color-scheme.jsx';
-export { default as IconButton } from './icon-button.jsx';
-export { default as Icon } from './icon.jsx';
-export { default as LoadingIndicator } from './loading-indicator.jsx';
-export { default as Notice } from './notice.jsx';
-export { default as ProviderLabel } from './provider-label.jsx';
-export { default as Tooltip } from './tooltip.jsx';
-export { default as VisuallyHidden } from './visually-hidden.jsx';
