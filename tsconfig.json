@@ -7,8 +7,6 @@
 		"module": "esnext",
 		"moduleResolution": "node",
 		"target": "es2019",
-		"allowJs": true,
-		"checkJs": true,
 		"lib": ["dom", "esnext"],
 		"skipLibCheck": true,
 		"typeRoots": ["node_modules/@types", "node_modules/web-ext-types"],
