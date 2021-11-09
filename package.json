@@ -59,7 +59,7 @@
 		"webextension-polyfill"
 	],
 	"devDependencies": {
-		"@aduth/eslint-config": "^4.2.1",
+		"@aduth/eslint-config": "^4.3.0",
 		"@types/chai": "^4.2.22",
 		"@types/lodash-es": "^4.17.5",
 		"@types/mocha": "^9.0.0",
