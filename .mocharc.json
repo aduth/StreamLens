@@ -1,0 +1,3 @@
+{
+	"loader": "esbuild-esm-loader"
+}

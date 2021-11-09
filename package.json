@@ -15,7 +15,7 @@
 		"prepare": "npm run clean && npm run build",
 		"test:lint": "eslint .",
 		"test:types": "tsc",
-		"test:unit": "node --experimental-loader esbuild-esm-loader node_modules/mocha/lib/cli/cli.js --extension js,jsx,ts,tsx -r ./test/setup.ts '{background,options,packages,popup}/**/test/*'",
+		"test:unit": "mocha --extension js,jsx,ts,tsx -r ./test/setup.ts '{background,options,packages,popup}/**/test/*'",
 		"prebundle": "npm run prepare",
 		"bundle": "npm-pack-zip"
 	},
