@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import { find, chunk } from 'lodash-es';
 import { applications } from '../../config';
 import { InvalidTokenError, SLProvider } from '../providers';
@@ -26,36 +28,6 @@ interface TwitchTokenDetails {
 	 * Authorized user ID.
 	 */
 	user_id: string;
-}
-
-/**
- * Twitch `/follows` API entity.
- */
-interface TwitchFollow {
-	/**
-	 * ID of the user following the `to_id` user.
-	 */
-	from_id: string;
-
-	/**
-	 * Display name corresponding to `from_id`.
-	 */
-	from_name: string;
-
-	/**
-	 * ID of the user being followed by the `from_id` user.
-	 */
-	to_id: string;
-
-	/**
-	 * Display name corresponding to `to_id`.
-	 */
-	to_name: string;
-
-	/**
-	 * Date and time when the from_id user followed the to_id user.
-	 */
-	followed_at: string;
 }
 
 /**

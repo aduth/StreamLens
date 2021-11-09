@@ -119,7 +119,7 @@ function getAuthURL({ authEndpoint, params, interactive }: GetAuthURLOptions): s
  *
  * @return Nonce string.
  */
-export function getRandomString(length: number = 32): string {
+export function getRandomString(length = 32): string {
 	return Array.from(crypto.getRandomValues(new Uint32Array(length)))
 		.map((i) => i.toString(36).slice(-1))
 		.join('');

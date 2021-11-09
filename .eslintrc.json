@@ -19,10 +19,16 @@
 		}
 	},
 	"rules": {
-		"react/jsx-filename-extension": "error",
+		"react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
 		"react/jsx-uses-react": "error",
 		"react/jsx-uses-vars": "error",
-		"react/react-in-jsx-scope": "error"
+		"react/react-in-jsx-scope": "error",
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript/no-non-null-assertion": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/ban-ts-comment": "off"
 	},
 	"overrides": [
 		{

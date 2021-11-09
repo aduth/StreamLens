@@ -1,14 +1,12 @@
 import { h } from 'preact';
 import { SLStream } from '/background/store';
 
-interface StreamProps extends SLStream {}
-
 /**
  * Returns a Stream element.
  *
  * @param props Component props.
  */
-function Stream({ url, title, providerName, login, avatar, activity, viewers }: StreamProps) {
+function Stream({ url, title, providerName, login, avatar, activity, viewers }: SLStream) {
 	const label = browser.i18n.getMessage('popupStreamLinkAccessibleLabel', [
 		login,
 		activity || '',

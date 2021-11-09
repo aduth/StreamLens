@@ -1,6 +1,5 @@
 import { h, createContext, ComponentChildren } from 'preact';
-import { StateUpdater } from 'preact/hooks';
-import { useState } from 'preact/hooks';
+import { StateUpdater, useState } from 'preact/hooks';
 
 interface SearchProviderProps {
 	/**
