@@ -9,8 +9,7 @@ import Migrations from './components/migrations';
 import Providers from './components/providers';
 import * as actions from './store/actions';
 
-(async () => {
-	const initialState = await getInitialState();
+getInitialState().then((initialState) => {
 	const store = primary(createStore(initialState), { ...actions });
 
 	render(
@@ -22,4 +21,4 @@ import * as actions from './store/actions';
 		</StoreContext.Provider>,
 		{} as Document
 	);
-})();
+});
