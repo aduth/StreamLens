@@ -4,8 +4,8 @@ import { primary } from 'unistore-browser-sync';
 import { StoreContext } from 'prsh';
 import { getInitialState } from './store';
 import Badge from './components/badge';
+import Persistence from './components/persistence';
 import * as providers from './providers';
-import * as persistence from './persistence';
 import * as migrations from './migrations';
 import * as actions from './store/actions';
 
@@ -15,11 +15,11 @@ import * as actions from './store/actions';
 
 	migrations.initialize();
 	providers.initialize(store);
-	persistence.initialize(store);
 
 	render(
 		<StoreContext.Provider value={store}>
 			<Badge />
+			<Persistence />
 		</StoreContext.Provider>,
 		{} as Document
 	);

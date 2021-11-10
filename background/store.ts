@@ -1,5 +1,5 @@
 import { Store } from 'unistore';
-import * as persistence from './persistence';
+import { getPersistedState } from './components/persistence';
 
 /**
  * Stream details object.
@@ -159,6 +159,6 @@ export async function getInitialState(): Promise<SLState> {
 	// Merge provided initial state (e.g. from persistence) with default.
 	return {
 		...DEFAULT_STATE,
-		...(await persistence.get()),
+		...(await getPersistedState()),
 	};
 }

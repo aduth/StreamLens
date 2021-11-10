@@ -1,0 +1,8 @@
+{
+	"name": "@streamlens/hooks",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./index.ts"
+	}
+}
