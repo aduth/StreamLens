@@ -6,20 +6,19 @@ import { getInitialState } from './store';
 import Badge from './components/badge';
 import Persistence from './components/persistence';
 import Migrations from './components/migrations';
-import * as providers from './providers';
+import Providers from './components/providers';
 import * as actions from './store/actions';
 
 (async () => {
 	const initialState = await getInitialState();
 	const store = primary(createStore(initialState), { ...actions });
 
-	providers.initialize(store);
-
 	render(
 		<StoreContext.Provider value={store}>
 			<Badge />
 			<Persistence />
 			<Migrations />
+			<Providers />
 		</StoreContext.Provider>,
 		{} as Document
 	);

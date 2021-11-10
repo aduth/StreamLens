@@ -2,7 +2,7 @@
 
 import { find, chunk } from 'lodash-es';
 import { applications } from '../../config';
-import { InvalidTokenError, SLProvider } from '../providers';
+import { InvalidTokenError, SLProvider } from './';
 import { SLStream } from '../store';
 
 /**
