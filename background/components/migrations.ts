@@ -1,3 +1,5 @@
+import { useEffect } from 'preact/hooks';
+
 /**
  * Object used for matching on update, including implementation of migration.
  */
@@ -34,19 +36,20 @@ const MIGRATIONS: SLUpdateMigration[] = [
 	},
 ];
 
-/**
- * Assigns listener to handle `runtime.onInstalled` event, running migration
- * logic for version updates.
- */
-export function initialize() {
-	browser.runtime.onInstalled.addListener((details) => {
-		const { reason, previousVersion } = details;
-		if (reason !== 'update') {
-			return;
-		}
+function Migrations() {
+	useEffect(() => {
+		browser.runtime.onInstalled.addListener((details) => {
+			const { reason, previousVersion } = details;
+			if (reason !== 'update') {
+				return;
+			}
 
-		MIGRATIONS.filter(({ fromVersion }) => fromVersion === previousVersion).forEach(({ migrate }) =>
-			migrate()
-		);
-	});
+			const migrations = MIGRATIONS.filter(({ fromVersion }) => fromVersion === previousVersion);
+			migrations.forEach(({ migrate }) => migrate());
+		});
+	}, []);
+
+	return null;
 }
+
+export default Migrations;
