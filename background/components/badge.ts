@@ -5,12 +5,13 @@ import { useEffect } from 'preact/hooks';
 function Badge() {
 	const auth = useSelect((state) => state.auth);
 	const streams = useSelect((state) => state.streams);
+	const isOnline = useSelect((state) => state.isOnline);
 	const { lastReceived, data } = streams;
 
 	useEffect(() => {
 		let text, color;
 
-		const hasTokenError = some(auth, { token: null });
+		const hasTokenError = some(auth, { token: null }) || !isOnline;
 		if (hasTokenError) {
 			text = '?';
 			color = '#bc152e';
@@ -30,7 +31,7 @@ function Badge() {
 		if (typeof browser.browserAction.setBadgeTextColor === 'function') {
 			browser.browserAction.setBadgeTextColor({ color: '#fff' });
 		}
-	}, [lastReceived, data, auth]);
+	}, [lastReceived, data, auth, isOnline]);
 
 	return null;
 }
