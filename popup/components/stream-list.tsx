@@ -68,11 +68,6 @@ function StreamList() {
 	const [hoverIndex, setHoverIndex] = useState(null as number | null);
 	const listRef = useRef(null as HTMLUListElement | null);
 
-	const numberOfConnections = size(auth);
-	if (numberOfConnections === 0) {
-		return null;
-	}
-
 	const numberOfValidConnections = size(reject(auth, { token: null }));
 	const hasFetched = size(streams.lastReceived) === numberOfValidConnections;
 	if (hasFetched && streams.data.length === 0) {

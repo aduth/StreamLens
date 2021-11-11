@@ -75,6 +75,14 @@
 		"message": "Try a different search. Search by streamer name, game, or stream title.",
 		"description": "Streams empty search result panel description"
 	},
+	"popupOfflineWarningTitle": {
+		"message": "Offline",
+		"description": "Popup offline warning title"
+	},
+	"popupOfflineWarningDescription": {
+		"message": "Connect to the internet to see who's live.",
+		"description": "Popup offline warning description"
+	},
 	"popupStreamLinkAccessibleLabel": {
 		"message": "$streamer$ is streaming $activity$ for $viewers$ viewers",
 		"description": "Label used to describe stream status to assistive technologies",
