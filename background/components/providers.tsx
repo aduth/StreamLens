@@ -8,10 +8,15 @@ function Providers() {
 	const dispatch = useDispatch();
 	const auths = useSelect((state) => state.auth);
 	const providerNames = useSelect((state) => state.providerNames);
+	const isOnline = useSelect((state) => state.isOnline);
 
 	useEffect(() => {
 		Object.keys(providers).forEach((name) => dispatch('registerProviderName', name));
 	}, []);
+
+	if (!isOnline) {
+		return null;
+	}
 
 	const subscriptions = providerNames
 		.filter((name) => providers[name] && auths[name]?.token)

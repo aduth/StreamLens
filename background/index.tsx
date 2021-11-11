@@ -7,6 +7,7 @@ import Badge from './components/badge';
 import Persistence from './components/persistence';
 import Migrations from './components/migrations';
 import Providers from './components/providers';
+import ConnectionStatus from './components/connection-status';
 import * as actions from './store/actions';
 
 getInitialState().then((initialState) => {
@@ -18,6 +19,7 @@ getInitialState().then((initialState) => {
 			<Persistence />
 			<Migrations />
 			<Providers />
+			<ConnectionStatus />
 		</StoreContext.Provider>,
 		{} as Document
 	);

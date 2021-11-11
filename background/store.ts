@@ -133,6 +133,11 @@ export type SLState = {
 	 * User preferences.
 	 */
 	preferences: SLPreferencesState;
+
+	/**
+	 * Whether network connectivity is available.
+	 */
+	isOnline: boolean;
 };
 
 export type SLStore = Store<SLState>;
@@ -150,6 +155,7 @@ const DEFAULT_STATE: SLState = {
 	preferences: {
 		colorScheme: null,
 	},
+	isOnline: navigator.onLine,
 };
 
 /**

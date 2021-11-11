@@ -163,3 +163,17 @@ export function setPreferences(
 		},
 	};
 }
+
+/**
+ * Toggle online status, defaulting to inverse of current state.
+ *
+ * @param state Current state.
+ * @param isOnline Whether online.
+ *
+ * @return State patch object.
+ */
+export function toggleIsOnline(state: SLState, isOnline = !state.isOnline): Partial<SLState> {
+	return {
+		isOnline,
+	};
+}
