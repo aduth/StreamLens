@@ -1,7 +1,7 @@
 import { h, render } from 'preact';
 import createStore from 'unistore';
 import { primary } from 'unistore-browser-sync';
-import { StoreContext } from 'prsh';
+import { StoreContext } from '@streamlens/state';
 import { getInitialState } from './store';
 import Badge from './components/badge';
 import Persistence from './components/persistence';

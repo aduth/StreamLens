@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { StoreContext } from 'prsh';
+import { StoreContext } from '@streamlens/state';
 import { SyncStore } from 'unistore-browser-sync';
 import ProviderAuthorizations from './provider-authorizations';
 import ColorSchemeSetting from './color-scheme-setting';

@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { StoreContext } from 'prsh';
 import { SyncStore } from 'unistore-browser-sync';
+import { StoreContext } from '@streamlens/state';
 import { ColorScheme } from '@streamlens/components';
 import TokenErrors from './token-errors';
 import GettingStarted from './getting-started';

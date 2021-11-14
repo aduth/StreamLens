@@ -1,9 +1,10 @@
 import { h } from 'preact';
-import { StoreContext } from 'prsh';
 import { render } from '@testing-library/preact';
+import { StoreContext } from '@streamlens/state';
 import { useStubbedGlobal } from '@streamlens/stub-global';
 import { expect } from 'chai';
 import createStore from 'unistore';
+import { SyncStore } from 'unistore-browser-sync';
 import Badge from '../badge';
 import { SLState, DEFAULT_STATE } from '../../store';
 
@@ -12,8 +13,9 @@ describe('Badge', () => {
 	useStubbedGlobal('browser.browserAction.setBadgeBackgroundColor');
 
 	function renderWithState(state: Partial<SLState>) {
-		render(
-			<StoreContext.Provider value={createStore({ ...DEFAULT_STATE, ...state })}>
+		const store = createStore({ ...DEFAULT_STATE, ...state }) as SyncStore<SLState>;
+		return render(
+			<StoreContext.Provider value={store}>
 				<Badge />
 			</StoreContext.Provider>
 		);
