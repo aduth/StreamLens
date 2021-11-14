@@ -10,7 +10,8 @@
 		"browser": true
 	},
 	"globals": {
-		"browser": true
+		"browser": true,
+		"globalThis": true
 	},
 	"settings": {
 		"react": {

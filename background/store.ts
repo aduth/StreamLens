@@ -145,7 +145,7 @@ export type SLStore = Store<SLState>;
 /**
  * Default store state.
  */
-const DEFAULT_STATE: SLState = {
+export const DEFAULT_STATE: SLState = {
 	providerNames: [],
 	streams: {
 		data: [],
@@ -155,7 +155,7 @@ const DEFAULT_STATE: SLState = {
 	preferences: {
 		colorScheme: null,
 	},
-	isOnline: navigator.onLine,
+	isOnline: globalThis.navigator?.onLine,
 };
 
 /**

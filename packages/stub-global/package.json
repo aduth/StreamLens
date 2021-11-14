@@ -1,5 +1,5 @@
 {
-	"name": "@streamlens/state",
+	"name": "@streamlens/stub-global",
 	"private": true,
 	"exports": {
 		".": "./index.ts"
