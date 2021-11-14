@@ -27,7 +27,7 @@
 	top: 0;
 	z-index: 1;
 	display: flex;
-	border-bottom: 1px solid var( --sl-border-color );
+	border-bottom: 1px solid var(--sl-border-color);
 }
 
 .toolbar__search {
@@ -36,9 +36,9 @@
 
 .toolbar__controls {
 	position: relative;
-	background: var( --sl-button-background-color );
+	background: var(--sl-button-background-color);
 	flex-shrink: 0;
-	border-left: 1px solid var( --sl-border-color );
+	border-left: 1px solid var(--sl-border-color);
 }
 
 .toolbar__controls .icon-button {

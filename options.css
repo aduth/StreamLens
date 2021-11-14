@@ -6,12 +6,12 @@ body {
 	width: 560px;
 	max-width: 100%;
 	padding: 12px;
-	background-color: var( --sl-background-color );
-	color: var( --sl-font-color );
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
 }
 
 @-moz-document url-prefix() {
-	@media ( prefers-color-scheme: dark ) {
+	@media (prefers-color-scheme: dark) {
 		body {
 			/* Match Firefox's specific extension settings background color */
 			background-color: #202023;
@@ -34,7 +34,7 @@ body {
 
 .section__description {
 	margin-top: 0;
-	color: var( --sl-font-color-faded );
+	color: var(--sl-font-color-faded);
 	font-size: 0.9rem;
 }
 
@@ -58,21 +58,21 @@ body {
 	margin-bottom: 0.6rem;
 }
 
-.provider-authorization__button:not( .is-authorized ) {
+.provider-authorization__button:not(.is-authorized) {
 	display: flex;
 	align-items: center;
 	line-height: 20px;
 }
 
-.provider-authorization__button:not( .is-authorized ).is-provider-twitch:hover,
-.provider-authorization__button:not( .is-authorized ).is-provider-twitch:focus {
-	filter: brightness( 110% );
+.provider-authorization__button:not(.is-authorized).is-provider-twitch:hover,
+.provider-authorization__button:not(.is-authorized).is-provider-twitch:focus {
+	filter: brightness(110%);
 }
 
-.provider-authorization__button:not( .is-authorized ).is-provider-twitch {
-	border-color: var( --sl-provider-twitch-foreground );
-	background-color: var( --sl-provider-twitch-background );
-	color: var( --sl-provider-twitch-foreground );
+.provider-authorization__button:not(.is-authorized).is-provider-twitch {
+	border-color: var(--sl-provider-twitch-foreground);
+	background-color: var(--sl-provider-twitch-background);
+	color: var(--sl-provider-twitch-foreground);
 }
 
 .provider-authorization__provider {

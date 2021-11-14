@@ -4,14 +4,14 @@
 
 @font-face {
 	font-family: Roboto;
-	src: url( 'fonts/roboto.woff' ) format( 'woff' );
+	src: url('fonts/roboto.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: Roboto;
-	src: url( 'fonts/roboto-bold.woff' ) format( 'woff' );
+	src: url('fonts/roboto-bold.woff') format('woff');
 	font-weight: bold;
 	font-style: normal;
 }
@@ -42,32 +42,32 @@
 	--sl-scheme-dark-font-color-faded: #d2d2d2;
 
 	/* Color scheme defaults */
-	--sl-background-color: var( --sl-scheme-light-background-color );
-	--sl-button-background-color: var( --sl-scheme-light-button-background-color );
-	--sl-button-background-color-focus: var( --sl-scheme-light-button-background-color-focus );
-	--sl-button-background-color-active: var( --sl-scheme-light-button-background-color-active );
-	--sl-input-background-color: var( --sl-scheme-light-input-background-color );
-	--sl-input-border-color: var( --sl-scheme-light-input-border-color );
-	--sl-border-color: var( --sl-scheme-light-border-color );
-	--sl-font-color: var( --sl-scheme-light-font-color );
-	--sl-font-color-faded: var( --sl-scheme-light-font-color-faded );
+	--sl-background-color: var(--sl-scheme-light-background-color);
+	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
+	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
+	--sl-border-color: var(--sl-scheme-light-border-color);
+	--sl-font-color: var(--sl-scheme-light-font-color);
+	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
 
 	/* Provider-specific */
 	--sl-provider-twitch-background: #9145ff;
 	--sl-provider-twitch-foreground: #fff;
 }
 
-@media ( prefers-color-scheme: dark ) {
+@media (prefers-color-scheme: dark) {
 	:root {
-		--sl-background-color: var( --sl-scheme-dark-background-color );
-		--sl-button-background-color: var( --sl-scheme-dark-button-background-color );
-		--sl-button-background-color-focus: var( --sl-scheme-dark-button-background-color-focus );
-		--sl-button-background-color-active: var( --sl-scheme-dark-button-background-color-active );
-		--sl-input-background-color: var( --sl-scheme-dark-input-background-color );
-		--sl-input-border-color: var( --sl-scheme-dark-input-border-color );
-		--sl-border-color: var( --sl-scheme-dark-border-color );
-		--sl-font-color: var( --sl-scheme-dark-font-color );
-		--sl-font-color-faded: var( --sl-scheme-dark-font-color-faded );
+		--sl-background-color: var(--sl-scheme-dark-background-color);
+		--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
+		--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
+		--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+		--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
+		--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
+		--sl-border-color: var(--sl-scheme-dark-border-color);
+		--sl-font-color: var(--sl-scheme-dark-font-color);
+		--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
 	}
 }
 
@@ -90,32 +90,32 @@ body {
 	margin: 0;
 	font-family: Roboto, sans-serif;
 	font-size: 100%;
-	background-color: var( --sl-background-color );
-	color: var( --sl-font-color );
+	background-color: var(--sl-background-color);
+	color: var(--sl-font-color);
 }
 
 body[data-theme='light'] {
-	--sl-background-color: var( --sl-scheme-light-background-color );
-	--sl-button-background-color: var( --sl-scheme-light-button-background-color );
-	--sl-button-background-color-focus: var( --sl-scheme-light-button-background-color-focus );
-	--sl-button-background-color-active: var( --sl-scheme-light-button-background-color-active );
-	--sl-input-background-color: var( --sl-scheme-light-input-background-color );
-	--sl-input-border-color: var( --sl-scheme-light-input-border-color );
-	--sl-border-color: var( --sl-scheme-light-border-color );
-	--sl-font-color: var( --sl-scheme-light-font-color );
-	--sl-font-color-faded: var( --sl-scheme-light-font-color-faded );
+	--sl-background-color: var(--sl-scheme-light-background-color);
+	--sl-button-background-color: var(--sl-scheme-light-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-light-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-light-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-light-input-background-color);
+	--sl-input-border-color: var(--sl-scheme-light-input-border-color);
+	--sl-border-color: var(--sl-scheme-light-border-color);
+	--sl-font-color: var(--sl-scheme-light-font-color);
+	--sl-font-color-faded: var(--sl-scheme-light-font-color-faded);
 }
 
 body[data-theme='dark'] {
-	--sl-background-color: var( --sl-scheme-dark-background-color );
-	--sl-button-background-color: var( --sl-scheme-dark-button-background-color );
-	--sl-button-background-color-focus: var( --sl-scheme-dark-button-background-color-focus );
-	--sl-button-background-color-active: var( --sl-scheme-dark-button-background-color-active );
-	--sl-input-background-color: var( --sl-scheme-dark-input-background-color );
-	--sl-input-border-color: var( --sl-scheme-dark-input-border-color );
-	--sl-border-color: var( --sl-scheme-dark-border-color );
-	--sl-font-color: var( --sl-scheme-dark-font-color );
-	--sl-font-color-faded: var( --sl-scheme-dark-font-color-faded );
+	--sl-background-color: var(--sl-scheme-dark-background-color);
+	--sl-button-background-color: var(--sl-scheme-dark-button-background-color);
+	--sl-button-background-color-focus: var(--sl-scheme-dark-button-background-color-focus);
+	--sl-button-background-color-active: var(--sl-scheme-dark-button-background-color-active);
+	--sl-input-background-color: var(--sl-scheme-dark-input-background-color);
+	--sl-input-border-color: var(--sl-scheme-dark-input-border-color);
+	--sl-border-color: var(--sl-scheme-dark-border-color);
+	--sl-font-color: var(--sl-scheme-dark-font-color);
+	--sl-font-color-faded: var(--sl-scheme-dark-font-color-faded);
 }
 
 a {
@@ -124,8 +124,8 @@ a {
 
 button {
 	padding: 8px 12px;
-	background-color: var( --sl-button-background-color );
-	border: 1px solid var( --sl-input-border-color );
+	background-color: var(--sl-button-background-color);
+	border: 1px solid var(--sl-input-border-color);
 	border-radius: 6px;
 	color: currentColor;
 	font-size: 0.9rem;
@@ -133,12 +133,12 @@ button {
 }
 
 button:active {
-	background-color: var( --sl-button-background-color-active );
+	background-color: var(--sl-button-background-color-active);
 }
 
 button:focus,
 button:hover {
-	background-color: var( --sl-button-background-color-focus );
+	background-color: var(--sl-button-background-color-focus);
 }
 
 button.is-compact {
@@ -146,8 +146,8 @@ button.is-compact {
 }
 
 input {
-	background-color: var( --sl-input-background-color );
-	border: 1px solid var( --sl-input-border-color );
+	background-color: var(--sl-input-background-color);
+	border: 1px solid var(--sl-input-border-color);
 	border-radius: 6px;
 }
 
@@ -246,11 +246,11 @@ input {
 	animation-direction: alternate;
 }
 
-.loading-indicator__dot:nth-child( 2 ) {
+.loading-indicator__dot:nth-child(2) {
 	animation-delay: 0.1s;
 }
 
-.loading-indicator__dot:nth-child( 3 ) {
+.loading-indicator__dot:nth-child(3) {
 	animation-delay: 0.2s;
 }
 
@@ -277,8 +277,8 @@ input {
  */
 
 .visually-hidden {
-	clip: rect( 1px, 1px, 1px, 1px );
-	clip-path: inset( 50% );
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
 	height: 1px;
 	width: 1px;
 	margin: -1px;
@@ -307,9 +307,9 @@ input {
 	position: absolute;
 	left: 50%;
 	padding: 6px 8px;
-	transform: translateX( -50% );
-	background-color: rgba( 40, 40, 40, 0.9 );
-	border: 1px solid var( --sl-scheme-dark-border-color );
+	transform: translateX(-50%);
+	background-color: rgba(40, 40, 40, 0.9);
+	border: 1px solid var(--sl-scheme-dark-border-color);
 	color: #fff;
 	text-align: center;
 	border-radius: 6px;
@@ -345,7 +345,7 @@ input {
 
 .tooltip.is-top .tooltip__arrow {
 	margin-bottom: -10px;
-	border-color: rgba( 40, 40, 40, 0.9 ) transparent transparent transparent;
+	border-color: rgba(40, 40, 40, 0.9) transparent transparent transparent;
 }
 
 .tooltip.is-bottom .tooltip__text,
@@ -355,5 +355,5 @@ input {
 
 .tooltip.is-bottom .tooltip__arrow {
 	margin-top: -10px;
-	border-color: transparent transparent rgba( 40, 40, 40, 0.9 ) transparent;
+	border-color: transparent transparent rgba(40, 40, 40, 0.9) transparent;
 }
