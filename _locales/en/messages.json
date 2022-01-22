@@ -7,13 +7,17 @@
 		"message": "Loading",
 		"description": "Status label for loading indicator"
 	},
-	"optionsAuthorizationsTitle": {
-		"message": "Authorizations",
-		"description": "Title for Options page Authorizations section"
+	"optionsProviderSettingsTitle": {
+		"message": "Platform Settings",
+		"description": "Title for Options page Provider Settings section"
 	},
-	"optionsAuthorizationsDescription": {
-		"message": "Connect one or more accounts to import your followed streams. Your followed streams will display when they are live and are updated automatically when you follow a new stream.",
-		"description": "Description for Options page Authorizations section"
+	"optionsProviderSettingsDescription": {
+		"message": "Configure stream settings for each of the supported platforms listed below.",
+		"description": "Description for Options page Provider Settings section"
+	},
+	"optionsSettingsProvidersTabsLabel": {
+		"message": "Providers",
+		"description": "Accessible label for provider settings tab panel"
 	},
 	"optionsAuthorizationLogin": {
 		"message": "Currently connected as:",

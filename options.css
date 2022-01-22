@@ -48,11 +48,6 @@ body {
 	margin: 0;
 }
 
-.provider-authorization__heading {
-	font-size: 1.1rem;
-	margin: 1rem 0 0.6rem;
-}
-
 .provider-authorization__user {
 	font-size: 0.9rem;
 	margin-bottom: 0.6rem;

@@ -5,5 +5,7 @@ export { default as Icon } from './icon';
 export { default as LoadingIndicator } from './loading-indicator';
 export { default as Notice } from './notice';
 export { default as ProviderLabel, getProviderLabel } from './provider-label';
+export { default as TabPanel } from './tab-panel';
+export { default as TabPanels } from './tab-panels';
 export { default as Tooltip } from './tooltip';
 export { default as VisuallyHidden } from './visually-hidden';

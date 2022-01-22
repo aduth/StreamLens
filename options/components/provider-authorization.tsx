@@ -26,9 +26,6 @@ function ProviderAuthorization({ providerName }: ProviderAuthorizationProps) {
 
 	return (
 		<>
-			<h3 className="provider-authorization__heading">
-				<ProviderLabel providerName={providerName} />
-			</h3>
 			{providerAuth && providerAuth.token === null && (
 				<ProviderTokenError providerName={providerName} />
 			)}

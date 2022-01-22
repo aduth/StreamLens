@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { StoreContext } from '@streamlens/state';
 import { SyncStore } from 'unistore-browser-sync';
-import ProviderAuthorizations from './provider-authorizations';
+import ProviderSettings from './provider-settings';
 import ColorSchemeSetting from './color-scheme-setting';
 
 interface RootProps {
@@ -17,7 +17,7 @@ interface RootProps {
 function Root({ store }: RootProps) {
 	return (
 		<StoreContext.Provider value={store}>
-			<ProviderAuthorizations />
+			<ProviderSettings />
 			<ColorSchemeSetting />
 		</StoreContext.Provider>
 	);
