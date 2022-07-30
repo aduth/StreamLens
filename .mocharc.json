@@ -1,4 +1,5 @@
 {
-	"require": ["esbuild-register", "undom/register", "test/setup.ts"],
+	"loader": "esbuild-esm-loader",
+	"require": ["undom/register", "test/setup.ts"],
 	"extension": ["js", "jsx", "ts", "tsx"]
 }
