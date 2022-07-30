@@ -1,4 +1,4 @@
-import { h, cloneElement, ComponentProps, VNode } from 'preact';
+import { cloneElement, ComponentProps, VNode } from 'preact';
 import { useRef, useState } from 'preact/hooks';
 import { useDidUpdateEffect, useId } from '@streamlens/hooks';
 import TabPanel from './tab-panel';

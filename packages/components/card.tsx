@@ -1,4 +1,4 @@
-import { h, ComponentChildren } from 'preact';
+import { ComponentChildren } from 'preact';
 import Icon from './icon';
 
 interface CardProps {

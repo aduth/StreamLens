@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useSelect } from '@streamlens/state';
 import { TabPanels, TabPanel, ProviderLabel } from '@streamlens/components';
 import Section from './section';

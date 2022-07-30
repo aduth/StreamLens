@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useContext, useRef, useEffect } from 'preact/hooks';
 import { IconButton, VisuallyHidden } from '@streamlens/components';
 import { SearchContext } from './search-context';

@@ -1,4 +1,4 @@
-import { h, ComponentChildren, VNode } from 'preact';
+import { ComponentChildren, VNode } from 'preact';
 
 interface TabPanelProps {
 	/**

@@ -12,9 +12,7 @@
 		"typeRoots": ["node_modules/@types", "node_modules/web-ext-types"],
 		"noEmit": true,
 		"strictNullChecks": true,
-		"jsx": "preserve",
-		"jsxFactory": "h",
-		"jsxFragmentFactory": "Fragment",
+		"jsx": "react-jsx",
 		"jsxImportSource": "preact"
 	},
 	"include": [

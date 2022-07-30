@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { StoreContext } from '@streamlens/state';
 import { SyncStore } from 'unistore-browser-sync';
 import ProviderSettings from './provider-settings';

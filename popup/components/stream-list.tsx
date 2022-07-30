@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { size, reject, deburr, clamp } from 'lodash-es';
 import { useContext, useState, useRef } from 'preact/hooks';
 import { LoadingIndicator } from '@streamlens/components';

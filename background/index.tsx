@@ -1,4 +1,4 @@
-import { h, render } from 'preact';
+import { render } from 'preact';
 import createStore from 'unistore';
 import { primary } from 'unistore-browser-sync';
 import { StoreContext } from '@streamlens/state';

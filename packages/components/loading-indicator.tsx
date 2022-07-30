@@ -1,5 +1,3 @@
-import { h } from 'preact';
-
 /**
  * Returns a Loading Indicator element.
  */

@@ -1,4 +1,4 @@
-import { h, Fragment } from 'preact';
+import { Fragment } from 'preact';
 import { useSelect, useDispatch } from '@streamlens/state';
 import ProviderTokenError from './provider-token-error';
 

@@ -1,4 +1,4 @@
-import { h, Fragment, ComponentChildren } from 'preact';
+import { Fragment, ComponentChildren } from 'preact';
 import { isEmpty } from 'lodash-es';
 import { useSelect } from '@streamlens/state';
 

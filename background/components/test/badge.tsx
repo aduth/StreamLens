@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { render } from '@testing-library/preact';
 import { StoreContext } from '@streamlens/state';
 import { useStubbedGlobal } from '@streamlens/stub-global';

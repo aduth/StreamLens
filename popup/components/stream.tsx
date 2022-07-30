@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { SLStream } from '/background/store';
 
 /**

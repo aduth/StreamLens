@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { findKey } from 'lodash-es';
 import { Notice, getProviderLabel } from '@streamlens/components';
 import { useSelect, useDispatch } from '@streamlens/state';

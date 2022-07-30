@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import Tooltip, { TooltipPosition } from './tooltip';
 import Icon, { IconProps } from './icon';
 

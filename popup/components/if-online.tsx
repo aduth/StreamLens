@@ -1,4 +1,4 @@
-import { h, Fragment, ComponentChildren } from 'preact';
+import { Fragment, ComponentChildren } from 'preact';
 import { useSelect } from '@streamlens/state';
 
 interface IfOnlineProps {

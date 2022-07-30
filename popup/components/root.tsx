@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { SyncStore } from 'unistore-browser-sync';
 import { StoreContext } from '@streamlens/state';
 import { ColorScheme } from '@streamlens/components';

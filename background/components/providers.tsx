@@ -1,4 +1,4 @@
-import { h, Fragment } from 'preact';
+import { Fragment } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { useDispatch, useSelect } from '@streamlens/state';
 import { providers } from '../providers';

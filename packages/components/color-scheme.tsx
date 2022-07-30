@@ -1,4 +1,4 @@
-import { h, Fragment, ComponentChildren } from 'preact';
+import { Fragment, ComponentChildren } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { useSelect } from '@streamlens/state';
 

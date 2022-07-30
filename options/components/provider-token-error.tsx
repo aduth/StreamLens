@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useDispatch } from '@streamlens/state';
 import { Notice, getProviderLabel } from '@streamlens/components';
 
