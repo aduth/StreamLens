@@ -1,6 +1,7 @@
 import { cloneElement, ComponentProps, VNode } from 'preact';
 import { useRef, useState } from 'preact/hooks';
 import { useDidUpdateEffect, useId } from '@streamlens/hooks';
+import type { JSX } from 'preact';
 import TabPanel from './tab-panel';
 
 interface TabPanelsProps {
@@ -21,7 +22,7 @@ function TabPanels({ label, children }: TabPanelsProps) {
 	const id = useId('tab-panels');
 	useDidUpdateEffect(() => activeButtonRef.current?.focus(), [activeIndex]);
 
-	function onTabButtonKeyDown(event: h.JSX.TargetedKeyboardEvent<HTMLButtonElement>) {
+	function onTabButtonKeyDown(event: JSX.TargetedKeyboardEvent<HTMLButtonElement>) {
 		let nextActiveIndex;
 
 		switch (event.key) {

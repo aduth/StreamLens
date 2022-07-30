@@ -1,4 +1,4 @@
-import { render, h } from 'preact';
+import { render } from 'preact';
 import createStore from 'unistore';
 import { replica } from 'unistore-browser-sync';
 import Root from './components/root';
