@@ -70,7 +70,7 @@
 		"@typescript-eslint/parser": "^5.51.0",
 		"chai": "^4.3.7",
 		"esbuild": "^0.17.7",
-		"esbuild-esm-loader": "^0.2.3",
+		"esbuild-esm-loader": "^0.3.0",
 		"eslint": "^8.34.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-import": "^2.27.5",
